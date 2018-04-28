@@ -1,6 +1,6 @@
-# Event handlers
+# 事件处理
 
-React provides a series of attributes for handling events. The solution is almost the same as the one used in the standard DOM. There are some differences like using camel case or the fact that we pass a function but overall it is pretty similar.
+对于事件处理，React 提供了一系列属性。解决方案几乎和使用标准化 DOM 完全一样。也有一些不同点，比如使用驼峰式或传入的是函数，但总体来说，还是十分相似的。
 
 ```js
 const theLogoIsClicked = () => alert('Clicked');
@@ -11,7 +11,7 @@ const theLogoIsClicked = () => alert('Clicked');
   onChange={event => theInputIsChanged(event.target.value) } />
 ```
 
-Usually we handle events in the component that contains the elements dispatching the events. Like in the example below, we have a click handler and we want to run a function or a method of the same component:
+通常，我们在包含派发事件的元素的组件中处理事件。比如在下面的示例中，我们有一个事件处理函数，我们想要在同一个组件中运行函数或方法:
 
 ```js
 class Switcher extends React.Component {
@@ -28,7 +28,7 @@ class Switcher extends React.Component {
 };
 ```
 
-That's all fine because `_handleButtonClick` is a function and we indeed pass a function to the `onClick` attribute. The problem is that as it is the code doesn't keep the same context. So, if we have to use `this` inside `_handleButtonClick` to refer the current `Switcher` component we will get an error.
+这样使用完全可以，因为 `_handleButtonClick` 是一个函数，而我们也确实将这个函数传给了 `onClick` 属性。问题是这段代码中并没有保持同一个上下文。所以，如果我们在 `_handleButtonClick` 函数中使用 `this` 来获取 `Switcher` 组件的引用时将会报错。
 
 ```js
 class Switcher extends React.Component {
@@ -45,13 +45,13 @@ class Switcher extends React.Component {
   }
   _handleButtonClick() {
     console.log(`Button is clicked inside ${ this.state.name }`);
-    // leads to
+    // 导致
     // Uncaught TypeError: Cannot read property 'state' of null
   }
 };
 ```
 
-What we normally do is to use `bind`:
+通常，我们使用 `bind` 来解决:
 
 ```js
 <button onClick={ this._handleButtonClick.bind(this) }>
@@ -59,7 +59,7 @@ What we normally do is to use `bind`:
 </button>
 ```
 
-However, this means that the `bind` function is called again and again because we may render the button many times. A better approach would be to create the bindings in the constructor of the component:
+但是，这样做的话 `bind` 函数会一次又一次地被调用，这是因为 button 可能会渲染多次。一种更好的方式是在组件的构造函数中来创建绑定:
 
 <span class="new-page"></span>
 
@@ -83,9 +83,9 @@ class Switcher extends React.Component {
 };
 ```
 
-Facebook by the way [recommends](https://facebook.github.io/react/docs/reusable-components.html#no-autobinding) the same technique while dealing with functions that need the context of the same component.
+附带一提，在处理函数需要和组件的上下文保持统一时，Facebook [推荐](https://facebook.github.io/react/docs/reusable-components.html#no-autobinding) 的也是此技巧。
 
-The constructor is also a nice place for partially executing our handlers. For example, we have a form but want to handle every input in a single function.
+构造函数还是部分执行处理函数的好地方。例如，我们有一个表单，但是不想为每个 input 提供一个单独的处理函数。
 
 <span class="new-page"></span>
 
@@ -111,6 +111,6 @@ class Form extends React.Component {
 };
 ```
 
-## Final thoughts
+## 结语
 
-There is not much to learn about event handling in React. The authors of the library did a good job in keeping what's already there. Since we are using HTML-like syntax it makes total sense that we also have a DOM-like event handling.
+对于 React 中的事件处理，其实没有太多需要学习的。React 的作者们在保留开发者的使用习惯上做的十分出色。因为 JSX 使用的是类似 HTML 的语法，所以使用类似 DOM 的事件处理意义重大。

@@ -1,7 +1,7 @@
-# In brief
+# 简介
 
-This cookbook is targeting developers that already have a basic understanding of what React is and how it works. It's not meant to be used as a complete how-to guide but as an introduction to popular concepts/design patterns. Paradigms that more or less are introduced by the community. It points you to an abstract thinking. For example, instead of talking about Flux, it talks about data flow. Instead of talking about higher-order components it talks about composition.
+本书的目标读者是对 React 是什么以及如何使用 React 有基础了解的开发者。本书并不是完整的 React 使用指南，而是对 React 流行的概念及设计模式的介绍。这些范式或多或少都是由开源社区所引入的，其主要目的在于引导你的抽象思维。例如，它讨论的不是 Flux，而是数据流。它讨论的不是高阶组件，而是组合( composition ) 。
 
-The book is highly opinionated. It represents my own understanding of the described patterns and it is possible that they have a different interpretation around the web. Have this in mind when arguing with someone and using this book as an argument.
+本书的主观性比较强。它代表了我对所描述的模式的理解，可能和你在网络上看到的解释有所不同。当你使用本书作为论点与某人辩论时，请牢记这点。
 
-Also notice that English is not my native language. If you see a typo or something sounds weird please contribute here [github.com/krasimir/react-in-patterns](https://github.com/krasimir/react-in-patterns/tree/master/book). If you are reading from a printed version of this book then feel free to use a pen ¯\\_(ツ)_/¯ 
+还需要知道的是英语并非我的母语。如果你看到了错别字或不通顺的语句时，请前往 [github.com/krasimir/react-in-patterns](https://github.com/krasimir/react-in-patterns/tree/master/book) 帮忙改进。如果你阅读的是本书的打印版，可以使用笔随意写写 ¯\\_(ツ)_/¯ 。

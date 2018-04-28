@@ -4,7 +4,7 @@
 
 ### 基础
 
-* [通讯](chapter-2/README.md)
+* [组件通讯](chapter-2/README.md)
   * [输入](chapter-2/README.md#%E8%BE%93%E5%85%A5)
   * [输出](chapter-2/README.md#%E8%BE%93%E5%87%BA)
 * [事件处理](chapter-3/README.md)

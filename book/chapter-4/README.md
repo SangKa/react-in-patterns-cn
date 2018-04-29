@@ -1,14 +1,14 @@
-# Composition
+# 组合 ( composition )
 
-One of the biggest benefits of React is composability. I personally don't know a framework that offers such an easy way to create and combine components. In this section we will explore a few composition techniques which proved to work well.
+React 最大的好处是它的可组合性。就我个人而言，我不知道还有哪个框架能提供这样如此简单地创建和组合组件的方式。本节我们将探讨一些好用的组合技巧，这些技巧都是经过实战验证的。
 
-Let's get a simple example. Let's say that we have an application with a header and we want to place a navigation inside. We have three React components - `App`, `Header` and `Navigation`. They have to be nested into each other so we end up with the following dependencies:
+我们来看一个简单示例。假设我们的应用有一个头部，我们想在头部中放置导航。我们有三个 React 组件 —`App`、`Header` 和 `Navigation` 。这三个组件是一个嵌套一个的，所以我们得到的依赖关系如下:
 
 ```js
 <App> -> <Header> -> <Navigation>
 ```
 
-The trivial approach for combining these components is to reference them in the places where we need them.
+组合这些组件的简单方法是在需要它们的时候引用即可。
 
 ```js
 // app.jsx
@@ -31,14 +31,14 @@ export default function Navigation() {
 }
 ```
 
-However, by following this approach we introduced a couple of problems:
+但是，这种方式会引入一些问题:
 
-* We may consider the `App` as a place where we do our main composition. The `Header` though may have other elements like a logo, search field or a slogan. It will be nice if they are passed somehow from the `App` component so we don't create hard-coded dependencies. What if we need the same `Header` component but without the `Navigation`. We can't easily achieve that because we have the two bound tightly together.
-* It's difficult to test. We may have some business logic in the `Header` and in order to test it we have to create an instance of the component. However, because it imports other components we will probably create instances of those components too and it becomes heavy to test. We may break our `Header` test by doing something wrong in the `Navigation` component which is totally misleading. *(Note: to some extent [shallow rendering](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) solves this problem by rendering only the `Header` without its nested children.)*
+* 我们可以把 `App` 看作是主要的组合场所。`Header` 可能还有其他元素，比如 logo、搜索框或标语。如果它们是以某种方式通过 `App` 组件传入的就好了，这样我们就无需创建目前这种硬编码的依赖关系。再比如说我们如果需要一个没有 `Navigation` 的 `Header` 组件该怎么办？我们无法轻松实现，因为我们将这两个组件紧绑在了一起。
+* 代码很难测试。在 `Header` 中或许有一些业务逻辑，要测试它的话我们需要创建出一个组件实例。但是，因为它还导入了其他组件，所以我们还要为这些导入的组件创建实例，这样的话测试就变的很重。如果 `Navigation` 组件出了问题，那么 `Header` 组件的测试已将被破坏，这完全不是我们想要的效果。*(注意: [浅层渲染 ( shallow rendering )](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) 通过不渲染 `Header` 组件嵌套的子元素能在一定程度上解决此问题。)*
 
-## Using React's children API
+## 使用 React children API
 
-In React we have the handy [`children`](https://facebook.github.io/react/docs/multiple-components.html#children) prop. That's how the parent reads/accesses its children. This API will make our Header agnostic and dependency-free:
+React 提供了便利的 [`children`](https://facebook.github.io/react/docs/multiple-components.html#children) 属性。通过它父组件可以读取/访问它的嵌套子元素。此 API 可以使得 `Header` 组件不用知晓它的嵌套子元素，从而解放之前的依赖关系:
 
 ```js
 export default function App() {
@@ -53,13 +53,13 @@ export default function Header({ children }) {
 };
 ```
 
-Notice also that if we don't use `{ children }` in `Header`, the `Navigation` component will never be rendered.
+注意，如果不在 `Header` 中使用 `{ children }` 的话，那么 `Navigation` 组件永远不会渲染。
 
-It now becomes easier to test because we may render the `Header` with an empty `<div>`. This will isolate the component and will let us focus on one piece of our application.
+现在 `Header` 组件的测试变得更简单了，因为完全可以使用空 `<div>` 来渲染 `Header` 组件。这会使用组件更独立，并让我们专注于应用的一小部分。
 
-## Passing a child as a prop
+## 将 child 作为 prop 传入
 
-Every React component receives props. As we mentioned already there is no any strict rule about what these props are. We may even pass other components.
+每个 React 组件都接收属性。正如之前所提到的，关于传入的属性是什么并没有任何严格的规定。我们甚至可以传入其他组件。
 
 ```js
 const Title = function () {
@@ -82,13 +82,13 @@ function App() {
 };
 ```
 
-This technique is useful when a component like `Header` needs to take decisions about its children but don't bother about what they actually are. A simple example is a visibility component that hides its children based on a specific condition.
+当遇到像 `Header` 这样的组件时，这种技术非常有用，它们需要对其嵌套的子元素进行决策，但并不关心它们的实际情况。
 
-## Higher-order component
+## 高阶组件
 
-For a long period of time higher-order components were the most popular way to enhance and compose React elements. They look really similar to the [decorator design pattern](http://robdodson.me/javascript-design-patterns-decorator/) because we have component wrapping and enhancing.
+很长一段时期内，高阶组件都是增强和组合 React 元素的最流行的方式。它们看上去与 [装饰器模式](http://robdodson.me/javascript-design-patterns-decorator/) 十分相似，因为它是对组件的包装与增强。
 
-On the technical side the higher-order component is usually a function that accepts our original component and returns an enhanced/populated version of it. The most trivial example is as follows:
+从技术角度来说，高阶组件通常是函数，它接收原始组件并返回原始组件的增强/填充版本。最简单的示例如下:
 
 ```js
 var enhanceComponent = (Component) =>
@@ -110,7 +110,7 @@ class App extends React.Component {
 };
 ```
 
-The very first thing that the higher-order component does is to render the original component. It's a good practice to proxy pass the `props` to it. This way we will keep the input of our original component. And here comes the first big benefit of this pattern - because we control the input of the component we may send something that the component usually has no access to. Let's say that we have a configuration setting that `OriginalTitle` needs:
+高阶组件要做的第一件事就是渲染原始组件。将高阶组件的 `props` 传给原始组件是一种最佳实践。这种方式将保持原始组件的输入。这便是这种模式的最大好处，因为我们控制了原始组件的输入，而输入可以包含原始组件通常无法访问的内容。假设我们有 `OriginalTitle` 所需要的配置:
 
 ```js
 var config = require('path/to/configuration');
@@ -131,9 +131,9 @@ var OriginalTitle  = ({ title }) => <h1>{ title }</h1>;
 var EnhancedTitle = enhanceComponent(OriginalTitle);
 ```
 
-The knowledge for the `appTitle` is hidden into the higher-order component. `OriginalTitle` knows only that it receives a `prop` called `title`. It has no idea that this is coming from a configuration file. That's a huge advantage because it allows us to isolate blocks. It also helps with the testing of the component because we can create mocks easily.
+`appTitle` 是封装在高阶组件内部的。`OriginalTitle` 只知道它所接收的 `title` 属性，它完全不知道数据是来自配置文件的。这就是一个巨大的优势，因为它使得我们可以将组件的代码块进行隔离。它还有助于组件的测试，因为我们可以轻易地创建 mocks 。
 
-Another characteristic of this pattern is that we have a nice buffer for additional logic. For example, if our `OriginalTitle` needs data also from a remote server. We may query this data in the higher-order component and again send it as a prop.
+这种模式的另外一个特点是为附加的逻辑提供了很好的缓冲区。例如，如果 `OriginalTitle` 需要的数据来自远程服务器。我们可以在高阶组件中请求此数据，然后将其作为属性传给 `OriginalTitle` 。
 
 <span class="new-page"></span>
 
@@ -166,15 +166,15 @@ var OriginalTitle  = ({ title, remoteTitle }) =>
 var EnhancedTitle = enhanceComponent(OriginalTitle);
 ```
 
-Again, the `OriginalTitle` knows that it receives two props and has to render them next to each other. Its only concern is how the data looks like not where it comes from and how.
+这次，`OriginalTitle` 只知道它接收两个属性，然后将它们并排渲染出来。它只关心数据的表现，而无需关心数据的来源和方式。
 
-*[Dan Abramov](https://github.com/gaearon) made a really [good point](https://github.com/krasimir/react-in-patterns/issues/12) that the actual creation of the higher-order component (i.e. calling a function like `enhanceComponent`) should happen at a component definition level. Or in other words, it's a bad practice to do it inside another React component because it may be slow and lead to performance issues.*
+* 关于高阶组件的创建问题，[Dan Abramov](https://github.com/gaearon) 提出了一个 [非常棒的观点](https://github.com/krasimir/react-in-patterns/issues/12)，像调用 `enhanceComponent` 这样的函数时，应该在组件定义的层级调用。换句话说，在另一个 React 组件中做这件事是有问题的，它会导致应用速度变慢并导致性能问题。 *
 
 <br /><br />
 
-## Function as a children, render prop
+## 将函数作为 children 传入和 render prop
 
-Last couple of months the React community started shifting in an interesting direction. So far in our examples the `children` prop was a React component. There is however a new pattern gaining popularity in which the same `children` prop is a JSX expression. Let's start by passing a simple object.
+最近几个月来，React 社区开始转向一个有趣的方向。到目前为止，我们的示例中的 `children` 属性都是 React 组件。然而，有一种新的模式越来越受欢迎，`children` 属性是一个 JSX 表达式。我们先从传入一个简单对象开始。
 
 ```js
 function UserName({ children }) {
@@ -197,7 +197,7 @@ function App() {
 }
 ```
 
-This may look weird but in fact is really powerful. Like for example when we have some knowledge in the parent component and don't necessary want to send it down to children. The example below prints a list of TODOs. The `App` component has all the data and knows how to determine whether a TODO is completed or not. The `TodoList` component simply encapsulate the needed HTML markup.
+这看起来有点怪怪的，但实际上它确实非常强大。例如，当某些父组件所知道的内容不需要传给子组件时。下面的示例是待办事项的列表。`App` 组件拥有全部的数据，并且它知道如何确定待办事项是否完成。`TodoList` 组件只是简单地封装了所需的 HTML 标记。
 
 <br /><br /><br /><br />
 
@@ -233,9 +233,9 @@ function App() {
 }
 ```
 
-Notice how the `App` component doesn't expose the structure of the data. `TodoList` has no idea that there is `label` or `status` properties.
+注意观察 `App` 组件是如何不暴露数据结构的。`TodoList` 完全不知道 `label` 和 `status` 属性。
 
-The so called *render prop* pattern is almost the same except that we use the `render` prop and not `children` for rendering the todo.
+名为 *render prop* 的模式与上面所讲的基本相同，除了渲染待办事项使用的是 `render` 属性，而不是 `children` 。
 
 <br /><br /><br />
 
@@ -262,7 +262,7 @@ return (
 );
 ```
 
-These two patterns, *function as children* and *render prop* are probably one of my favorite ones recently. They provide flexibility and help when we want to reuse code. They are also a powerful way to abstract imperative code.
+这两种模式 *将函数作为 children 传入* 和 *render prop* 是我最新非常喜欢的。当我们想要复用代码时，它们提供了灵活性和帮助。它们还是抽象命令式代码的强力方式。
 
 ```js
 class DataProvider extends React.Component {
@@ -281,13 +281,13 @@ class DataProvider extends React.Component {
 }
 ```
 
-`DataProvider` renders nothing when it first gets mounted. Five seconds later we update the state of the component and render a `<section>` followed by what is `render` prop returning. Imagine that this same component fetches data from a remote server and we want to display it only when it is available.
+`DataProvider` 刚开始不渲染任何内容。5 秒后我们更新了组件的状态并渲染出一个 `<section>`，`<section>` 的内容是由 `render` 属性返回的。可以想象一下同样的组件，数据是从远程服务器获取的，我们只想数据获取后才进行显示。
 
 ```js
 <DataProvider render={ data => <p>The data is here!</p> } />
 ```
 
-We do say what we want to happen but not how. That is hidden inside the `DataProvider`. These days we used this pattern at work where we had to restrict some UI to certain users having `read:products` permissions. And we used the *render prop* pattern.
+我们描述了我们想要做的事，而不是如何去做。细节都封装在了 `DataProvider` 中。最近，我们在工作中使用这种模式，我们必须将某些界面限制只对具有 `read:products` 权限的用户开放。我们使用的是 *render prop* 模式。
 
 ```js
 <Authorize
@@ -295,8 +295,8 @@ We do say what we want to happen but not how. That is hidden inside the `DataPro
   render={ () => <ProductsList /> } />
 ```
 
-Pretty nice and self-explanatory in a declarative fashion. `Authorize` goes to our identity provider and checks what are the permissions of the current user. If he/she is allowed to read our products we render the `ProductList`.
+这种声明式的方式相当不错，不言自明。`Authorize` 会进行认证，以检查当前用户是否具有权限。如果用户具有读取产品列表的权限，那么我们便渲染 `ProductList` 。
 
-## Final thoughts
+## 结语
 
-Did you wonder why HTML is still here. It was created in the dawn of the internet and we still use it. That is because it's highly composable. React and its JSX looks like HTML on steroids and as such it comes with the same capabilities. So, make sure that you master the composition because that is one of the biggest benefits of React.
+你是否对为何还在使用 HTML 感到奇怪？HTML 是在互联网创建之初创建的，直到现在我们仍然在使用它。原因在于它的高度可组合性。React 和它的 JSX 看起来像进化的 HTML ，因此它具备同样的功能。因此，请确保精通组合，因为它是 React 最大的好处之一。

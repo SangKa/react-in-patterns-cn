@@ -12,7 +12,7 @@
   * [使用 React children API](chapter-4/README.md#%E4%BD%BF%E7%94%A8%20React%20children%20API)
   * [将 child 作为 prop 传入](chapter-4/README.md#%E5%B0%86%20child%20%E4%BD%9C%E4%B8%BA%20prop%20%E4%BC%A0%E5%85%A5)
   * [高阶组件](chapter-4/README.md#%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6)
-  * [render prop - 将函数作为 children 传入](chapter-4/README.md#"render%20prop%20-%20%E5%B0%86%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%20children%20%E4%BC%A0%E5%85%A5)
+  * [将函数作为 children 传入和 render prop](chapter-4/README.md#%E5%B0%86%E5%87%BD%E6%95%B0%E4%BD%9C%E4%B8%BA%20children%20%E4%BC%A0%E5%85%A5%E5%92%8C%20render%20prop)
 * [受控输入和非受控输入](chapter-5/README.md)
 * [展示型组件和容器型组件](chapter-6/README.md) 
 

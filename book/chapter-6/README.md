@@ -1,8 +1,8 @@
-# Presentational and container components
+# 展示型组件和容器型组件
 
-Every beginning is difficult. React is no exception and as beginners we also have lots of questions. Where I'm supposed to put my data, how to communicate changes or how to manage state? The answers of these questions are very often a matter of context and sometimes just practice and experience with the library. However, there is a pattern which is used widely and helps organizing React based applications - splitting the component into presentation and container.
+万事开头难。React 也不例外，作为初学者，我们也有一大堆问题。我应该将数据放在何处？如何进行变化通知？如何管理状态？这些问题的答案往往与上下文有关，而有时取决于 React 的实战经验。但是，有一种广泛使用的模式，有助于组织基于 React 的应用，那便是将组件分为展示型组件和容器型组件。
 
-Let's start with a simple example that illustrates the problem and then split the component into container and presentation. We will use a `Clock` component. It accepts a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object as a prop and displays the time in real time.
+我们先从一个简单示例开始，首先说明此示例的问题，然后将组件分成容器型组件和展示型组件。示例中使用的是 `Clock` 组件，它接收 [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象作为属性并显示实时时间。
 
 ```js
 class Clock extends React.Component {
@@ -44,26 +44,26 @@ class Clock extends React.Component {
 ReactDOM.render(<Clock time={ new Date() }/>, ...);
 ```
 
-In the constructor of the component we initialize the component's state which in our case is just the current `time` value. By using `setInterval` we update the state every second and the component is re-rendered. To make it looks like a real clock we use two helper methods - `_formatTime` and `_updateTime`. The first one is about extracting hours, minutes and seconds and making sure that they are following the two-digits format. `_updateTime` is mutating the current `time` object by one second.
+在组件的构造函数中，我们初始化了组件的状态，这里只保存了当前时间。通过使用 `setInterval` ，我们每秒更新一次状态，然后组件会重新渲染。要想看起来像个真正的时钟，我们还使用了两个辅助函数: `_formatTime` 和 `_updateTime` 。`_formatTime` 用来提取时分秒并确保它们是两位数的形式。`_updateTime` 用来将 `time` 对象设置为当前时间加一秒。
 
-## The problems
+## 问题
 
-There are couple of things happening in our component. It looks like it has too many responsibilities.
+这个组件中做了好几件事，它似乎承担了太多的职责。
 
-* It mutates the state by itself. Changing the time inside the component may not be a good idea because then only `Clock` knows the current value. If there is another part of the system that depends on this data it will be difficult to share it.
-* `_formatTime` is actually doing two things - it extracts the needed information from the date object and makes sure that the values are always presented by two digits. That's fine but it will be nice if the extracting is not part of the function because then it is bound to the type of the `time` object (coming as a prop). I.e. knows specifics about the shape of the data and at the same time deals with the visualization of it.
+* 它通过自身来修改状态。在组件中更改时间可能不是一个好主意，因为只有 `Clock` 组件知道当前时间。如果系统中的其他部分也需要此数据，那么将很难进行共享。
+* `_formatTime` 实际上做了两件事，它从时间对象中提取出所需信息，并确保这些值永远以两位数字的形式进行展示。这没什么问题，但如果提取操作不是函数的一部分那就更好了，因为函数绑定了 `time` 对象的类型。即此函数既要知道数据结构，同时又要对数据进行可视化处理。
 
-## Extracting the container
+## 提取出容器型组件
 
-Containers know about data, its shape and where it comes from. They know details about how the things work or the so called *business logic*. They receive information and format it so like is easy to be used by the presentational component. Very often we use [higher-order components](https://github.com/krasimir/react-in-patterns/tree/master/patterns/higher-order-components) to create containers because they provide a buffer space where we can insert custom logic.
+容器型组件知道数据及其结构，以及数据的来源。它们知道是如何运转的，或所谓的*业务逻辑*。它们接收信息并对其进行处理，以方便展示型组件使用。通常，我们使用 [高阶组件](https://github.com/krasimir/react-in-patterns/tree/master/patterns/higher-order-components) 来创建容器型组件，因为它们为我们的自定义逻辑提供了缓冲区。
 
-Here's how our `ClockContainer` looks like:
+下面是 `ClockContainer` 的代码:
 
 <span class="new-page"></span>
 
 ```js
 // Clock/index.js
-import Clock from './Clock.jsx'; // <-- that's the presentational component
+import Clock from './Clock.jsx'; // <-- 展示型组件
 
 export default class ClockContainer extends React.Component {
   constructor(props) {
@@ -95,13 +95,13 @@ export default class ClockContainer extends React.Component {
 };
 ```
 
-It still accepts `time` (a date object), does the `setInterval` loop and knows details about the data (`getHours`, `getMinutes` and `getSeconds`). In the end renders the presentational component and passes three numbers for hours, minutes and seconds. There is nothing about how the things look like. Only *business logic*.
+它接收 `time` (date 对象) 属性，使用 `setInterval` 循环并了解数据 (`getHours`、`getMinutes` 和 `getSeconds`) 的详情。最后渲染展示型组件并传入时分秒三个数字。这里没有任何展示相关的内容。只有*业务逻辑*。
 
-## Presentational component
+## 展示型组件
 
-Presentational components are concerned with how the things look. They have the additional markup needed for making the page pretty. Such components are not bound to anything and have no dependencies. Very often implemented as a [stateless functional components](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components) they don't have internal state.
+展示型组件只涉及组件的外在展现形式。它们会有附加的 HTML 标记来使得页面更加漂亮。这种组件没有任何绑定及依赖。通常都是实现成 [无状态组件](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components)，它们没有内部状态。
 
-In our case the presentational component contains only the two-digits check and returns the `<h1>` tag:
+在本示例中，展示型组件只包含两位数的检查并返回 `<h1>` 标签:
 
 ```js
 // Clock/Clock.jsx
@@ -116,14 +116,14 @@ export default function Clock(props) {
 };
 ```
 
-## Benefits
+## 好处
 
-Splitting the components in containers and presentation increases the reusability of the components. Our `Clock` function/component may exist in application that doesn't change the time or it's not working with JavaScript's [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object. That's because it is pretty *dummy*. No details about the data are required.
+将组件分成容器型组件和展示型组件可以增加组件的可复用性。不改变时间或不使用 JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) 对象的应用中，都可以使用 `Clock` 函数/组件。原因是它相当*单纯*，不需要对所需数据的详情有任何了解。
 
-The containers encapsulate logic and we may use them together with different renderers because they don't leak information about the visual part. The approach that we took above is a good example of how the container doesn't care about how the things look like. We may easily switch from digital to analog clock and the only one change will be to replace the `<Clock>` component in the `render` method.
+容器型组件封装了逻辑，它们可以搭配不同的展示型组件使用，因为它们不参与任何展示相关的工作。我们上面所采用的方法是一个很好的示例，它阐明了容器型组件是如何不关心展示部分的内容的。我们可以很容易地从数字时钟切换到模拟时钟，唯一的变化就是替换 `render` 方法中的 `<Clock>` 组件。
 
-Even the testing becomes easier because the components have less responsibilities. Containers are not concern with UI. Presentational components are pure renderers and it is enough to run expectations on the resulted markup.
+测试也将变得更容易，因为组件承担的职责更少。容器型组件不关心 UI 。展示型组件只是纯粹地负责展示，它可以很好地预测出渲染后的 HTML 标记。
 
-## Final thoughts
+## 结语
 
-The concept of container and presentation is not new at all but it fits really nicely with React. It makes our applications better structured, easy to manage and scale.
+容器型和展示型的并非是新概念，但是它真的非常适合 React 。它使得应用具有更好的结构，易于管理和扩展。

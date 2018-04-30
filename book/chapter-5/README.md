@@ -1,6 +1,6 @@
-# Controlled and uncontrolled inputs
+# 受控输入和非受控输入
 
-These two terms *controlled* and *uncontrolled* are very often used in the context of forms management. *controlled* input is an input that gets its value from a single source of truth. For example the `App` component below has a single `<input>` field which is *controlled*:
+在 React 表单管理中有两个经常使用的术语: *受控输入*和*非受控输入*。*受控收入*是指输入值的来源是单一的。例如，下面的 `App` 组件有一个 `<input>` 字段，它就是*受控的*:
 
 ```js
 class App extends React.Component {
@@ -14,7 +14,7 @@ class App extends React.Component {
 };
 ```
 
-The result of this code is an input element that we can focus but can't change. It is never updated because we have a single source of truth - the `App`'s component state. To make the input work as expected we have to add an `onChange` handler and update the state (the single source of truth). Which will trigger a new rendering cycle and we will see what we typed.
+上面代码的结果是我们可以操作 input 元素，但是无法改变它的值。它永远都不会更新，因为我们使用的是单一数据源: `App` 组件的状态。要想让 input 正常工作的话，需要为其添加 `onChange` 处理方法来更新状态 (单一数据源)。`onChange` 会触发新的渲染周期，所以能看到在 input 中输入的文字。
 
 <span class="new-page"></span>
 
@@ -39,7 +39,7 @@ class App extends React.Component {
 };
 ```
 
-On the opposite side is the *uncontrolled* input where we let the browser handle the user's updates. We may still provide an initial value by using the `defaultValue` prop but after that the browser is responsible for keeping the state of the input.
+与之相反的是*非受控输入*，它让浏览器来处理用户的输入。我们还可以通过使用 `defaultValue` 属性来提供初始值，此后浏览器将负责保存输入的状态。
 
 ```js
 class App extends React.Component {
@@ -53,7 +53,7 @@ class App extends React.Component {
 };
 ```
 
-That `<input>` element above is a little bit useless because the user updates the value but our component has no idea about that. We then have to use [`Refs`](https://reactjs.org/docs/glossary.html#refs) to get an access to the actual element.
+上面的 `<input>` 元素其实没什么用，因为我们的组件并不知道用户更新的值。我们需要使用 [`Refs`](https://reactjs.org/docs/glossary.html#refs) 来获取 DOM 元素的实际引用。
 
 ```js
 class App extends React.Component {
@@ -77,12 +77,12 @@ class App extends React.Component {
 };
 ```
 
-The `ref` prop receives a string or a callback. The code above uses a callback and stores the DOM element into a *local* variable called `input`. Later when the `onChange` handler is fired we get the new value and send it to the `App`'s state.
+`ref` 属性接收字符串或回调函数。上面的代码使用回调函数来将 DOM 元素保存在*局部*变量 `input` 中。之后当 `onChange` 事件触发时，我们将 input 中的最新值保存到 `App` 组件的状态里。
 
-*Using a lot of `refs` is not a good idea. If it happens in your app consider using `controlled` inputs and re-think your components.*
+*大量使用 `refs` 并非是个好主意。如果你的应用中出现了这种情况的话，那么你需要考虑使用受控输入并重新审视组件。*
 
-## Final thoughts
+## 结语
 
-*controlled* versus *uncontrolled* inputs is very often underrated. However I believe that it is a fundamental decision because it dictates the data flow in the React component. I personally think that *uncontrolled* inputs are kind of an anti-pattern and I'm trying to avoid them when possible.
+使用*受控输入*还是*非受控输入*，这个选择常常不被人所重视。但我相信这是一个最基本的决策，因为它决定了 React 组件的数据流。我个人认为*非受控输入*更像是一种反模式，应该尽量避免使用。
 
 

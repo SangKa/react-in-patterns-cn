@@ -1,28 +1,28 @@
 # Flux
 
-I'm obsessed by making my code simpler. I didn't say *smaller* because having less code doesn't mean that is simple and easy to work with. I believe that big part of the problems in the software industry come from the unnecessary complexity. Complexity which is a result of our own abstractions. You know, we (the programmers) like to abstract. We like placing things in black boxes and hope that these boxes work together.
+我痴迷于将代码变得简单。注意，我说的不是代码量*更少*，而是*简单*。因为代码量更少并不一定意味着简单。我相信软件行业中大部分问题都源自不必要的复杂度。复杂度是我们进行抽象的结果。你也知道，我们 (程序员) 都喜欢进行抽象。我们喜欢将抽象的东西放入黑盒中，并希望这些黑盒能够在一起工作。
 
-[Flux](http://facebook.github.io/flux/) is an architectural design pattern for building user interfaces. It was introduced by Facebook at their [F8](https://youtu.be/nYkdrAPrdcw?t=568) conference. Since then, lots of companies adopted the idea and it seems like a good pattern for building front-end apps. Flux is very often used with [React](http://facebook.github.io/react/). Another library released by Facebook. I myself use React+Flux/Redux in my [daily job](http://antidote.me/) and I could say that it is simple and really flexible. The pattern helps creating apps faster and at the same time keeps the code well organized.
+[Flux](http://facebook.github.io/flux/) 是一种构建用户界面的架构设计模式。它是由 Facebook 在它们的 [F8](https://youtu.be/nYkdrAPrdcw?t=568) 开发者大会上推出的。在此之后，许多公司都采纳了这个想法，这种模式用来构建前端应用似乎非常不错。Flux 通常和 [React](http://facebook.github.io/react/) 搭配使用。React 是 Facebook 发布的另外一个库。我个人在 [日常工作](http://antidote.me/) 中使用的是 React+Flux/Redux ，并且我敢说这种架构真的非常简单和灵活。该模式有助于更快地创建应用，同时使代码保持良好的组织结构。
 
-## Flux architecture and its main characteristics
+## Flux 架构及其主要特点
 
 ![Basic flux architecture](./fluxiny_basic_flux_architecture.jpg)
 
-The main actor in this pattern is the *dispatcher*. It acts as a hub for all the events in the system. Its job is to receive notifications that we call *actions* and pass them to all the *stores*. The store decides if it is interested or not and reacts by changing its internal state/data. That change is triggering re-rendering of the *views* which are (in our case) React components. If we have to compare Flux to the well known MVC we may say that the store is similar to the model. It keeps the data and its mutations.
+这种模式的主角是 *dispatcher* 。它担当系统中所有事件的枢纽。它的工作就是接收我们称之为 *actions* (动作) 的通知并将其传给所有的 *stores* 。store 决定了是否对传入的动作感兴趣，如果感兴趣则通过改变自己的内部状态/数据来进行响应。改变会触发 *views* (视图，这里指 React 组件) 的重新渲染。如果非要将 Flux 和大名鼎鼎的 MVC 相比较的话，Flux 中的 store 类似于 MVC 中的 model 。它负责保存和修改数据。
 
-The actions are coming to the dispatcher either from the views or from other parts of the system, like services. For example a module that performs a HTTP request. When it receives the result it may fire an action saying that the request was successful.
+传给 dispatcher 的动作可以来自于视图，也可以来自于系统的其他部分，比如 services 。举个例子，一个执行 HTTP 请求的模块，当它接收到结果数据时，它可以触发动作以通知系统请求成功。
 
-## Implementing a Flux architecture
+## 实现 Flux 架构
 
-As every other popular concept Flux also has some [variations](https://medium.com/social-tables-tech/we-compared-13-top-flux-implementations-you-won-t-believe-who-came-out-on-top-1063db32fe73). Very often to understand something we have to implement it. In the next few sections we will create a library that provides helpers for building the Flux pattern.
+如其他流行的概念一样，Flux 也有一些 [变种](https://medium.com/social-tables-tech/we-compared-13-top-flux-implementations-you-won-t-believe-who-came-out-on-top-1063db32fe73) 。通常，要理解某种技术的最好途径就是去实现它。在下面的几节中，我们将创建一个库，它提供辅助函数来构建 Flux 模式。
 
-### The dispatcher
+### Dispatcher
 
-In most of the cases we need a single dispatcher. Because it acts as a glue for the rest of the parts it makes sense that we have only one. The dispatcher needs to know about two things - actions and stores. The actions are simply forwarded to the stores so we don't necessary have to keep them. The stores however should be tracked inside the dispatcher so we can loop through them:
+大多数场景下，我们只需要一个单个的 dispatcher 。因为它扮演胶水的角色，用来粘合其他部分，所以有一个就够了。dispatcher 需要知道两样东西: 动作和 stores 。动作只是简单地转发给 stores，所以没必要保存它们。然而，stores 应该在 dispatcher 中进行追踪，这样才可以遍历它们: 
 
 ![the dispatcher](./fluxiny_the_dispatcher.jpg)
 
-That's what I started with:
+我开始是这样写的:
 
 ```js
 var Dispatcher = function () {
@@ -42,7 +42,7 @@ var Dispatcher = function () {
 };
 ```
 
-The first thing that we notice is that we *expect* to see an `update` method in the passed stores. It will be nice to throw an error if such method is not there:
+首先需要注意的是我们*期望*传入的 stores 上存在 `update` 方法。如果此方法不存在的话，抛出错误会更好些:
 
 ```js
 register: function (store) {
@@ -56,28 +56,27 @@ register: function (store) {
 
 <br />
 
-### Bounding the views and the stores
+### 将视图和 stores 进行绑定
 
-The next logical step is to connect our views to the stores so we re-render when the state in the stores is changed.
+下一步是将视图与 stores 链接，这样当 stores 的状态发生改变时，我们才能进行重新渲染。
 
 ![Bounding the views and the stores](./fluxiny_store_change_view.jpg)
 
+#### 使用辅助函数
 
-#### Using a helper
-
-Some of the flux implementations available out there provide a helper function that does the job. For example:
+一些 flux 的实现会自带辅助函数来完成此工作。例如:
 
 ```js
 Framework.attachToStore(view, store);
 ```
 
-However, I don't quite like this approach. To make `attachToStore` works we expect to see a specific API in the view and in the store. We kind of strictly define new public methods. Or in other words we say "Your views and store should have such APIs so we are able to wire them together". If we go down this road then we will probably define our own base classes which could be extended so we don't bother the developer with Flux details. Then we say "All your classes should extend our classes". This doesn't sound good either because the developer may decide to switch to another Flux provider and has to amend everything.
+然而，我并不怎么喜欢这种方式。要让 `attachToStore` 正常运行，需要视图和 store 中有一个特殊的 API ，因此我们需要严格定义这个新的公有方法。或者换句话说，Framework 对你说道: “你的视图和 store 应该具备这样的 API ，这样我才能能够将它们连接起来”。如果我们沿着这个方向前进的话，那么我们可能会定义可扩展的基类，这样我们就不会让 Flux 的细节去困扰开发人员。然后，Framework 又对你说到: “你所有的类都应该继承我们的类”。这听上去也并非好主意，因为开发人员可能会切换成另一个 Flux 提供者，这种切换势必会修改所有内容。
 
 <br /><br />
 
-#### With a mixin
+#### 使用 mixin
 
-What if we use React's [mixins](https://facebook.github.io/react/docs/reusable-components.html#mixins).
+那么如果使用 React 的 [mixins](https://facebook.github.io/react/docs/reusable-components.html#mixins) 呢？
 
 ```js
 var View = React.createClass({
@@ -86,21 +85,21 @@ var View = React.createClass({
 });
 ```
 
-That's a "nice" way to define behavior of existing React component. So, in theory we may create a mixin that does the bounding for us. To be honest, I don't think that this is a good idea. And [it looks](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750) like it's not only me. My reason of not liking mixins is that they modify the components in a non-predictable way. I have no idea what is going on behind the scenes. So I'm crossing this option.
+为已存在的 React 组件定义行为的话，这是一种“更好的”方式。所以，从理论上来说，我们可能会创建 mixin 来完成绑定工作。但说实话，我并认为这是个好主意。[看起来](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750) 不止我一个人有这种想法。我不喜欢 mixins 的原因是它们修改组件的方式是不可预见的。我完全不知道幕后发生了什么。所以我放弃这个选项。
 
-#### Using a context
+#### 使用 context
 
-Another technique that may answer the question is React's [context](https://facebook.github.io/react/docs/context.html). It is a way to pass props to child components without the need to specify them in every level of the tree. Facebook suggests context in the cases where we have data that has to reach deeply nested components.
+解决此问题的另一项技术便是 React 的 [context](https://facebook.github.io/react/docs/context.html) 。使用 context 可以将 props 传递给子组件而无需在组件树中进行层层传递。Facebook 建议在数据必须到达嵌套层级非常深的组件的情况下使用 context 。
 
-> Occasionally, you want to pass data through the component tree without having to pass the props down manually at every level. React's "context" feature lets you do this.
+> 偶尔，你希望通过组件树传递数据，而不必在每个级别手动传递这些 props 。React 的 "context" 功能可以让你做到这一点。
 
-I see similarity with the mixins here. The context is defined somewhere at the top and magically serves props for all the children below. It's not immediately clear where the data comes from.
+我看到了与 mixins 的相似之处。context 是在组件树的顶层定义的，并魔法般的为组件树中的所有的子组件提供 props 。至于数据从而何来，尚不可知。
 
 <br /><br /><br />
 
-#### Higher-Order components concept
+#### 高阶组件概念
 
-Higher-Order components pattern is [introduced](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775) by Sebastian Markb&#229;ge and it's about creating a wrapper component that returns ours. While doing it, it has the opportunity to send properties or apply additional logic. For example:
+高阶组件模式是由 Sebastian Markb&#229;ge 所[提出](https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775)的。它创建一个包装组件并返回原始的输入组件。使用高阶组件的话，就有机会来传递属性或应用附加逻辑。例如:
 
 ```js
 function attachToStore(Component, store, consumer) {
@@ -127,7 +126,7 @@ function attachToStore(Component, store, consumer) {
 };
 ```
 
-`Component` is the view that we want attached to the `store`. The `consumer` function says what part of the store's state should be fetched and sent to the view. A simple usage of the above function could be:
+`Component` 是我们想要附加到 `store` 中的视图。`consumer` 函数说明应该提取 store 的哪部分状态并发送给到视图。上面函数的简单用法如下所示:
 
 ```js
 class MyView extends React.Component {
@@ -140,13 +139,13 @@ ProfilePage = connectToStores(MyView, store, (props, store) => ({
 
 ```
 
-That is an interesting pattern because it shifts the responsibilities. It is the view fetching data from the store and not the store pushing something to the view. This of course has it's own pros and cons. It is nice because it makes the store dummy. A store that only mutates the data and says "Hey, my state is changed". It is not responsible for sending anything to anyone. The downside of this approach is maybe the fact that we have one more component (the wrapper) involved. We also need the three things - view, store and consumer to be in one place so we can establish the connection.
+这是个有趣的模式，因为它转移了职责。它是视图从 store 中拉取数据，而不是 store 将数据推送给视图。当然它也有自己的优势和劣势。优势在于它使得 store 变得简单。现在 store 只修改数据即可，并告诉大家: “嗨，我的状态发生改变了”。它不再负责将数据发送给别人。这种方法的缺点可能是我们将有不止一个组件 (包装组件) 参与其中。我们还需要视图、store 和 consumer 函数三者在同一个地方，这样我们才可以建立连接。
 
-#### My choice
+#### 我的选择
 
-The last option above, higher-order components, is really close to what I'm searching for. I like the fact that the view decides what it needs. That *knowledge* anyway exists in the component so it makes sense to keep it there. That's also why the functions that generate higher-order components are usually kept in the same file as the view. What if we can use similar approach but not passing the store at all. Or in other words, a function that accepts only the consumer. And that function is called every time when there is a change in the store.
+我的选择是最后一个选项 - 高阶组件，它已经非常接近于我想要的。我喜欢由视图来决定它所需要什么的这点。无论如何，*数据*都存在于组件中，所以将它保留在那里是有道理的。这也正是为什么生成高阶组件的函数通常与视图保持在同一个文件中的原因。如果我们使用类似的方法而压根不传入 store 呢？或者换句话说，函数只接收 consumer 。每当 store 发生变化时，都会调用此函数。
 
-So far our implementation interacts with the store only in the `register` method.
+目前为止，我们的实现中只有 `register` 方法与 store 进行交互。
 
 ```js
 register: function (store) {
@@ -158,13 +157,13 @@ register: function (store) {
 }
 ```
 
-By using `register` we keep a reference to the store inside the dispatcher. However, `register` returns nothing. And instead of nothing it may return a **subscriber** that will accept our consumer functions.
+通过使用 `register`，我们在 dispatcher 内部保存了 store 的引用。但是，`register` 不返回任何东西。或许，我们可以返回一个 **subscriber** (订阅者) 来接收 consumer 函数。
 
 ![Fluxiny - connect store and view](./fluxiny_store_view.jpg)
 
-I decided to send the whole store to the consumer function and not the data that the store keeps. Like in the higher-order components pattern the view should say what it needs by using store's getters. This makes the store really simple and there is no trace of presentational logic.
+我决定将整个 store 发送给 consumer 函数，而不是 store 中的保存的数据。就像在高阶组件模式中一样，视图应该使用 store 的 getter 来说明它需要什么。这使得 store 变得相当简单并且不包含任何表现层相关的逻辑。
 
-Here is how the register method looks like after the changes:
+下面是更改后的 `register` 方法:
 
 ```js
 register: function (store) {
@@ -185,9 +184,9 @@ register: function (store) {
 }
 ```
 
-The last bit in the story is how the store says that its internal state is changed. It's nice that we collect the consumer functions but right now there is no code that executes them.
+store 中要完成的最后一件事是它如何通知别人它内部的状态发生了改变。我们已经收集了 consumer 函数，但现在还没有任何代码来执行它们。
 
-According to the basic principles of the flux architecture the stores change their state in response of actions. In the `update` method we send the `action` but we could also send a function `change`. Calling that function should trigger the consumers:
+根据 flux 架构的基本原则，stores 改变自身状态以响应动作。在 `update` 方法中，我们发送了 `action`，但我们还应该发出 `change` 函数。调用此函数来触发 consumers :
 
 ```js
 register: function (store) {
@@ -198,8 +197,8 @@ register: function (store) {
   } else {
     var consumers = [];
     var change = function () {
-      consumers.forEach(function (l) {
-        l(store);
+      consumers.forEach(function (consumer) {
+        consumer(store);
       });
     };
     var subscribe = function (consumer) {
@@ -220,9 +219,9 @@ dispatch: function (action) {
 }
 ```
 
-*Notice how we push `change` together with `store` inside the `_stores` array. Later in the `dispatch` method we call `update` by passing the `action` and the `change` function.*
+*注意如何在 `_stores` 数组中将 `change` 和 `store` 一起推送出去。稍后，在 `dispatch` 方法中通过传入 `action` 和 `change` 函数来调用 `update` *
 
-A common use case is to render the view with the initial state of the store. In the context of our implementation this means firing all the consumers at least once when they land in the library. This could be easily done in the `subscribe` method:
+常见用法是使用 store 的初始状态来渲染视图。在我们实现中，这意味着当库被使用时至少触发所有 consumer 函数一次。这可以在 `subscribe` 方法中轻松完成:
 
 ```js
 var subscribe = function (consumer, noInit) {
@@ -231,7 +230,7 @@ var subscribe = function (consumer, noInit) {
 };
 ```
 
-Of course sometimes this is not needed so we added a flag which is by default falsy. Here is the final version of our dispatcher:
+当然，有时候并不需要，所以我们添加了一个标识，它的默认值是假值。下面是 dispatcher 的最终版本:
 
 <span class="new-page"></span>
 
@@ -247,8 +246,8 @@ var Dispatcher = function () {
       } else {
         var consumers = [];
         var change = function () {
-          consumers.forEach(function (l) {
-            l(store);
+          consumers.forEach(function (consumer) {
+            consumer(store);
           });
         };
         var subscribe = function (consumer, noInit) {
@@ -274,9 +273,9 @@ var Dispatcher = function () {
 
 <span class="new-page"></span>
 
-## The actions
+## 动作 ( Actions )
 
-You probably noticed that we didn't talk about the actions. What are they? The convention is that they should be simple objects having two properties - `type` and `payload`:
+你或许已经注意到了，我们还没讨论过动作。什么是动作？约定是它们应该是具有两个属性的简单对象: `type` 和 `payload` ：
 
 ```js
 {
@@ -288,9 +287,9 @@ You probably noticed that we didn't talk about the actions. What are they? The c
 }
 ```
 
-The `type` says what exactly the action is and the `payload` contains the information associated with the event. And in some cases we may leave the `payload` empty.
+`type` 表明了这个动作具体是做什么的，`payload` 包含事件的相关信息，而且它并非是必需的。
 
-It's interesting that the `type` is well known in the beginning. We know what type of actions should be floating in our app, who is dispatching them and which of the stores are interested. Thus, we can apply [partial application](http://krasimirtsonev.com/blog/article/a-story-about-currying-bind) and avoid passing the action object here and there. For example:
+有趣的是 `type` 从一开始就广为人知。我们知道什么类型的动作应该进入应用，谁来分发它们，已经 stores 对哪些动作感兴趣。因此，我们可以应用 [partial application](http://krasimirtsonev.com/blog/article/a-story-about-currying-bind) 并避免传入动作对象。例如:
 
 ```js
 var createAction = function (type) {
@@ -307,19 +306,19 @@ var createAction = function (type) {
 }
 ```
 
-`createAction` leads to the following benefits:
+`createAction` 具有以下优点:
 
-* We no more need to remember the exact type of the action. We now have a function which we call passing only the payload.
-* We no more need an access to the dispatcher which is a huge benefit. Otherwise, think about how we have to pass it to every single place where we need to dispatch an action.
-* In the end we don't have to deal with objects but with functions which is much nicer. The objects are *static* while the functions describe a *process*.
+* 我们不再需要记住动作的具体类型是什么。现在只需传入 payload 来调用此函数即可。
+* 我们不再需要访问 dispatcher 了，这是个巨大的优势。否则，还需要考虑如何将它传递给每个需要分发动作的地方。
+* 最后，我们不用再去处理对象，只是调用函数，这种方式要好得多。对象是*静态的*，而函数描述的是*过程*。
 
 ![Fluxiny actions creators](./fluxiny_action_creator.jpg)
 
-This approach for creating actions is actually really popular and functions like the one above are usually called *action creators*.
+这种创建动作的方式非常流行，像上面这样的函数我们称之为 “action creators” 。
 
-## The final code
+## 最终代码
 
-In the section above we successfully hide the dispatcher while submitting actions. We may do it again for the store's registration:
+在上一节中，在我们发出动作的同时隐藏了 dispatcher 。在 store 的注册过程中我们也可以这样做:
 
 ```js
 var createSubscriber = function (store) {
@@ -327,7 +326,7 @@ var createSubscriber = function (store) {
 }
 ```
 
-And instead of exporting the dispatcher we may export only these two functions `createAction` and `createSubscriber`. Here is how the final code looks like:
+我们可以不暴露 dispaatcher，而只暴露 `createAction` 和 `createSubscriber` 这两个函数。下面是最终代码:
 
 ```js
 var Dispatcher = function () {
@@ -341,8 +340,8 @@ var Dispatcher = function () {
       } else {
         var consumers = [];
         var change = function () {
-          consumers.forEach(function (l) {
-            l(store);
+          consumers.forEach(function (consumer) {
+            consumer(store);
           });
         };
         var subscribe = function (consumer, noInit) {
@@ -391,17 +390,17 @@ module.exports = {
 
 ```
 
-If we add the support of AMD, CommonJS and global usage we end up with 66 lines of code, 1.7KB plain or 795 bytes after minification JavaScript.
+如果添加对 AMD、CommonJS 和全局引用的支持的话，那么最终的 JavaScript 文件共 66 行代码，文件大小为 1.7KB，压缩后 795 字节。
 
-## Wrapping up
+## 整合
 
-We have a module that provides two helpers for building a Flux project. Let's write a simple counter app that doesn't involve React so we see the pattern in action.
+我们写好的模块提供两个辅助函数来构建 Flux 项目。我们来写个简单的计数器应用，此应用不使用 React ，只为了解 Flux 模式的实际使用情况。
 
 <span class="new-page"></span>
 
-### The markup
+### HTML
 
-We'll need some UI to interact with it so:
+我们需要一些 UI 元素来进行互动:
 
 ```html
 <div id="counter">
@@ -411,9 +410,9 @@ We'll need some UI to interact with it so:
 </div>
 ```
 
-The `span` will be used for displaying the current value of our counter. The buttons will change that value.
+`span` 用来显示计数器的当前值。点击按钮会改变计数器的值。
 
-### The view
+### 视图
 
 ```js
 const View = function (subscribeToStore, increase, decrease) {
@@ -433,23 +432,22 @@ const View = function (subscribeToStore, increase, decrease) {
 };
 ```
 
-It accepts a store subscriber function and two action function for increasing and decreasing the value. The first few lines of the view are just fetching the DOM elements.
+View 接收 store 的订阅者函数和增加/减少值的两个动作函数。View 中开始的几行代码只是用来获取 DOM 元素。
 
-After that we define a `render` function which puts the value inside the `span` tag. `updateState` will be called every time when the store changes. So, we pass these two functions to `subscribeToStore` because we want to get the view updated and we want to get an initial rendering. Remember how our consumers are called at least once by default.
+之后我们定义了 `render` 函数，它负责将值渲染到 `span` 标签中。当 store 发生变化时会调用 `updateState` 方法。我们将这两个函数传给 `subscribeToStore` 是因为我们想要视图更新以及进行初首次渲染。还记得 consumers 函数默认至少要调用一次吧？
 
-The last bit is calling the action functions when we press the buttons.
+最后要做的是为按钮绑定点击事件。
 
-### The store
+### Store
 
-Every action has a type. It's a good practice to create constants for these types so we don't deal with raw strings.
-
+每个动作都有类型。为这些类型创建常量是一种最佳实践，因为我们不想处理原始字符串。
 
 ```js
 const INCREASE = 'INCREASE';
 const DECREASE = 'DECREASE';
 ```
 
-Very often we have only one instance of every store. For the sake of simplicity we'll create ours as a singleton.
+通常每个 store 只有一个实例。为了简单起见，我们将直接创建一个单例对象。
 
 ```js
 const CounterStore = {
@@ -468,11 +466,11 @@ const CounterStore = {
 };
 ```
 
-`_data` is the internal state of the store. `update` is the well known method that our dispatcher calls. We process the action inside and say `change()` when we are done. `getValue` is a public method used by the view so it reaches the needed info. In our case this is just the value of the counter.
+`_data` 是 store 的内部状态。`update` 是 dispatcher 所调用的方法，我们在 `update` 中处理动作，并在完成时调用 `change()` 方法来通知发生了变化。`getValue` 是公共方法，视图会使用它来获取所需数据。(在这个案例中，就是计数器的值。)
 
-### Wiring all the pieces
+### 整合各个部分
 
-So, we have the store waiting for actions from the dispatcher. We have the view defined. Let's create the store subscriber, the actions and run everything.
+这样，store 就完成了，它等待 dispatcher 发出的动作。视图我们也定义完了。现在来创建 store 的订阅者、动作并让这一切运转起来。
 
 ```js
 const { createAction, createSubscriber } = Fluxiny.create();
@@ -485,10 +483,10 @@ const actions = {
 View(counterStoreSubscriber, actions.increase, actions.decrease);
 ```
 
-And that's it. Our view is subscribed to the store and it renders by default because one of our consumers is actually the `render` method.
+这样就完成了。视图订阅 store 并进行渲染，因为我们的 consumers 实际上就是 `render` 方法。
 
-### A live demo
+### 在线示例
 
-A live demo could be seen in the following JSBin [http://jsbin.com/koxidu/embed?js,output](http://jsbin.com/koxidu/embed?js,output). If that's not enough and it seems too simple for you please checkout the example in Fluxiny repository [https://github.com/krasimir/fluxiny/tree/master/example](https://github.com/krasimir/fluxiny/tree/master/example). It uses React as a view layer.
+这里有 JSBin 的 [在线示例](http://jsbin.com/koxidu/embed?js,output)。如果你觉得这个示例过于简单的话，请查阅 [Fluxiny 仓库中的示例](https://github.com/krasimir/fluxiny/tree/master/example)。它使用 React 作为视图层。
 
-*The Flux implementation discussed in this section is available here [github.com/krasimir/fluxiny](https://github.com/krasimir/fluxiny). Feel free to use it in a browser [directly](https://github.com/krasimir/fluxiny/tree/master/lib) or as a [npm dependency](https://www.npmjs.com/package/fluxiny).*
+*在本章中所讨论的 Flux 实现可以在 [这里](https://github.com/krasimir/fluxiny) 找到。可以 [直接在浏览器中](https://github.com/krasimir/fluxiny/tree/master/lib) 使用，也可以通过 [npm 依赖](https://www.npmjs.com/package/fluxiny) 进行安装。*

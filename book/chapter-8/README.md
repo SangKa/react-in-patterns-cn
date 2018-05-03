@@ -184,7 +184,7 @@ register: function (store) {
 }
 ```
 
-store 中要完成的最后一件事是它如何通知别人它内部的状态发生了改变。我们已经收集了 consumer 函数，但现在还没有任何代码来执行它们。
+最后要完成是 store 如何通知别人它内部的状态发生了改变。我们已经收集了 consumer 函数，但现在还没有任何代码来执行它们。
 
 根据 flux 架构的基本原则，stores 改变自身状态以响应动作。在 `update` 方法中，我们发送了 `action`，但我们还应该发出 `change` 函数。调用此函数来触发 consumers :
 

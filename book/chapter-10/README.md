@@ -1,8 +1,8 @@
-# Dependency injection
+# 依赖注入
 
-Many of the modules/components that we write have dependencies. A proper management of these dependencies is critical for the success of the project. There is a technique (most people consider it a *pattern*) called [*dependency injection*](http://krasimirtsonev.com/blog/article/Dependency-injection-in-JavaScript) that helps solving the problem.
+我们写的好多模块和组件都有依赖。能否管理这些依赖对于项目的成功至关重要。有一种叫做 [*依赖注入*](http://krasimirtsonev.com/blog/article/Dependency-injection-in-JavaScript) 的技术 (大多数人认为它是一种*模式*) 用来解决这种问题。
 
-In React the need of dependency injector is easily visible. Let's consider the following application tree:
+在 React 中，对依赖注入的需要是显而易见的。我们来考虑下面的应用的组件树:
 
 ```js
 // Title.jsx
@@ -35,9 +35,9 @@ class App extends React.Component {
 };
 ```
 
-The string "React in patterns" should somehow reach the `Title` component. The direct way of doing this is to pass it from `App` to `Header` and then `Header` pass it down to `Title`. However, this may work for these three components but what happens if there are multiple properties and deeper nesting. Lots of components will act as proxy passing properties to their children.
+字符串 "React in patterns" 应该以某种方式到达 `Title` 组件。最直接的方式就从 `App` 传到 `Header` ，再从 `Header` 传到 `Title` 。但是，对于三层组件还好，但是如果嵌套的层级很深，并且需要传多个属性呢？大多数组件都扮演着代理的角色，将属性转发给子组件。
 
-We already saw how the [higher-order component](https://krasimir.gitbooks.io/react-in-patterns/content/chapter-4/#higher-order-component) may be used to inject data. Let's use the same technique to inject the `title` variable:
+我们已经了解过 [高阶组件](../chapter-4/README.md#%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6) ，它可以用来注入数据。我们来使用同样的技术来注入 `title` 变量:
 
 ```js
 // inject.jsx
@@ -71,16 +71,16 @@ export default function Header() {
 }
 ```
 
-The `title` is hidden in a middle layer (higher-order component) where we pass it as a prop to the original `Title` component. That's all nice but it solves only half of the problem. Now we don't have to pass the `title` down the tree but how this data reaches the `inject.jsx` helper.
+`title` 隐藏在了中间层 (高阶组件) ，在中间层我们将 `title` 属性传给了原始的 `Title` 组件。一切都很不错，但它只解决了一半问题。现在我们不再需要在组件树中将 `title` 向下层层传递，但是需要考虑数据如何到达 `inject.jsx` 辅助函数。
 
-## Using React's context (prior v. 16.3)
+## 使用 React context (16.3 之前的版本)
 
-*In v16.3 React's team introduced a new version of the context API and if you are going to use that version or above you'd probably skip this section.*
+*在 React 16.3 版本中，React 团队引入了新版的 context API ，如果你想使用新版 API ，那么可以跳过此节。*
 
-React has the concept of [*context*](https://facebook.github.io/react/docs/context.html). The *context* is something that every React component has access to. It's something like an [event bus](https://github.com/krasimir/EventBus) but for data. A single *store* which we access from everywhere.
+React 有 [*context*](https://facebook.github.io/react/docs/context.html) 的概念。每个 React 组件都可以访问 *context* 。它有些类似于 [事件总线](https://github.com/krasimir/EventBus) ，但是为数据而生。可以把它想象成在任意地方都可以访问的单一 *store* 。
 
 ```js
-// a place where we will define the context
+// 定义 context 的地方
 var context = { title: 'React in patterns' };
 
 class App extends React.Component {
@@ -93,7 +93,7 @@ App.childContextTypes = {
   title: React.PropTypes.string
 };
 
-// a place where we use the context
+// 使用 context 的地方
 class Inject extends React.Component {
   render() {
     var title = this.context.title;
@@ -105,7 +105,7 @@ Inject.contextTypes = {
 };
 ```
 
-Notice that we have to specify the exact signature of the context object. With `childContextTypes` and `contextTypes`. If those are not specified then the `context` object will be empty. That can be a little bit frustrating because we may have lots of stuff to put there. That is why it is a good practice that our `context` is not just a plain object but it has an interface that allows us to store and retrieve data. For example:
+注意，我们需要使用 `childContextTypes` 和 `contextTypes` 来指定 context 对象的具体签名。如果不指定的话，那么 `context` 对象将为空。这点可能有点令人沮丧，因为我们可能会多写很多代码。所以将 `context` 写成允许我们储存和获取数据的服务，而不是一个普通对象是一种最佳实践。例如:
 
 ```js
 // dependencies.js
@@ -119,7 +119,8 @@ export default {
   }
 }
 ```
-Then, if we go back to our example, the `App` component may look like that:
+
+然后，回到示例中，`App` 组件应该是这样的:
 
 ```js
 import dependencies from './dependencies';
@@ -141,7 +142,7 @@ App.childContextTypes = {
 };
 ```
 
-And our `Title` component gets it's data through the context:
+`Title` 组件通过 context 来获取数据:
 
 ```js
 // Title.jsx
@@ -157,7 +158,7 @@ Title.contextTypes = {
 };
 ```
 
-Ideally we don't want to specify the `contextTypes` every time when we need an access to the context. This detail may be wrapped again in a higher-order component. And even better, we may write an utility function that is more descriptive and helps us declare the exact wiring. I.e instead of accessing the context directly with `this.context.get('title')` we ask the higher-order component to get what we need and pass it as props to our component. For example:
+理想情况下，我们不想每次需要访问 context` 时都指定 `contextTypes` 。可以使用高阶组件来包装类型细节。但更好的做法是，我们可以编写一个更具描述性的工具函数，从而帮助我们声明确切的类型。例如，我们不再直接使用 `this.context.get('title')` 来访问 context ，而是告诉高阶组件需要传递给组件的属性。例如:
 
 ```js
 // Title.jsx
@@ -172,9 +173,9 @@ export default wire(Title, ['title'], function resolve(title) {
 });
 ```
 
-The `wire` function accepts a React component, then an array with all the needed dependencies (which are `register`ed already) and then a function which I like to call `mapper`. It receives what is stored in the context as a raw data and returns an object which is later used as props for our component (`Title`). In this example we just pass what we get - a `title` string variable. However, in a real app this could be a collection of data stores, configuration or something else.
+`wire` 函数接收 React 组件、所需依赖 (依赖都已经注册过了) 的数组和我喜欢称之为 `mapper` 的转换函数。`mapper` 函数接收存储在 context 中的原始数据，并返回组件 ( `Title` ) 稍后使用的属性。在本例中，我们传入只是字符串，即 `title` 变量。但是，在真正的应用中，这个依赖项可以是大型的数据集合，配置对象或其他东西。
 
-Here is how the `wire` function looks like:
+`wire` 函数的代码如下所示:
 
 ```js
 export default function wire(Component, dependencies, mapper) {
@@ -197,15 +198,15 @@ export default function wire(Component, dependencies, mapper) {
 };
 ```
 
-`Inject` is a higher-order component that gets access to the context and retrieves all the items listed under `dependencies` array. The `mapper` is a function receiving the `context` data and transforms it to props for our component.
+`Inject` 是高阶组件，它可以访问 context 并获取 `dependencies` 数组中的所有项。`mapper` 函数接收 `context` 数据并将其转换成我们组建所需要的属性。
 
-## Using React's context (v. 16.3 and above)
+## 使用 React context (16.3 及之后的版本)
 
-For years the context API was not really recommended by Facebook. They mentioned in the official docs that the API is not stable and may change. And that is exactly what happened. In the version 16.3 we got a new one which I think is more natural and easy to work with.
+这些年来，Fackbook 并不推荐使用 context API 。在官方文档中也有提到，此 API 不稳定，随时可能更改。确实也言中了。16.3 版本提供了一个新的 context API ，我认为新版 API 更自然，使用起来也更简单。
 
-Let's use the same example with the string that needs to reach a `<Title>` component.
+我们还是使用同一个示例，让字符串抵达 `<Title>` 组件。
 
-We will start by defining a file that will contain our context initialization:
+我们先来定义包含 context 初始化的文件:
 
 ```js
 // context.js
@@ -217,9 +218,9 @@ export const Provider = Context.Provider;
 export const Consumer = Context.Consumer;
 ```
 
-`createContext` returns an object that has `.Provider` and `.Consumer` properties. Those are actually valid React classes. The `Provider` accepts our context in the form of a `value` prop. The consumer is used to access the context and basically read data from it. And because they usually live in different files it is a good idea to create a single place for their initialization. 
+`createContext` 返回的对象具有 `Provider` 和 `Consumer` 属性。它们实际上是有效的 React 类。`Provicer` 以 `value` 属性的形式接收 context 。`Consumer` 用来访问 context 并从中读取数据。因为它们通常存在于不同的文件中，所以单独创建一个文件来进行它们的初始化是个不错的主意。
 
-Let's say that our `App` component is the root of our tree. At that place we have to pass the context.
+假设说我们的 `App` 组件是根组件。在此我们需要传入 context 。
 
 ```js
 import { Provider } from './context';
@@ -237,7 +238,7 @@ class App extends React.Component {
 };
 ```
 
-The wrapped components and their children now share the same context. The `<Title>` component is the one that needs the `title` string so that is the place where we use the `<Consumer>`.
+包装组件以及子组件现在共享同一个 context 。`<Title>` 组件是需要 `title` 字符串的组件之一，所以我们要在组件中使用 `<Consumer>` 。
 
 ```js
 import { Consumer } from './context';
@@ -251,23 +252,23 @@ function Title() {
 }
 ```
 
-*Notice that the `Consumer` class uses the function as children (render prop) pattern to deliver the context.*
+*注意，`Consumer` 类使用函数作为嵌套子元素 ( render prop 模式) 来传递 context 。*
 
-The new API feels easier to understand and eliminates the boilerplate. It is still pretty new but looks promising. It opens a whole new range of possibilities.
+新的 API 让人感觉更容易理解，同时样板文件代码更少。此 API 仍然还很新，但看起来很有前途。它开启了一系列全新的可能性。
 
-## Using the module system
+## 使用模块系统
 
-If we don't want to use the context there are a couple of other ways to achieve the injection. They are not exactly React specific but worth mentioning. One of them is using the module system.
+如果不像使用 context 的话，还有一些其他方式来实现注入。它们并非 React 相关的，但是值得一提。方式之一就是使用模块系统。
 
-As we know the typical module system in JavaScript has a caching mechanism. It's nicely noted in the [Node's documentation](https://nodejs.org/api/modules.html#modules_caching):
+众所周知，JavaScript 中的典型模块系统具有缓存机制。在 [Node 官方文档](https://nodejs.org/api/modules.html#modules_caching) 中可以看到:
 
-> Modules are cached after the first time they are loaded. This means (among other things) that every call to require('foo') will get exactly the same object returned, if it would resolve to the same file.
+> 模块在第一次加载后会被缓存。这也意味着（类似其他缓存机制）如果每次调用 require('foo') 都解析到同一文件，则返回相同的对象。
 
-> Multiple calls to require('foo') may not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
+> 多次调用 require(foo) 不会导致模块的代码被执行多次。这是一个重要的特性。借助它, 可以返回“部分完成”的对象，从而允许加载依赖的依赖, 即使它们会导致循环依赖。
 
-How is that helping for our injection? Well, if we export an object we are actually exporting a [singleton](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript) and every other module that imports the file will get the same object. This allows us to `register` our dependencies and later `fetch` them in another file.
+这对依赖注入有什么帮助吗？当然，如果我们导出一个对象，我们实际上导出的是一个 [单例]((https://addyosmani.com/resources/essentialjsdesignpatterns/book/#singletonpatternjavascript)，并且每个导入该文件的其他模块都将获得同一个对象。这使得我们可以 `register` 依赖，并稍后在另一个文件中 `fetch` 它们。
 
-Let's create a new file called `di.jsx` with the following content:
+我们来创建一个新文件 `di.jsx` ，它的代码如下所示:
 
 ```js
 var dependencies = {};
@@ -300,9 +301,9 @@ export function wire(Component, deps, mapper) {
 }
 ```
 
-We'll store the dependencies in `dependencies` global variable (it's global for our module, not for the whole application). We then export two functions `register` and `fetch` that write and read entries. It looks a little bit like implementing setter and getter against a simple JavaScript object. Then we have the `wire` function that accepts our React component and returns a [higher-order component](https://krasimir.gitbooks.io/react-in-patterns/content/chapter-4/#higher-order-component). In the constructor of that component we are resolving the dependencies and later while rendering the original component we pass them as props. We follow the same pattern where we describe what we need (`deps` argument) and extract the needed props with a `mapper` function.
+我们将依赖保存在了 `dependencies` 这个全局变量中 (对于模块它是全局的，但对于整个应用来是并不是) 。然后，我们导出 `register` 和 `fetch` 这两个函数，它们负责读写依赖关系的数据。它看起来有点像对简单的 JavaScript 对象实现的 setter 和 getter 。再然后是 `wire` 函数，它接收 React 组件并返回 [高阶组件](../chapter-4/README.md#%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6) 。在组件的构造函数中，我们解析了依赖，并在稍后渲染原始组件时将其作为属性传给组件。我们按照相同的模式来描述我们需要的东西 (`deps` 参数)，并使用  `mapper` 函数来提取所需属性。
 
-Having the `di.jsx` helper we are again able to register our dependencies at the entry point of our application (`app.jsx`) and inject them wherever (`Title.jsx`) we need.
+有了 `di.jsx` 辅助函数，我们又能够在应用的入口点 ( `app.jsx` ) 注册依赖，并且在任意组件 ( `Title.jsx` ) 中进行注入。
 
 <span class="new-page"></span>
 
@@ -346,8 +347,8 @@ export default wire(
 );
 ```
 
-*If we look at the `Title.jsx` file we'll see that the actual component and the wiring may live in different files. That way the component and the mapper function become easily unit testable.*
+*如果查看 `Title.jsx` 文件的话，可以看到实际的组件和 `wire` 存在于不同的文件中。这种方式让组件和 mapper 函数的单元测试更简单。*
 
-## Final thoughts
+## 结语
 
-Dependency injection is a tough problem. Especially in JavaScript. Lots of people didn't realize that but putting a proper dependency management is a key process of every development cycle. JavaScript ecosystem offers different tools and we as developers should pick the one that fits in our needs.
+依赖注入是一个大问题，尤其是在 JavaScript 中。许多人并没有意识到，但是，正确的依赖管理是每个开发周期中的关键过程。JavaScript 生态提供了不同的工具，作为开发者的我们应该挑选最适合自己的工具。

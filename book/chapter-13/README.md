@@ -1,3 +1,3 @@
-# Summary
+# 总结
 
-React became one of the most popular libraries for building UIs. It comes with a great API which is simple and powerful. The tricky part though is that React itself is not always enough for building complex applications. There are concepts that we must know to make it right. Design patterns that are introduced by the community and work well at scale. This book teaches most of those patterns in a slightly opinionated style. I hope you liked it :)
+React 已然成为最流行的 UI 构建库。它自带的 API 很棒，简单而强大。麻烦的部分是构建复杂应用的话， React 本身往往并不足够。有些概念我们必须要知道，才能做出正确的选择。由社区所提出的这些设计模式在大规模应用中运行良好。这本书以些许固执己见的方式介绍了这些模式中的大部分。希望你能喜欢 :)

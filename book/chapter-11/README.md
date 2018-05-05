@@ -1,18 +1,18 @@
-# Styling React components
+# 组件样式
 
-React is a view layer. As such it kind of controls the markup rendered in the browser. And we know that the styling with CSS is tightly connected to the markup on the page. There are couple of approaches for styling React applications and in this section we will go through the most popular ones.
+React 是视图层。因此，它可以控制在浏览器中渲染的标记。众所周知，页面上的 HTML 标记与 CSS 的样式是紧密联系在一起的。有几种方式来处理 React 应用的样式，在本章中我们将一一介绍这些最流行的方式。
 
-## The good old CSS class
+## 经典 CSS 类
 
-JSX syntax is pretty close to HTML syntax. As such we have almost the same tag attributes and we may still style using CSS classes. Classes which are defined in an external `.css` file. The only caveat is using `className` and not `class`. For example:
+JSX 语法相当接近于 HTML 语法。因此，我们拥有与 HTML 几乎相同的标签属性，我们仍然可以使用 CSS 类来处理样式。类是定义在外部的 `.css` 文件中的。唯一需要注意的是 React 中使用的是 `className` ，而不是 `class` 。例如:
 
-```
+```html
 <h1 className='title'>Styling</h1>
 ``` 
 
-## Inline styling
+## 内联样式
 
-The inline styling works just fine. Similarly to HTML we are free to pass styles directly via a `style`  attribute. However, while in HTML the value is a string in JSX must be an object.
+内联样式也能很好的工作。类似于 HTML ，我们可以通过 `style` 属性来直接传入样式。但是，`style` 属性在 HTML 中是字符串，而在 JSX 中必须得是一个对象。
 
 ```js
 const inlineStyles = {
@@ -25,7 +25,7 @@ const inlineStyles = {
 <h2 style={ inlineStyles }>Inline styling</h2>
 ```
 
-Because we write the styles in JavaScript we have some limitations from a syntax point of view. If we want to keep the original CSS property names we have to put them in quotes. If not then we have to follow the camel case convention. However, writing styles in JavaScript is quite interesting and may be a lot more flexible than the plain CSS. Like for example inheriting of styles:
+因为我们用 JavaScript 编写样式，所以从语法角度来看，是有一些限制的。如果我们想要使用原始的 CSS 属性名称，那么我们需要用引号包裹起来，否则需要遵循驼峰式命名规则。但是，使用 JavaScript 编写样式却非常有趣，它比普通的 CSS 更具灵活性。例如样式的继承:
 
 ```js
 const theme = {
@@ -38,13 +38,13 @@ const paragraphText = {
 };
 ```
 
-We have some basic styles in `theme` and with mix them with what is in `paragraphText`. Shortly, we are able to use the whole power of JavaScript to organize our CSS. What matters at the end is that we generate an object that goes to the `style` attribute.
+`theme` 中有一些基础样式，然后在 `paragraphText` 中混入 `theme` 的样式。简而言之，我们能够使用 JavaScript 的全部能力来组织 CSS 。重要的是最终生成了一个传给 `style` 属性的对象。
 
-## CSS modules
+## CSS 模块
 
-[CSS modules](https://github.com/css-modules/css-modules/blob/master/docs/get-started.md) is building on top of what we said so far. If we don't like the JavaScript syntax then we may use CSS modules and we will be able to write plain CSS. Usually this library plays its role at bundling time. It is possible to hook it as part of the transpilation step but normally is distributed as a build system plugin.
+[CSS 模块](https://github.com/css-modules/css-modules/blob/master/docs/get-started.md) 是建立在我们到目前为止所介绍过的内容之上的。如果你不喜欢 JavaScript 用法来写 CSS ，那么可以使用 CSS 模块，它可以让我们继续编写普通的 CSS 。通常，这个库是在打包阶段发挥作用的。可以将它作为编译步骤的一部分进行连接，但通常作为构建系统插件分发。
 
-Here is a quick example to get an idea how it works:
+下面的示例可以让你快速对其运行原理有个大致的了解:
 
 <br /><br />
 
@@ -62,9 +62,9 @@ function App() {
 }
 ```
 
-That is not possible by default but with CSS modules we may import directly a plain CSS file and use the classes inside.
+默认情况下是无法这样使用的，只有使用了 CSS 模块，我们才能直接导入普通的 CSS 文件并使用其中的类。
 
-And when we say *plain CSS* we don't mean that it is exactly like the normal CSS. It supports some really helpful composition techniques. For example:
+当我们提到 *普通的 CSS* ，并非真的指最原始的 CSS 。它支持一些非常有用的组合技巧。例如:
 
 ```
 .title {
@@ -74,7 +74,7 @@ And when we say *plain CSS* we don't mean that it is exactly like the normal CSS
 
 ## Styled-components
 
-[Styled-components](https://www.styled-components.com/) took another direction. Instead of inlining styles the library provides a React component. We then use this component to represent a specific look and feel. For example, we may create a `Link` component that has certain styling and use that instead of the `<a>` tag.
+[Styled-components](https://www.styled-components.com/) 则是另一种完全不同的方向。此库不再为 React 组件提供内联样式。我们需要使用组件来表示它的外观感受。例如，我们创建了 `Link` 组件，它具有特定的风格和用法，而再使用 `<a>` 标签。
 
 ```js
 const Link = styled.a`
@@ -87,7 +87,7 @@ const Link = styled.a`
 <Link href='http://google.com'>Google</Link>
 ```
 
-There is again a mechanism for extending classes. We may still use the `Link` component but change the text color like so:
+还有一种扩展类的机制。我们还可以使用 `Link` 组件，但是会改变它的文字颜色，像这样:
 
 ```js
 const AnotherLink = styled(Link)`
@@ -97,8 +97,8 @@ const AnotherLink = styled(Link)`
 <AnotherLink href='http://facebook.com'>Facebook</AnotherLink>
 ```
 
-For me styled-components are probably by far the most interesting approach for styling in React. It is quite easy to create components for everything and forget about the styling. If your company has the capacity to create a design system and building a product with it then this option is probably the most suitable one.
+对我而言，到目前为止 styled-components 可能是多种处理 React 样式的方法中我最感兴趣的。用它来创建组件非常简单，并可以忘记样式本身的存在。如果你的公司有能力创建一个设计系统并用它构建产品的话，那么这个选项可能是最合适的。
 
-## Final thoughts
+## 结语
 
-There are multiple ways to style your React application. I experienced all of them in production and I would say that there is no right or wrong. As most of the stuff in JavaScript today you have to pick the one that fits better in your context.
+处理 React 应用的样式有多种方式。我个人在生产环境中试验过所有方式，可以说无所谓对与错。正如 JavaScript 中大多数技术一样，你需要挑选一个更适合你的方式。

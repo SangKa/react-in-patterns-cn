@@ -32,10 +32,10 @@
   * [使用 React context (16.3 之前的版本)](chapter-10/README.md#using-reacts-context-prior-v-163)
   * [使用 React context (16.3 及之后的版本)](chapter-10/README.md#using-reacts-context-v-163-and-above)
   * [使用模块系统](chapter-10/README.md#using-the-module-system)
-* [样式](chapter-11/README.md)
+* [组件样式](chapter-11/README.md)
   * [经典 CSS 类](chapter-11/README.md#%E7%BB%8F%E5%85%B8%20CSS%20%E7%B1%BB)
   * [内联样式](chapter-11/README.md#%E5%86%85%E8%81%94%E6%A0%B7%E5%BC%8F)
-  * [CSS modules](chapter-11/README.md#css-modules)
+  * [CSS 模块](chapter-11/README.md#css-modules)
   * [Styled-components](chapter-11/README.md#styled-components)
 * [集成第三方库](chapter-12/README.md)
 

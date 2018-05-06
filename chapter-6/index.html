@@ -1,0 +1,812 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>展示型组件和容器型组件 · React 模式</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="SangKa">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter-7/" />
+    
+    
+    <link rel="prev" href="../chapter-5/" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter-1/">
+            
+                <a href="../chapter-1/">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/">
+            
+                    
+                    组件通讯
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输入">
+            
+                    
+                    输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输出">
+            
+                    
+                    输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter-3/">
+            
+                <a href="../chapter-3/">
+            
+                    
+                    事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/">
+            
+                    
+                    组合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#使用-react-children-api">
+            
+                    
+                    使用 React children API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#将-child-作为-prop-传入">
+            
+                    
+                    将 child 作为 prop 传入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#高阶组件">
+            
+                    
+                    高阶组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#将函数作为-children-传入和-render-prop">
+            
+                    
+                    将函数作为 children 传入和 render prop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter-5/">
+            
+                <a href="../chapter-5/">
+            
+                    
+                    受控输入和非受控输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    展示型组件和容器型组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数据流</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../chapter-7/">
+            
+                <a href="../chapter-7/">
+            
+                    
+                    单向数据流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/">
+            
+                    
+                    Flux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/#flux-架构及其主要特点">
+            
+                    
+                    Flux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/#实现-flux-架构">
+            
+                    
+                    实现 Flux 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/">
+            
+                    
+                    Redux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/#redux-架构及其主要特点">
+            
+                    
+                    Redux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/#使用-redux-的简单计数器应用">
+            
+                    
+                    使用 Redux 的简单计数器应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展阅读</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/">
+            
+                    
+                    依赖注入
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-之前的版本">
+            
+                    
+                    使用 React context (16.3 之前的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-及之后的版本">
+            
+                    
+                    使用 React context (16.3 及之后的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用模块系统">
+            
+                    
+                    使用模块系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/">
+            
+                    
+                    组件样式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#经典-css-类">
+            
+                    
+                    经典 CSS 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#内联样式">
+            
+                    
+                    内联样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#css-模块">
+            
+                    
+                    CSS 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#styled-components">
+            
+                    
+                    Styled-components
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter-12/">
+            
+                <a href="../chapter-12/">
+            
+                    
+                    集成第三方库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">总结</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../chapter-13/">
+            
+                <a href="../chapter-13/">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >展示型组件和容器型组件</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x548C;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;">&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x548C;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;</h1>
+<p>&#x4E07;&#x4E8B;&#x5F00;&#x5934;&#x96BE;&#x3002;React &#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#xFF0C;&#x4F5C;&#x4E3A;&#x521D;&#x5B66;&#x8005;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x6709;&#x4E00;&#x5927;&#x5806;&#x95EE;&#x9898;&#x3002;&#x6211;&#x5E94;&#x8BE5;&#x5C06;&#x6570;&#x636E;&#x653E;&#x5728;&#x4F55;&#x5904;&#xFF1F;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x53D8;&#x5316;&#x901A;&#x77E5;&#xFF1F;&#x5982;&#x4F55;&#x7BA1;&#x7406;&#x72B6;&#x6001;&#xFF1F;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#x7684;&#x7B54;&#x6848;&#x5F80;&#x5F80;&#x4E0E;&#x4E0A;&#x4E0B;&#x6587;&#x6709;&#x5173;&#xFF0C;&#x800C;&#x6709;&#x65F6;&#x53D6;&#x51B3;&#x4E8E; React &#x7684;&#x5B9E;&#x6218;&#x7ECF;&#x9A8C;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x6709;&#x4E00;&#x79CD;&#x5E7F;&#x6CDB;&#x4F7F;&#x7528;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x6709;&#x52A9;&#x4E8E;&#x7EC4;&#x7EC7;&#x57FA;&#x4E8E; React &#x7684;&#x5E94;&#x7528;&#xFF0C;&#x90A3;&#x4FBF;&#x662F;&#x5C06;&#x7EC4;&#x4EF6;&#x5206;&#x4E3A;&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x548C;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5148;&#x4ECE;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x793A;&#x4F8B;&#x5F00;&#x59CB;&#xFF0C;&#x9996;&#x5148;&#x8BF4;&#x660E;&#x6B64;&#x793A;&#x4F8B;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x7EC4;&#x4EF6;&#x5206;&#x6210;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;&#x548C;&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x3002;&#x793A;&#x4F8B;&#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x662F; <code>Clock</code> &#x7EC4;&#x4EF6;&#xFF0C;&#x5B83;&#x63A5;&#x6536; <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a> &#x5BF9;&#x8C61;&#x4F5C;&#x4E3A;&#x5C5E;&#x6027;&#x5E76;&#x663E;&#x793A;&#x5B9E;&#x65F6;&#x65F6;&#x95F4;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = { time: <span class="hljs-keyword">this</span>.props.time };
+    <span class="hljs-keyword">this</span>._update = <span class="hljs-keyword">this</span>._updateTime.bind(<span class="hljs-keyword">this</span>);
+  }
+  render() {
+    <span class="hljs-keyword">const</span> time = <span class="hljs-keyword">this</span>._formatTime(<span class="hljs-keyword">this</span>.state.time);
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+        { time.hours } : { time.minutes } : { time.seconds }
+      <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+    );
+  }
+  componentDidMount() {
+    <span class="hljs-keyword">this</span>._interval = setInterval(<span class="hljs-keyword">this</span>._update, <span class="hljs-number">1000</span>);
+  }
+  componentWillUnmount() {
+    clearInterval(<span class="hljs-keyword">this</span>._interval);
+  }
+  _formatTime(time) {
+    <span class="hljs-keyword">var</span> [ hours, minutes, seconds ] = [
+      time.getHours(),
+      time.getMinutes(),
+      time.getSeconds()
+    ].map(num =&gt; num &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&apos;0&apos;</span> + num : num);
+
+    <span class="hljs-keyword">return</span> { hours, minutes, seconds };
+  }
+  _updateTime() {
+    <span class="hljs-keyword">this</span>.setState({
+      time: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-keyword">this</span>.state.time.getTime() + <span class="hljs-number">1000</span>)
+    });
+  }
+};
+
+ReactDOM.render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Clock</span> <span class="hljs-attr">time</span>=<span class="hljs-string">{</span> <span class="hljs-attr">new</span> <span class="hljs-attr">Date</span>() }/&gt;</span>, ...);
+</span></code></pre>
+<p>&#x5728;&#x7EC4;&#x4EF6;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x521D;&#x59CB;&#x5316;&#x4E86;&#x7EC4;&#x4EF6;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x4FDD;&#x5B58;&#x4E86;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x3002;&#x901A;&#x8FC7;&#x4F7F;&#x7528; <code>setInterval</code> &#xFF0C;&#x6211;&#x4EEC;&#x6BCF;&#x79D2;&#x66F4;&#x65B0;&#x4E00;&#x6B21;&#x72B6;&#x6001;&#xFF0C;&#x7136;&#x540E;&#x7EC4;&#x4EF6;&#x4F1A;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x3002;&#x8981;&#x60F3;&#x770B;&#x8D77;&#x6765;&#x50CF;&#x4E2A;&#x771F;&#x6B63;&#x7684;&#x65F6;&#x949F;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x4F7F;&#x7528;&#x4E86;&#x4E24;&#x4E2A;&#x8F85;&#x52A9;&#x51FD;&#x6570;: <code>_formatTime</code> &#x548C; <code>_updateTime</code> &#x3002;<code>_formatTime</code> &#x7528;&#x6765;&#x63D0;&#x53D6;&#x65F6;&#x5206;&#x79D2;&#x5E76;&#x786E;&#x4FDD;&#x5B83;&#x4EEC;&#x662F;&#x4E24;&#x4F4D;&#x6570;&#x7684;&#x5F62;&#x5F0F;&#x3002;<code>_updateTime</code> &#x7528;&#x6765;&#x5C06; <code>time</code> &#x5BF9;&#x8C61;&#x8BBE;&#x7F6E;&#x4E3A;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x52A0;&#x4E00;&#x79D2;&#x3002;</p>
+<h2 id="&#x95EE;&#x9898;">&#x95EE;&#x9898;</h2>
+<p>&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#x4E2D;&#x505A;&#x4E86;&#x597D;&#x51E0;&#x4EF6;&#x4E8B;&#xFF0C;&#x5B83;&#x4F3C;&#x4E4E;&#x627F;&#x62C5;&#x4E86;&#x592A;&#x591A;&#x7684;&#x804C;&#x8D23;&#x3002;</p>
+<ul>
+<li>&#x5B83;&#x901A;&#x8FC7;&#x81EA;&#x8EAB;&#x6765;&#x4FEE;&#x6539;&#x72B6;&#x6001;&#x3002;&#x5728;&#x7EC4;&#x4EF6;&#x4E2D;&#x66F4;&#x6539;&#x65F6;&#x95F4;&#x53EF;&#x80FD;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x4E3B;&#x610F;&#xFF0C;&#x56E0;&#x4E3A;&#x53EA;&#x6709; <code>Clock</code> &#x7EC4;&#x4EF6;&#x77E5;&#x9053;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#x3002;&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#x4E5F;&#x9700;&#x8981;&#x6B64;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x4E48;&#x5C06;&#x5F88;&#x96BE;&#x8FDB;&#x884C;&#x5171;&#x4EAB;&#x3002;</li>
+<li><code>_formatTime</code> &#x5B9E;&#x9645;&#x4E0A;&#x505A;&#x4E86;&#x4E24;&#x4EF6;&#x4E8B;&#xFF0C;&#x5B83;&#x4ECE;&#x65F6;&#x95F4;&#x5BF9;&#x8C61;&#x4E2D;&#x63D0;&#x53D6;&#x51FA;&#x6240;&#x9700;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x786E;&#x4FDD;&#x8FD9;&#x4E9B;&#x503C;&#x6C38;&#x8FDC;&#x4EE5;&#x4E24;&#x4F4D;&#x6570;&#x5B57;&#x7684;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x5C55;&#x793A;&#x3002;&#x8FD9;&#x6CA1;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x63D0;&#x53D6;&#x64CD;&#x4F5C;&#x4E0D;&#x662F;&#x51FD;&#x6570;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x90A3;&#x5C31;&#x66F4;&#x597D;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x51FD;&#x6570;&#x7ED1;&#x5B9A;&#x4E86; <code>time</code> &#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x5373;&#x6B64;&#x51FD;&#x6570;&#x65E2;&#x8981;&#x77E5;&#x9053;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x540C;&#x65F6;&#x53C8;&#x8981;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x53EF;&#x89C6;&#x5316;&#x5904;&#x7406;&#x3002;</li>
+</ul>
+<h2 id="&#x63D0;&#x53D6;&#x51FA;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;">&#x63D0;&#x53D6;&#x51FA;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;</h2>
+<p>&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;&#x77E5;&#x9053;&#x6570;&#x636E;&#x53CA;&#x5176;&#x7ED3;&#x6784;&#xFF0C;&#x4EE5;&#x53CA;&#x6570;&#x636E;&#x7684;&#x6765;&#x6E90;&#x3002;&#x5B83;&#x4EEC;&#x77E5;&#x9053;&#x662F;&#x5982;&#x4F55;&#x8FD0;&#x8F6C;&#x7684;&#xFF0C;&#x6216;&#x6240;&#x8C13;&#x7684;<em>&#x4E1A;&#x52A1;&#x903B;&#x8F91;</em>&#x3002;&#x5B83;&#x4EEC;&#x63A5;&#x6536;&#x4FE1;&#x606F;&#x5E76;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x4EE5;&#x65B9;&#x4FBF;&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x4F7F;&#x7528;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <a href="https://github.com/krasimir/react-in-patterns/tree/master/patterns/higher-order-components" target="_blank">&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;</a> &#x6765;&#x521B;&#x5EFA;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4E3A;&#x6211;&#x4EEC;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x903B;&#x8F91;&#x63D0;&#x4F9B;&#x4E86;&#x7F13;&#x51B2;&#x533A;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F; <code>ClockContainer</code> &#x7684;&#x4EE3;&#x7801;:</p>
+<p><span class="new-page"></span></p>
+<pre><code class="lang-js"><span class="hljs-comment">// Clock/index.js</span>
+<span class="hljs-keyword">import</span> Clock <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Clock.jsx&apos;</span>; <span class="hljs-comment">// &lt;-- &#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ClockContainer</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = { time: props.time };
+    <span class="hljs-keyword">this</span>._update = <span class="hljs-keyword">this</span>._updateTime.bind(<span class="hljs-keyword">this</span>);
+  }
+  render() {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Clock</span> { <span class="hljs-attr">...this._extract</span>(<span class="hljs-attr">this.state.time</span>) }/&gt;</span>;
+  }
+  componentDidMount() {
+    this._interval = setInterval(this._update, 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this._interval);
+  }
+  _extract(time) {
+    return {
+      hours: time.getHours(),
+      minutes: time.getMinutes(),
+      seconds: time.getSeconds()
+    };
+  }
+  _updateTime() {
+    this.setState({
+      time: new Date(this.state.time.getTime() + 1000)
+    });
+  }
+};
+</span></code></pre>
+<p>&#x5B83;&#x63A5;&#x6536; <code>time</code> (date &#x5BF9;&#x8C61;) &#x5C5E;&#x6027;&#xFF0C;&#x4F7F;&#x7528; <code>setInterval</code> &#x5FAA;&#x73AF;&#x5E76;&#x4E86;&#x89E3;&#x6570;&#x636E; (<code>getHours</code>&#x3001;<code>getMinutes</code> &#x548C; <code>getSeconds</code>) &#x7684;&#x8BE6;&#x60C5;&#x3002;&#x6700;&#x540E;&#x6E32;&#x67D3;&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x5E76;&#x4F20;&#x5165;&#x65F6;&#x5206;&#x79D2;&#x4E09;&#x4E2A;&#x6570;&#x5B57;&#x3002;&#x8FD9;&#x91CC;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5C55;&#x793A;&#x76F8;&#x5173;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x53EA;&#x6709;<em>&#x4E1A;&#x52A1;&#x903B;&#x8F91;</em>&#x3002;</p>
+<h2 id="&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;">&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;</h2>
+<p>&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x53EA;&#x6D89;&#x53CA;&#x7EC4;&#x4EF6;&#x7684;&#x5916;&#x5728;&#x5C55;&#x73B0;&#x5F62;&#x5F0F;&#x3002;&#x5B83;&#x4EEC;&#x4F1A;&#x6709;&#x9644;&#x52A0;&#x7684; HTML &#x6807;&#x8BB0;&#x6765;&#x4F7F;&#x5F97;&#x9875;&#x9762;&#x66F4;&#x52A0;&#x6F02;&#x4EAE;&#x3002;&#x8FD9;&#x79CD;&#x7EC4;&#x4EF6;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x7ED1;&#x5B9A;&#x53CA;&#x4F9D;&#x8D56;&#x3002;&#x901A;&#x5E38;&#x90FD;&#x662F;&#x5B9E;&#x73B0;&#x6210; <a href="https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components" target="_blank">&#x65E0;&#x72B6;&#x6001;&#x7EC4;&#x4EF6;</a>&#xFF0C;&#x5B83;&#x4EEC;&#x6CA1;&#x6709;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x5728;&#x672C;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x53EA;&#x5305;&#x542B;&#x4E24;&#x4F4D;&#x6570;&#x7684;&#x68C0;&#x67E5;&#x5E76;&#x8FD4;&#x56DE; <code>&lt;h1&gt;</code> &#x6807;&#x7B7E;:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// Clock/Clock.jsx</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Clock</span>(<span class="hljs-params">props</span>) </span>{
+  <span class="hljs-keyword">var</span> [ hours, minutes, seconds ] = [
+    props.hours,
+    props.minutes,
+    props.seconds
+  ].map(num =&gt; num &lt; <span class="hljs-number">10</span> ? <span class="hljs-string">&apos;0&apos;</span> + num : num);
+
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{ hours } : { minutes } : { seconds }<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+};
+</code></pre>
+<h2 id="&#x597D;&#x5904;">&#x597D;&#x5904;</h2>
+<p>&#x5C06;&#x7EC4;&#x4EF6;&#x5206;&#x6210;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;&#x548C;&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x589E;&#x52A0;&#x7EC4;&#x4EF6;&#x7684;&#x53EF;&#x590D;&#x7528;&#x6027;&#x3002;&#x4E0D;&#x6539;&#x53D8;&#x65F6;&#x95F4;&#x6216;&#x4E0D;&#x4F7F;&#x7528; JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a> &#x5BF9;&#x8C61;&#x7684;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>Clock</code> &#x51FD;&#x6570;/&#x7EC4;&#x4EF6;&#x3002;&#x539F;&#x56E0;&#x662F;&#x5B83;&#x76F8;&#x5F53;<em>&#x5355;&#x7EAF;</em>&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5BF9;&#x6240;&#x9700;&#x6570;&#x636E;&#x7684;&#x8BE6;&#x60C5;&#x6709;&#x4EFB;&#x4F55;&#x4E86;&#x89E3;&#x3002;</p>
+<p>&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;&#x5C01;&#x88C5;&#x4E86;&#x903B;&#x8F91;&#xFF0C;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x642D;&#x914D;&#x4E0D;&#x540C;&#x7684;&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x4F7F;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4EEC;&#x4E0D;&#x53C2;&#x4E0E;&#x4EFB;&#x4F55;&#x5C55;&#x793A;&#x76F8;&#x5173;&#x7684;&#x5DE5;&#x4F5C;&#x3002;&#x6211;&#x4EEC;&#x4E0A;&#x9762;&#x6240;&#x91C7;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x5B83;&#x9610;&#x660E;&#x4E86;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;&#x662F;&#x5982;&#x4F55;&#x4E0D;&#x5173;&#x5FC3;&#x5C55;&#x793A;&#x90E8;&#x5206;&#x7684;&#x5185;&#x5BB9;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5730;&#x4ECE;&#x6570;&#x5B57;&#x65F6;&#x949F;&#x5207;&#x6362;&#x5230;&#x6A21;&#x62DF;&#x65F6;&#x949F;&#xFF0C;&#x552F;&#x4E00;&#x7684;&#x53D8;&#x5316;&#x5C31;&#x662F;&#x66FF;&#x6362; <code>render</code> &#x65B9;&#x6CD5;&#x4E2D;&#x7684; <code>&lt;Clock&gt;</code> &#x7EC4;&#x4EF6;&#x3002;</p>
+<p>&#x6D4B;&#x8BD5;&#x4E5F;&#x5C06;&#x53D8;&#x5F97;&#x66F4;&#x5BB9;&#x6613;&#xFF0C;&#x56E0;&#x4E3A;&#x7EC4;&#x4EF6;&#x627F;&#x62C5;&#x7684;&#x804C;&#x8D23;&#x66F4;&#x5C11;&#x3002;&#x5BB9;&#x5668;&#x578B;&#x7EC4;&#x4EF6;&#x4E0D;&#x5173;&#x5FC3; UI &#x3002;&#x5C55;&#x793A;&#x578B;&#x7EC4;&#x4EF6;&#x53EA;&#x662F;&#x7EAF;&#x7CB9;&#x5730;&#x8D1F;&#x8D23;&#x5C55;&#x793A;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x5730;&#x9884;&#x6D4B;&#x51FA;&#x6E32;&#x67D3;&#x540E;&#x7684; HTML &#x6807;&#x8BB0;&#x3002;</p>
+<h2 id="&#x7ED3;&#x8BED;">&#x7ED3;&#x8BED;</h2>
+<p>&#x5BB9;&#x5668;&#x578B;&#x548C;&#x5C55;&#x793A;&#x578B;&#x7684;&#x5E76;&#x975E;&#x662F;&#x65B0;&#x6982;&#x5FF5;&#xFF0C;&#x4F46;&#x662F;&#x5B83;&#x771F;&#x7684;&#x975E;&#x5E38;&#x9002;&#x5408; React &#x3002;&#x5B83;&#x4F7F;&#x5F97;&#x5E94;&#x7528;&#x5177;&#x6709;&#x66F4;&#x597D;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x6613;&#x4E8E;&#x7BA1;&#x7406;&#x548C;&#x6269;&#x5C55;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter-5/" class="navigation navigation-prev " aria-label="Previous page: 受控输入和非受控输入">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter-7/" class="navigation navigation-next " aria-label="Next page: 单向数据流">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"展示型组件和容器型组件","level":"2.5","depth":1,"next":{"title":"单向数据流","level":"3.1","depth":1,"path":"chapter-7/README.md","ref":"chapter-7/README.md","articles":[]},"previous":{"title":"受控输入和非受控输入","level":"2.4","depth":1,"path":"chapter-5/README.md","ref":"chapter-5/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","edit-link","copy-code-button","github-buttons"],"root":"./book","styles":{"website":"./styles/website.css","ebook":"./styles/ebook.css","pdf":"./styles/ebook.css"},"pluginsConfig":{"github":{"url":"https://github.com/SangKa/react-in-patterns-cn"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-buttons":{"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"帮忙纠错","base":"https://github.com/SangKa/react-in-patterns-cn/tree/master/book"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SangKa","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a5","chapterMark":"pagebreak","pageBreaksBefore":"//*[@class='new-page']","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"React 模式","gitbook":"3.2.3","description":"介绍 React 开发的设计模式和技术的免费开源书籍"},"file":{"path":"chapter-6/README.md","mtime":"2018-05-06T07:55:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-06T07:55:22.973Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

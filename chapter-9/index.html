@@ -1,0 +1,921 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Redux · React 模式</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="SangKa">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="./" />
+    
+    
+    <link rel="prev" href="../chapter-8/" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter-1/">
+            
+                <a href="../chapter-1/">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/">
+            
+                    
+                    组件通讯
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输入">
+            
+                    
+                    输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输出">
+            
+                    
+                    输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter-3/">
+            
+                <a href="../chapter-3/">
+            
+                    
+                    事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/">
+            
+                    
+                    组合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#使用-react-children-api">
+            
+                    
+                    使用 React children API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#将-child-作为-prop-传入">
+            
+                    
+                    将 child 作为 prop 传入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#高阶组件">
+            
+                    
+                    高阶组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#将函数作为-children-传入和-render-prop">
+            
+                    
+                    将函数作为 children 传入和 render prop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter-5/">
+            
+                <a href="../chapter-5/">
+            
+                    
+                    受控输入和非受控输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter-6/">
+            
+                <a href="../chapter-6/">
+            
+                    
+                    展示型组件和容器型组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数据流</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../chapter-7/">
+            
+                <a href="../chapter-7/">
+            
+                    
+                    单向数据流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/">
+            
+                    
+                    Flux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/#flux-架构及其主要特点">
+            
+                    
+                    Flux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/#实现-flux-架构">
+            
+                    
+                    实现 Flux 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Redux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="./">
+            
+                <a href="./#redux-架构及其主要特点">
+            
+                    
+                    Redux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="./">
+            
+                <a href="./#使用-redux-的简单计数器应用">
+            
+                    
+                    使用 Redux 的简单计数器应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展阅读</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/">
+            
+                    
+                    依赖注入
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-之前的版本">
+            
+                    
+                    使用 React context (16.3 之前的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-及之后的版本">
+            
+                    
+                    使用 React context (16.3 及之后的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用模块系统">
+            
+                    
+                    使用模块系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/">
+            
+                    
+                    组件样式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#经典-css-类">
+            
+                    
+                    经典 CSS 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#内联样式">
+            
+                    
+                    内联样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#css-模块">
+            
+                    
+                    CSS 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#styled-components">
+            
+                    
+                    Styled-components
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter-12/">
+            
+                <a href="../chapter-12/">
+            
+                    
+                    集成第三方库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">总结</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../chapter-13/">
+            
+                <a href="../chapter-13/">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Redux</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="redux">Redux</h1>
+<p><a href="https://redux.js.org/" target="_blank">Redux</a> &#x662F;&#x4E00;&#x4E2A;&#x5E93;&#xFF0C;&#x5B83;&#x626E;&#x6F14;&#x7740;&#x72B6;&#x6001;&#x5BB9;&#x5668;&#x7684;&#x89D2;&#x8272;&#xFF0C;&#x5E76;&#x8D1F;&#x8D23;&#x7BA1;&#x7406;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x6D41;&#x3002;&#x5B83;&#x662F; <a href="https://twitter.com/dan_abramov" target="_blank">Dan Abramov</a> &#x5728; 2015 &#x5E74;&#x7684; ReactEurope &#x5F00;&#x53D1;&#x8005;&#x5927;&#x4F1A;&#x4E0A;&#x63A8;&#x51FA;&#x7684; (<a href="https://www.youtube.com/watch?v=xsSnOQynTHs" target="_blank">&#x89C6;&#x9891;</a>)&#x3002;&#x5B83;&#x7C7B;&#x4F3C;&#x4E8E; <a href="https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-8/README.md#flux-architecture-and-its-main-characteristics" target="_blank">Flux &#x67B6;&#x6784;</a> &#x5E76;&#x6709;&#x5F88;&#x591A;&#x5171;&#x540C;&#x70B9;&#x3002;&#x5728;&#x672C;&#x7AE0;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F7F;&#x7528; Redux &#x548C; React &#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5C0F;&#x578B;&#x7684;&#x8BA1;&#x6570;&#x5668;&#x5E94;&#x7528;&#x3002;</p>
+<p><span class="new-page"></span></p>
+<h2 id="redux-&#x67B6;&#x6784;&#x53CA;&#x5176;&#x4E3B;&#x8981;&#x7279;&#x70B9;">Redux &#x67B6;&#x6784;&#x53CA;&#x5176;&#x4E3B;&#x8981;&#x7279;&#x70B9;</h2>
+<p><img src="redux-architecture.jpg" alt="Redux architecture"></p>
+<p>&#x7C7B;&#x4F3C;&#x4E8E; <a href="https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-8/README.md" target="_blank">Flux</a> &#x67B6;&#x6784;&#xFF0C;&#x7531;&#x89C6;&#x56FE;&#x7EC4;&#x4EF6; (React) &#x6765;&#x6D3E;&#x53D1;&#x52A8;&#x4F5C;&#x3002;&#x540C;&#x4E00;&#x4E2A;&#x52A8;&#x4F5C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x7531;&#x7CFB;&#x7EDF;&#x7684;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#x6D3E;&#x53D1;&#x7684;&#xFF0C;&#x4F8B;&#x5982;&#x5F15;&#x5BFC;&#x903B;&#x8F91;&#x3002;&#x52A8;&#x4F5C;&#x4E0D;&#x662F;&#x6D3E;&#x53D1;&#x5230;&#x4E2D;&#x5FC3;&#x67A2;&#x7EBD;&#x4E2D;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x6D3E;&#x53D1;&#x5230; <code>store</code> &#x4E2D;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x6211;&#x4EEC;&#x8BF4;&#x7684;&#x662F; <code>store</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>stores</code> &#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x5728; Redux &#x4E2D;&#x53EA;&#x6709;&#x4E00;&#x4E2A; store &#xFF0C;&#x8FD9;&#x662F; Redux &#x4E0E; Flux &#x7684;&#x6700;&#x91CD;&#x8981;&#x7684;&#x533A;&#x522B;&#x4E4B;&#x4E00;&#x3002;&#x51B3;&#x5B9A;&#x6570;&#x636E;&#x5982;&#x4F55;&#x6539;&#x53D8;&#x7684;&#x903B;&#x8F91;&#x4EE5;&#x7EAF;&#x51FD;&#x6570; ( pure functions ) &#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A; <code>reducers</code> &#x3002;&#x4E00;&#x65E6; store &#x63A5;&#x6536;&#x5230;&#x52A8;&#x4F5C;&#xFF0C;&#x5B83;&#x4F1A;&#x5C06;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x548C;&#x7ED9;&#x5B9A;&#x52A8;&#x4F5C;&#x53D1;&#x9001;&#x7ED9; reducer &#x5E76;&#x8981;&#x6C42;&#x5176;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x72B6;&#x6001;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x5728;&#x6570;&#x636E;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x65B9;&#x5F0F;&#x4E0B;&#xFF0C; reducer &#x9700;&#x8981;&#x8FD4;&#x56DE;&#x65B0;&#x7684;&#x72B6;&#x6001;&#x3002;&#x518D;&#x7136;&#x540E;&#xFF0C; store &#x66F4;&#x65B0;&#x81EA;&#x8EAB;&#x7684;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x4E0E; store &#x8FDE;&#x63A5;&#x7684; React &#x7EC4;&#x4EF6;&#x4F1A;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x3002;</p>
+<p>&#x6982;&#x5FF5;&#x76F8;&#x5F53;&#x6E05;&#x6670;&#x5E76;&#x518D;&#x6B21;&#x9075;&#x5FAA;&#x4E86; <a href="https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-7/README.md" target="_blank">&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;</a> &#x3002;&#x6211;&#x4EEC;&#x6765;&#x8BA8;&#x8BBA;&#x6BCF;&#x4E00;&#x4E2A;&#x90E8;&#x5206;&#x5E76;&#x5F15;&#x5165;&#x4E00;&#x4E9B;&#x652F;&#x6301; Redux &#x6A21;&#x5F0F;&#x5DE5;&#x4F5C;&#x7684;&#x65B0;&#x672F;&#x8BED;&#x3002;</p>
+<h3 id="&#x52A8;&#x4F5C;--actions-">&#x52A8;&#x4F5C; ( Actions )</h3>
+<p>Redux &#x4E2D;&#x7684;&#x52A8;&#x4F5C;&#x548C; Flux &#x4E00;&#x6837;&#xFF0C;&#x4E5F;&#x53EA;&#x662F;&#x6709; <code>type</code> &#x5C5E;&#x6027;&#x7684;&#x5BF9;&#x8C61;&#x800C;&#x5DF2;&#x3002;&#x8BE5;&#x5BF9;&#x8C61;&#x4E2D;&#x7684;&#x5176;&#x4ED6;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x90FD;&#x88AB;&#x89C6;&#x4E3A;&#x7279;&#x5B9A;&#x4E8E;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x4E0E;&#x6A21;&#x5F0F;&#x65E0;&#x5173;&#xFF0C;&#x800C;&#x4E0E;&#x5E94;&#x7528;&#x7684;&#x903B;&#x8F91;&#x76F8;&#x5173;&#x3002;&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> CHANGE_VISIBILITY = <span class="hljs-string">&apos;CHANGE_VISIBILITY&apos;</span>;
+<span class="hljs-keyword">const</span> action = {
+  type: CHANGE_VISIBILITY,
+  visible: <span class="hljs-literal">false</span>
+}
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x50CF; <code>CHANGE_VISIBILITY</code> &#x8FD9;&#x6837;&#x7684;&#x5E38;&#x91CF;&#x4F5C;&#x4E3A;&#x52A8;&#x4F5C;&#x7684;&#x7C7B;&#x578B;&#x662F;&#x4E00;&#x79CD;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;&#x6709;&#x5F88;&#x591A;&#x652F;&#x6301; Redux &#x7684;&#x5DE5;&#x5177;&#x548C;&#x5E93;&#xFF0C;&#x5B83;&#x4EEC;&#x7528;&#x6765;&#x89E3;&#x51B3;&#x4E0D;&#x7528;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5E76;&#x4E14;&#x90FD;&#x53EA;&#x9700;&#x8981;&#x52A8;&#x4F5C;&#x7684;&#x7C7B;&#x578B;&#x5373;&#x53EF;&#x3002;&#x6240;&#x4EE5;&#x8BF4;&#xFF0C;&#x52A8;&#x4F5C;&#x53EA;&#x662F;&#x4F20;&#x9012;&#x4FE1;&#x606F;&#x7684;&#x4E00;&#x79CD;&#x4FBF;&#x6377;&#x65B9;&#x5F0F;&#x3002;</p>
+<p><code>visible</code> &#x5C5E;&#x6027;&#x662F;&#x6211;&#x4EEC;&#x6240;&#x63D0;&#x5230;&#x8FC7;&#x7684;&#x5143;&#x6570;&#x636E;&#x3002;&#x5B83;&#x4E0E; Redux &#x672C;&#x8EAB;&#x65E0;&#x5173;&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x5E94;&#x7528;&#x4E2D;&#x67D0;&#x5904;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x6BCF;&#x6B21;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x6D3E;&#x53D1;&#x52A8;&#x4F5C;&#x65F6;&#x90FD;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x8FD9;&#x6837;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x4E00;&#x904D;&#x53C8;&#x4E00;&#x904D;&#x5730;&#x5199;&#x786E;&#x5B9E;&#x662F;&#x8BA9;&#x592A;&#x4EBA;&#x70E6;&#x8E81;&#x4E86;&#x3002;&#x8FD9;&#x4E5F;&#x6B63;&#x662F;&#x6982;&#x5FF5; <em>action creators</em> &#x8BDE;&#x751F;&#x7684;&#x539F;&#x56E0;&#x3002;action creator &#x662F;&#x8FD4;&#x56DE;&#x52A8;&#x4F5C;&#x5BF9;&#x8C61;&#x7684;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x53EF;&#x9009;&#x9879;&#x6027;&#x5730;&#x63A5;&#x6536;&#x4E0E;&#x52A8;&#x4F5C;&#x76F8;&#x5173;&#x8054;&#x7684;&#x5C5E;&#x6027;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x5C06;&#x4E0A;&#x9762;&#x7684; action &#x5199;&#x6210; action creator &#x4F1A;&#x662F;&#x8FD9;&#x6837;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> changeVisibility = visible =&gt; ({
+  type: CHANGE_VISIBILITY,
+  visible
+});
+
+changeVisibility(<span class="hljs-literal">false</span>);
+<span class="hljs-comment">// { type: CHANGE_VISIBILITY, visible: false }</span>
+</code></pre>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x6211;&#x4EEC;&#x5C06; <code>visible</code> &#x7684;&#x503C;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#x4F20;&#x5165;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x4E0D;&#x5FC5;&#x53BB;&#x8BB0;&#x4F4F; (&#x6216;&#x5BFC;&#x5165;) &#x52A8;&#x4F5C;&#x7684;&#x786E;&#x5207;&#x7C7B;&#x578B;&#x3002;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#x53EF;&#x4EE5;&#x8BA9;&#x4EE3;&#x7801;&#x66F4;&#x7D27;&#x51D1;&#xFF0C;&#x66F4;&#x6613;&#x4E8E;&#x9605;&#x8BFB;&#x3002;</p>
+<h3 id="store">Store</h3>
+<p>Redux &#x63D0;&#x4F9B;&#x8F85;&#x52A9;&#x51FD;&#x6570; <code>createStore</code> &#x6765;&#x521B;&#x5EFA; store &#x3002;&#x5B83;&#x7684;&#x51FD;&#x6570;&#x7B7E;&#x540D;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { createStore } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;redux&apos;</span>;
+
+createStore([reducer], [initial state], [enhancer]);
+</code></pre>
+<p>&#x6B63;&#x5982;&#x4E4B;&#x524D;&#x6240;&#x63D0;&#x5230;&#x7684;&#xFF0C;reducer &#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x63A5;&#x6536;&#x5F53;&#x524D;&#x72B6;&#x6001;&#x548C;&#x52A8;&#x4F5C;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x72B6;&#x6001;&#x3002;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F; store &#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x3002;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x4FBF;&#x6377;&#x7684;&#x624B;&#x6BB5;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x5DF2;&#x6709;&#x7684;&#x6570;&#x636E;&#x6765;&#x521D;&#x59CB;&#x5316;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x3002;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x662F;&#x50CF;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x6E32;&#x67D3;&#x6216;&#x6301;&#x4E45;&#x4F53;&#x9A8C;&#x8FD9;&#x6837;&#x7684;&#x8FC7;&#x7A0B;&#x7684;&#x672C;&#x8D28;&#x3002;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570; enhancer &#x63D0;&#x4F9B; API &#x6765;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x4E2D;&#x95F4;&#x4EF6;&#x6765;&#x6269;&#x5C55; Redux &#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x662F;&#x63D2;&#x5165;&#x4E00;&#x4E9B;&#x81EA;&#x8EAB;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F8B;&#x5982;&#x5904;&#x7406;&#x5F02;&#x6B65;&#x6D41;&#x7A0B;&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+<p>&#x521B;&#x5EFA;&#x597D;&#x7684; store &#x5177;&#x6709;&#x56DB;&#x4E2A;&#x65B9;&#x6CD5;: <code>getState</code>&#x3001;<code>dispatch</code>&#x3001;<code>subscribe</code> &#x548C; <code>replaceReducer</code> &#x3002;&#x5176;&#x4E2D;&#x6700;&#x91CD;&#x8981;&#x7684;&#x6216;&#x8BB8;&#x5C31;&#x662F; <code>dispatch</code> :</p>
+<pre><code class="lang-js">store.dispatch(changeVisibility(<span class="hljs-literal">false</span>));
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x662F; action creator &#x3002;&#x6211;&#x4EEC;&#x5C06;&#x5176;&#x7ED3;&#x679C; (&#x5373; action &#x5BF9;&#x8C61;) &#x4F20;&#x7ED9; <code>dispatch</code> &#x65B9;&#x6CD5;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x5B83;&#x4F1A;&#x4F20;&#x64AD;&#x7ED9;&#x5E94;&#x7528;&#x4E2D;&#x7684; reducers &#x3002;</p>
+<p>&#x5728;&#x5178;&#x578B;&#x7684; React &#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5;&#x4F7F;&#x7528; <code>getState</code> &#x548C; <code>subscribe</code> &#xFF0C;&#x56E0;&#x4E3A;&#x6709;&#x8F85;&#x52A9;&#x51FD;&#x6570; (&#x5373;&#x5C06;&#x5728;&#x540E;&#x9762;&#x7684;&#x7AE0;&#x8282;&#x4E2D;&#x8BB2;&#x5230;) &#x53EF;&#x4EE5;&#x5C06;&#x7EC4;&#x4EF6;&#x548C; store &#x8054;&#x7CFB;&#x8D77;&#x6765;&#x5E76;&#x6709;&#x6548;&#x5730;&#x8BA2;&#x9605; store &#x7684;&#x53D8;&#x5316;&#x3002;&#x4F5C;&#x4E3A;&#x8BA2;&#x9605;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x81EA;&#x7136;&#x53EF;&#x4EE5;&#x6536;&#x5230;&#x5F53;&#x524D;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x5FC5;&#x81EA;&#x5DF1;&#x53BB;&#x8C03;&#x7528; <code>getState</code> &#x3002;<code>replaceReducer</code> &#x662F;&#x4E00;&#x4E2A;&#x9AD8;&#x7EA7; API &#xFF0C;&#x5B83;&#x7528;&#x6765;&#x4EA4;&#x4E92; store &#x6240;&#x4F7F;&#x7528;&#x7684;&#x5F53;&#x524D; reducer &#x3002;&#x6211;&#x4E2A;&#x4EBA;&#x4ECE;&#x6765;&#x6CA1;&#x4F7F;&#x7528;&#x8FC7;&#x6B64;&#x65B9;&#x6CD5;&#x3002;</p>
+<h3 id="reducer">Reducer</h3>
+<p>reducer &#x51FD;&#x6570;&#x5927;&#x6982;&#x662F; Redux &#x4E2D;&#x6700;<em>&#x7CBE;&#x534E;</em>&#x7684;&#x90E8;&#x5206;&#x3002;&#x5373;&#x4F7F;&#x5728;&#x6B64;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4E5F;&#x559C;&#x6B22;&#x7F16;&#x5199;&#x7EAF;&#x51FD;&#x6570;&#x6765;&#x4FDD;&#x6301;&#x8FD9;&#x79CD;&#x4E0D;&#x53EF;&#x53D8;&#x7684;&#x601D;&#x60F3;&#xFF0C;&#x4F46;&#x662F; Redux &#x8FEB;&#x4F7F;&#x6211;&#x8FD9;&#x6837;&#x505A;&#x3002;reducer &#x8FD8;&#x6709;&#x4E24;&#x4E2A;&#x7279;&#x70B9;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x6CA1;&#x6709;&#x5B83;&#x4EEC;&#x7684;&#x8BDD;&#x57FA;&#x672C;&#x4E0A;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x4E5F;&#x4E0D;&#x590D;&#x5B58;&#x5728;&#x3002;</p>
+<p>(1) &#x5B83;&#x5FC5;&#x987B;&#x662F;&#x7EAF;&#x51FD;&#x6570; - &#x8FD9;&#x610F;&#x5473;&#x7740;&#x5728;&#x8F93;&#x5165;&#x4E0D;&#x53D8;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6C38;&#x8FDC;&#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x76F8;&#x540C;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p>(2) &#x5B83;&#x5E94;&#x8BE5;&#x6CA1;&#x6709;&#x526F;&#x4F5C;&#x7528; - &#x50CF;&#x8BBF;&#x95EE;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3001;&#x53D1;&#x8D77;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#x6216;&#x7B49;&#x5F85; promise &#x89E3;&#x6790;&#x8FD9;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#x90FD;&#x4E0D;&#x5E94;&#x8BE5;&#x7528;&#x5728;&#x6B64;&#x5904;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E2A;&#x5F88;&#x7B80;&#x5355;&#x7684;&#x8BA1;&#x6570;&#x5668; reducer :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> counterReducer = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">state, action</span>) </span>{
+  <span class="hljs-keyword">if</span> (action.type === ADD) {
+    <span class="hljs-keyword">return</span> { value: state.value + <span class="hljs-number">1</span> };
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (action.type === SUBTRACT) {
+    <span class="hljs-keyword">return</span> { value: state.value - <span class="hljs-number">1</span> };
+  }
+  <span class="hljs-keyword">return</span> { value: <span class="hljs-number">0</span> };
+};
+</code></pre>
+<p>&#x5B83;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x526F;&#x4F5C;&#x7528;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x662F;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x3002;&#x6211;&#x4EEC;&#x6839;&#x636E;&#x4E4B;&#x524D;&#x7684;&#x72B6;&#x6001;&#x548C;&#x4F20;&#x5165;&#x7684;&#x52A8;&#x4F5C;&#x7C7B;&#x578B;&#x6765;&#x7D2F;&#x52A0;&#x51FA;&#x65B0;&#x7684;&#x503C;&#x3002;</p>
+<h3 id="&#x8FDE;&#x63A5;-react-&#x7EC4;&#x4EF6;">&#x8FDE;&#x63A5; React &#x7EC4;&#x4EF6;</h3>
+<p>&#x5982;&#x679C;&#x662F;&#x5728; React &#x4E0A;&#x4E0B;&#x6587;&#x4E2D;&#x8BA8;&#x8BBA; Redux &#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x57FA;&#x672C;&#x79BB;&#x4E0D;&#x5F00; <a href="https://github.com/reactjs/react-redux" target="_blank">react-redux</a> &#x6A21;&#x5757;&#x3002;&#x5B83;&#x63D0;&#x4F9B;&#x4E24;&#x6837;&#x4E1C;&#x897F;&#x6765;&#x8FDB;&#x884C; Redux &#x5230;&#x7EC4;&#x4EF6;&#x7684;&#x8FDE;&#x63A5;&#x3002;</p>
+<p>(1) <code>&lt;Provider&gt;</code> &#x7EC4;&#x4EF6; - &#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#xFF0C;&#x5B83;&#x63A5;&#x6536; store &#x5E76;&#x4F7F;&#x5F97;&#x6240;&#x6709;&#x7684;&#x5B50;&#x7EC4;&#x4EF6;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; React &#x7684; context API &#x6765;&#x8BBF;&#x95EE; store &#x3002;&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-js">&lt;Provider store={ myStore }&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyApp</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>
+</code></pre>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x5728;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x5355;&#x4E2A;&#x5730;&#x65B9;&#x4F7F;&#x7528;&#x5B83;&#x3002;</p>
+<p>(2) <code>connect</code> &#x51FD;&#x6570; - &#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x8BA2;&#x9605; store &#x7684;&#x66F4;&#x65B0;&#x548C;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x7EC4;&#x4EF6;&#x3002;&#x5B83;&#x662F;&#x901A;&#x8FC7; <a href="https://github.com/krasimir/react-in-patterns/blob/master/book/chapter-4/README.md#higher-order-component" target="_blank">&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;</a> &#x5B9E;&#x73B0;&#x7684;&#x3002;&#x8FD9;&#x662F;&#x5B83;&#x7684;&#x51FD;&#x6570;&#x7B7E;&#x540D;:</p>
+<pre><code>connect(
+  [mapStateToProps],
+  [mapDispatchToProps],
+  [mergeProps],
+  [options]
+)
+</code></pre><p><code>mapStateToProps</code> &#x53C2;&#x6570;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x63A5;&#x6536; store &#x7684;&#x5F53;&#x524D;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4E14;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;&#x4E00;&#x7EC4;&#x952E;&#x503C;&#x5BF9; (&#x5BF9;&#x8C61;)&#xFF0C;&#x8FD9;&#x4E9B;&#x5BF9;&#x5C06;&#x4F5C;&#x4E3A; props &#x53D1;&#x9001;&#x7ED9;&#x6211;&#x4EEC;&#x7684; React &#x7EC4;&#x4EF6;&#x3002;&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> mapStateToProps = state =&gt; ({
+  visible: state.visible
+});
+</code></pre>
+<p><code>mapDispatchToProps</code> &#x4E5F;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x53EA;&#x662F;&#x5B83;&#x63A5;&#x6536;&#x7684;&#x662F; <code>dispatch</code> &#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>state</code> &#x3002;&#x8FD9;&#x91CC;&#x662F;&#x6211;&#x4EEC;&#x5C06;&#x6D3E;&#x53D1;&#x52A8;&#x4F5C;&#x5B9A;&#x4E49;&#x6210;&#x5C5E;&#x6027;&#x7684;&#x5730;&#x65B9;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> mapDispatchToProps = dispatch =&gt; ({
+  changeVisibility: value =&gt; dispatch(changeVisibility(value))
+});
+</code></pre>
+<p><code>mergeProps</code> &#x5C06; <code>mapStateToProps</code>&#x3001; <code>mapDispatchToProps</code> &#x548C;&#x53D1;&#x9001;&#x7ED9;&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF0C;&#x5B83;&#x8D4B;&#x4E88;&#x6211;&#x4EEC;&#x673A;&#x4F1A;&#x53BB;&#x7D2F;&#x52A0;&#x51FA;&#x66F4;&#x9002;&#x5408;&#x7684;&#x5C5E;&#x6027;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x89E6;&#x53D1;&#x4E24;&#x4E2A;&#x52A8;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x5B83;&#x4EEC;&#x7EC4;&#x5408;&#x6210;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x5C5E;&#x6027;&#x5E76;&#x5C06;&#x5176;&#x53D1;&#x9001;&#x7ED9; React &#x3002;<code>options</code> &#x63A5;&#x6536;&#x4E00;&#x7EC4;&#x5982;&#x4F55;&#x63A7;&#x5236;&#x8FDE;&#x63A5;&#x7684;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p><br></p>
+<h2 id="&#x4F7F;&#x7528;-redux-&#x7684;&#x7B80;&#x5355;&#x8BA1;&#x6570;&#x5668;&#x5E94;&#x7528;">&#x4F7F;&#x7528; Redux &#x7684;&#x7B80;&#x5355;&#x8BA1;&#x6570;&#x5668;&#x5E94;&#x7528;</h2>
+<p>&#x6211;&#x4EEC;&#x6765;&#x4F7F;&#x7528;&#x4E0A;&#x9762;&#x6240;&#x6709;&#x7684; API &#x6765;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x8BA1;&#x6570;&#x5668;&#x5E94;&#x7528;&#x3002;</p>
+<p><img src="redux-counter-app.png" alt="Redux counter app example"></p>
+<p>&quot;Add&quot; &#x548C; &quot;Subtract&quot; &#x6309;&#x94AE;&#x53EA;&#x662F;&#x6539;&#x53D8; store &#x7684;&#x503C;&#x3002;&quot;Visible&quot; &#x548C; &quot;Hidden&quot; &#x6309;&#x94AE;&#x7528;&#x6765;&#x63A7;&#x5236;&#x8BA1;&#x6570;&#x5668;&#x662F;&#x5426;&#x663E;&#x793A;&#x3002;</p>
+<h3 id="&#x521B;&#x5EFA;&#x52A8;&#x4F5C;">&#x521B;&#x5EFA;&#x52A8;&#x4F5C;</h3>
+<p>&#x5BF9;&#x6211;&#x6765;&#x8BF4;&#xFF0C;&#x6BCF;&#x4E2A; Redux &#x7684;&#x5F00;&#x59CB;&#x90FD;&#x662F;&#x5BF9;&#x52A8;&#x4F5C;&#x7C7B;&#x578B;&#x5EFA;&#x6A21;&#x53CA;&#x5B9A;&#x4E49;&#x6211;&#x4EEC;&#x6240;&#x8981;&#x4FDD;&#x5B58;&#x7684;&#x72B6;&#x6001;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x6709;&#x4E09;&#x4E2A;&#x64CD;&#x4F5C;: &#x589E;&#x52A0;&#x3001;&#x51CF;&#x5C11;&#x548C;&#x7BA1;&#x7406;&#x53EF;&#x89C1;&#x6027;&#x3002;&#x6240;&#x6709;&#x52A8;&#x4F5C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> ADD = <span class="hljs-string">&apos;ADD&apos;</span>;
+<span class="hljs-keyword">const</span> SUBTRACT = <span class="hljs-string">&apos;SUBTRACT&apos;</span>;
+<span class="hljs-keyword">const</span> CHANGE_VISIBILITY = <span class="hljs-string">&apos;CHANGE_VISIBILITY&apos;</span>;
+
+<span class="hljs-keyword">const</span> add = () =&gt; ({ type: ADD });
+<span class="hljs-keyword">const</span> subtract = () =&gt; ({ type: SUBTRACT });
+<span class="hljs-keyword">const</span> changeVisibility = visible =&gt; ({
+  type: CHANGE_VISIBILITY,
+  visible
+});
+</code></pre>
+<h3 id="store-&#x53CA;&#x5176;-reducers">Store &#x53CA;&#x5176; reducers</h3>
+<p>&#x6211;&#x4EEC;&#x5728;&#x89E3;&#x91CA; store &#x548C; reudcers &#x65F6;&#xFF0C;&#x6709;&#x4E9B;&#x6280;&#x672F;&#x70B9;&#x662F;&#x6CA1;&#x6709;&#x8BA8;&#x8BBA;&#x5230;&#x7684;&#x3002;&#x901A;&#x5E38;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x6709;&#x591A;&#x4E2A; reducer &#xFF0C;&#x56E0;&#x4E3A;&#x8981;&#x7BA1;&#x7406;&#x591A;&#x79CD;&#x72B6;&#x6001;&#x3002;store &#x53EA;&#x6709;&#x4E00;&#x4E2A;&#xFF0C;&#x6240;&#x4EE5;&#x7406;&#x8BBA;&#x4E0A;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x5BF9;&#x8C61;&#x3002;&#x4F46;&#x662F;&#x5927;&#x591A;&#x6570;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x7684;&#x5E94;&#x7528;&#x7684;&#x72B6;&#x6001;&#x90FD;&#x662F;&#x72B6;&#x6001;&#x5207;&#x7247;&#x7684;&#x7EC4;&#x5408;&#x3002;&#x6BCF;&#x4E2A;&#x5207;&#x7247;&#x4EE3;&#x8868;&#x5E94;&#x7528;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;&#x8FD9;&#x4E2A;&#x5C0F;&#x793A;&#x4F8B;&#x62E5;&#x6709;&#x8BA1;&#x6570;&#x548C;&#x53EF;&#x89C1;&#x6027;&#x4E24;&#x4E2A;&#x5207;&#x7247;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x5E94;&#x8BE5;&#x662F;&#x8FD9;&#x6837;&#x7684;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> initialState = {
+  counter: {
+    value: <span class="hljs-number">0</span>
+  },
+  visible: <span class="hljs-literal">true</span>
+};
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E3A;&#x8FD9;&#x4E24;&#x90E8;&#x5206;&#x5206;&#x522B;&#x5B9A;&#x4E49; reducer &#x3002;&#x8FD9;&#x6837;&#x4F1A;&#x5E26;&#x6765;&#x7075;&#x6D3B;&#x6027;&#x5E76;&#x63D0;&#x5347;&#x4EE3;&#x7801;&#x7684;&#x53EF;&#x8BFB;&#x6027;&#x3002;&#x60F3;&#x8C61;&#x4E00;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x62E5;&#x6709;&#x5341;&#x4E2A;&#x6216;&#x66F4;&#x591A;&#x72B6;&#x6001;&#x5207;&#x7247;&#x7684;&#x5DE8;&#x578B;&#x5E94;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x4EEC;&#x53EA;&#x4F7F;&#x7528;&#x5355;&#x4E2A; reducer &#x51FD;&#x6570;&#x6765;&#x8FDB;&#x884C;&#x7EF4;&#x62A4;&#xFF0C;&#x8FD9;&#x6837;&#x7BA1;&#x7406;&#x8D77;&#x6765;&#x5C06;&#x4F1A;&#x975E;&#x5E38;&#x56F0;&#x96BE;&#x3002;</p>
+<p>Redux &#x63D0;&#x4F9B;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#x6765;&#x8BA9;&#x6211;&#x4EEC;&#x80FD;&#x591F;&#x9501;&#x5B9A; state &#x7684;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x90E8;&#x5206;&#x5E76;&#x4E3A;&#x5176;&#x5206;&#x914D;&#x4E00;&#x4E2A; reducer &#x3002;&#x5B83;&#x5C31;&#x662F; <code>combineReducers</code> :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">import</span> { createStore, combineReducers } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;redux&apos;</span>;
+
+<span class="hljs-keyword">const</span> rootReducer = combineReducers({
+  counter: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">A</span>(<span class="hljs-params"></span>) </span>{ ... },
+  visible: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">B</span>(<span class="hljs-params"></span>) </span>{ ... }
+});
+<span class="hljs-keyword">const</span> store = createStore(rootReducer);
+</code></pre>
+<p>&#x51FD;&#x6570; <code>A</code> &#x53EA;&#x63A5;&#x6536; <code>counter</code> &#x5207;&#x7247;&#x4F5C;&#x4E3A;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4E14;&#x53EA;&#x8FD4;&#x56DE;&#x5207;&#x7247;&#x8FD9;&#x90E8;&#x5206;&#x7684;&#x72B6;&#x6001;&#x3002;&#x51FD;&#x6570; <code>B</code> &#x4E5F;&#x662F;&#x540C;&#x6837;&#x7684;&#xFF0C;&#x5B83;&#x63A5;&#x6536;&#x5E03;&#x5C14;&#x503C; (<code>visible</code> &#x7684;&#x503C;) &#x5E76;&#x4E14;&#x5FC5;&#x987B;&#x8FD4;&#x56DE;&#x5E03;&#x5C14;&#x503C;&#x3002;</p>
+<p><code>counter</code> &#x5207;&#x7247;&#x7684; reducer &#x5E94;&#x8BE5;&#x8003;&#x8651;&#x5230; <code>ADD</code> &#x548C; <code>SUBTRACT</code> &#x4E24;&#x4E2A;&#x52A8;&#x4F5C;&#xFF0C;&#x5E76;&#x57FA;&#x4E8E;&#x52A8;&#x4F5C;&#x6765;&#x8BA1;&#x7B97;&#x51FA;&#x65B0;&#x7684; <code>counter</code> &#x72B6;&#x6001;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> counterReducer = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">state, action</span>) </span>{
+  <span class="hljs-keyword">if</span> (action.type === ADD) {
+    <span class="hljs-keyword">return</span> { value: state.value + <span class="hljs-number">1</span> };
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (action.type === SUBTRACT) {
+    <span class="hljs-keyword">return</span> { value: state.value - <span class="hljs-number">1</span> };
+  }
+  <span class="hljs-keyword">return</span> state || { value: <span class="hljs-number">0</span> };
+};
+</code></pre>
+<p>&#x5F53; store &#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x6BCF;&#x4E2A; reducer &#x81F3;&#x5C11;&#x89E6;&#x53D1;&#x4E00;&#x6B21;&#x3002;&#x6700;&#x521D;&#x8FD0;&#x884C;&#x7684;&#x8FD9;&#x4E00;&#x6B21;&#xFF0C;<code>state</code> &#x4E3A; <code>undefined</code> &#xFF0C;<code>action</code> &#x4E3A; <code>{ type: &quot;@@redux/INIT&quot;}</code> &#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#x4E2D;&#xFF0C;reducer &#x5E94;&#x8BE5;&#x8FD4;&#x56DE;&#x6570;&#x636E;&#x7684;&#x521D;&#x59CB;&#x503C; <code>{ value: 0 }</code> &#x3002;</p>
+<p><code>visible</code> &#x7684; reducer &#x76F8;&#x5F53;&#x7B80;&#x5355;&#xFF0C;&#x5B83;&#x53EA;&#x5904;&#x7406;&#x52A8;&#x4F5C; <code>CHANGE_VISIBILITY</code> :</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> visibilityReducer = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">state, action</span>) </span>{
+  <span class="hljs-keyword">if</span> (action.type === CHANGE_VISIBILITY) {
+    <span class="hljs-keyword">return</span> action.visible;
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+};
+</code></pre>
+<p>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x8FD9;&#x4E24;&#x4E2A; reducers &#x4F20;&#x7ED9; <code>combineReducers</code> &#x6765;&#x521B;&#x5EFA; <code>rootReducer</code> &#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> rootReducer = combineReducers({
+  counter: counterReducer,
+  visible: visibilityReducer
+});
+</code></pre>
+<h3 id="&#x9009;&#x62E9;&#x5668;--selectors-">&#x9009;&#x62E9;&#x5668; ( Selectors )</h3>
+<p>&#x5728;&#x5F00;&#x59CB; React &#x7EC4;&#x4EF6;&#x4E4B;&#x524D;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x4ECB;&#x7ECD;&#x4E00;&#x4E2A; <em>&#x9009;&#x62E9;&#x5668; ( selector )</em> &#x7684;&#x6982;&#x5FF5;&#x3002;&#x5728;&#x4E0A;&#x4E00;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x72B6;&#x6001;&#x901A;&#x5E38;&#x90FD;&#x662F;&#x7EC6;&#x5316;&#x6210;&#x591A;&#x4E2A;&#x72B6;&#x6001;&#x5207;&#x7247;&#x3002;&#x6211;&#x4EEC;&#x6709;&#x4E13;&#x95E8;&#x7684; reducer &#x6765;&#x8D1F;&#x8D23;&#x66F4;&#x65B0;&#x6570;&#x636E;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x6D89;&#x53CA;&#x5230;&#x83B7;&#x53D6;&#x72B6;&#x6001;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x53EA;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x3002;&#x8FD9;&#x91CC;&#x5C31;&#x662F;&#x9009;&#x62E9;&#x5668;&#x6D3E;&#x4E0A;&#x7528;&#x573A;&#x7684;&#x5730;&#x65B9;&#x3002;&#x9009;&#x62E9;&#x5668;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x63A5;&#x6536;&#x6574;&#x4E2A;&#x72B6;&#x6001;&#x5BF9;&#x8C61;&#x5E76;&#x63D0;&#x53D6;&#x51FA;&#x6211;&#x4EEC;&#x6240;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x8FD9;&#x4E2A;&#x5C0F;&#x793A;&#x4F8B;&#x5E94;&#x7528;&#x4E2D;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E24;&#x4E2A;&#x6570;&#x636E;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> getCounterValue = state =&gt; state.counter.value;
+<span class="hljs-keyword">const</span> getVisibility = state =&gt; state.visible;
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x8BA1;&#x6570;&#x5668;&#x5E94;&#x7528;&#x5B9E;&#x5728;&#x662F;&#x592A;&#x5C0F;&#x4E86;&#xFF0C;&#x5B8C;&#x5168;&#x4F53;&#x73B0;&#x4E0D;&#x51FA;&#x9009;&#x62E9;&#x5668;&#x7684;&#x5A01;&#x529B;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x5927;&#x9879;&#x76EE;&#x4E2D;&#x4FBF;&#x622A;&#x7136;&#x4E0D;&#x540C;&#x3002;&#x9009;&#x62E9;&#x5668;&#x7684;&#x5B58;&#x5728;&#x5E76;&#x4E0D;&#x662F;&#x4E3A;&#x4E86;&#x5C11;&#x4E9B;&#x51E0;&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x4E5F;&#x4E0D;&#x662F;&#x4E3A;&#x4E86;&#x53EF;&#x8BFB;&#x6027;&#x3002;&#x9009;&#x62E9;&#x5668;&#x9644;&#x5E26;&#x4E86;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x4E5F;&#x662F;&#x4E0A;&#x4E0B;&#x6587;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x903B;&#x8F91;&#x3002;&#x7531;&#x4E8E;&#x5B83;&#x4EEC;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x6574;&#x4E2A;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x4EEC;&#x80FD;&#x591F;&#x56DE;&#x7B54;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x76F8;&#x5173;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x201C;&#x5728; Y &#x9875;&#x9762;&#x7528;&#x6237;&#x662F;&#x5426;&#x6709;&#x6743;&#x9650;&#x53EF;&#x4EE5;&#x505A; X &#x8FD9;&#x4EF6;&#x4E8B;&#x201D;&#x3002;&#x8FD9;&#x6837;&#x7684;&#x4E8B;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x9009;&#x62E9;&#x5668;&#x5C31;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x3002;</p>
+<h3 id="react-&#x7EC4;&#x4EF6;">React &#x7EC4;&#x4EF6;</h3>
+<p>&#x6211;&#x4EEC;&#x5148;&#x6765;&#x5904;&#x7406;&#x7BA1;&#x7406;&#x8BA1;&#x6570;&#x5668;&#x53EF;&#x89C1;&#x6027;&#x7684; UI &#x90E8;&#x5206;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Visibility</span>(<span class="hljs-params">{ changeVisibility }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{</span> () =&gt;</span> changeVisibility(true) }&gt;
+        Visible
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{</span> () =&gt;</span> changeVisibility(false) }&gt;
+        Hidden
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">const</span> VisibilityConnected = connect(
+  <span class="hljs-literal">null</span>,
+  dispatch =&gt; ({
+    changeVisibility: value =&gt; dispatch(changeVisibility(value))
+  })
+)(Visibility);
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x4E2A;&#x7EC4;&#x4EF6;&#x7565;&#x5FAE;&#x6709;&#x4E9B;&#x590D;&#x6742;&#x3002;&#x5C06;&#x5B83;&#x547D;&#x540D;&#x4E3A; <code>Counter</code> &#xFF0C;&#x5B83;&#x6E32;&#x67D3;&#x4E24;&#x4E2A;&#x6309;&#x94AE;&#x548C;&#x8BA1;&#x6570;&#x503C;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Counter</span>(<span class="hljs-params">{ value, add, subtract }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Value: { value }<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{</span> <span class="hljs-attr">add</span> }&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{</span> <span class="hljs-attr">subtract</span> }&gt;</span>Subtract<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">const</span> CounterConnected = connect(
+  state =&gt; ({
+    value: getCounterValue(state)
+  }),
+  dispatch =&gt; ({
+    add: () =&gt; dispatch(add()),
+    subtract: () =&gt; dispatch(subtract())
+  })
+)(Counter);
+</code></pre>
+<p>&#x8FD9;&#x91CC; <code>mapStateToProps</code> &#x548C; <code>mapDispatchToProps</code> &#x90FD;&#x9700;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x60F3;&#x8BFB;&#x53D6; store &#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x8981;&#x6D3E;&#x53D1;&#x52A8;&#x4F5C;&#x3002;&#x8FD9;&#x4E2A;&#x7EC4;&#x4EF6;&#x8981;&#x63A5;&#x6536;&#x4E09;&#x4E2A;&#x5C5E;&#x6027;: <code>value</code>&#x3001;<code>add</code> &#x548C; <code>subtract</code> &#x3002;</p>
+<p>&#x6700;&#x540E;&#x8981;&#x5B8C;&#x6210;&#x7684;&#x5C31;&#x662F; <code>App</code> &#x7EC4;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x91CC;&#x8FDB;&#x884C;&#x5E94;&#x7528;&#x7684;&#x7EC4;&#x88C5;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params">{ visible }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    &lt;div&gt;
+      &lt;VisibilityConnected /&gt;
+      { visible &amp;&amp; &lt;CounterConnected /&gt; }
+    &lt;/div&gt;
+  );
+}
+const AppConnected = connect(
+  state =&gt; ({
+    visible: getVisibility(state)
+  })
+)(App);
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x518D;&#x4E00;&#x6B21;&#x9700;&#x8981;&#x5BF9;&#x7EC4;&#x4EF6;&#x8FDB;&#x884C; <code>connect</code> &#x64CD;&#x4F5C;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x63A7;&#x5236;&#x8BA1;&#x6570;&#x5668;&#x7684;&#x663E;&#x793A;&#x3002;<code>getVisibility</code> &#x9009;&#x62E9;&#x5668;&#x8FD4;&#x56DE;&#x5E03;&#x5C14;&#x503C;&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x662F;&#x5426;&#x6E32;&#x67D3; <code>CounterConnected</code> &#x7EC4;&#x4EF6;&#x3002;</p>
+<h2 id="&#x7ED3;&#x8BED;">&#x7ED3;&#x8BED;</h2>
+<p>Redux &#x662F;&#x4E00;&#x79CD;&#x5F88;&#x68D2;&#x7684;&#x6A21;&#x5F0F;&#x3002;&#x6700;&#x8FD1;&#x51E0;&#x5E74;&#xFF0C;JavaScript &#x793E;&#x533A;&#x5C06;&#x8FD9;&#x79CD;&#x7406;&#x5FF5;&#x53D1;&#x626C;&#x4E0B;&#x53BB;&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x4E00;&#x4E9B;&#x65B0;&#x672F;&#x8BED;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4E86;&#x589E;&#x5F3A;&#x3002;&#x6211;&#x8BA4;&#x4E3A;&#x4E00;&#x4E2A;&#x5178;&#x578B;&#x7684; Redux &#x5E94;&#x7528;&#x5E94;&#x8BE5;&#x662F;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x7684;:</p>
+<p><img src="redux-reallife.jpg" alt="Redux architecture"></p>
+<p><em>&#x987A;&#x4FBF;&#x4E00;&#x63D0;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x6709;&#x4ECB;&#x7ECD;&#x8FC7;&#x526F;&#x4F5C;&#x7528;&#x7BA1;&#x7406;&#x3002;&#x90A3;&#x5C06;&#x662F;&#x53E6;&#x5916;&#x7684;&#x65B0;&#x7BC7;&#x7AE0;&#x4E86;&#xFF0C;&#x5B83;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x7406;&#x5FF5;&#x548C;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</em></p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x7ED3;&#x8BBA;&#xFF0C;Redux &#x672C;&#x8EAB;&#x662F;&#x4E00;&#x79CD;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x7684;&#x6A21;&#x5F0F;&#x3002;&#x5B83;&#x4F20;&#x6388;&#x4E86;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#x6280;&#x672F;&#xFF0C;&#x4F46;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#x5149;&#x9760;&#x5B83;&#x81EA;&#x8EAB;&#x5F80;&#x5F80;&#x662F;&#x4E0D;&#x591F;&#x7684;&#x3002;&#x6211;&#x4EEC;&#x8FDF;&#x65E9;&#x8981;&#x5F15;&#x5165;&#x66F4;&#x591A;&#x7684;&#x6982;&#x5FF5;&#x6216;&#x6A21;&#x5F0F;&#x3002;&#x5F53;&#x7136;&#x8FD9;&#x6CA1;&#x6709;&#x90A3;&#x4E48;&#x7CDF;&#x7CD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x662F;&#x5148;&#x63D0;&#x8D77;&#x8BA1;&#x5212;&#x4E00;&#x4E0B;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter-8/#实现-flux-架构" class="navigation navigation-prev " aria-label="Previous page: 实现 Flux 架构">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="./#redux-架构及其主要特点" class="navigation navigation-next " aria-label="Next page: Redux 架构及其主要特点">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Redux","level":"3.3","depth":1,"next":{"title":"Redux 架构及其主要特点","level":"3.3.1","depth":2,"anchor":"#redux-架构及其主要特点","path":"chapter-9/README.md","ref":"chapter-9/README.md#redux-架构及其主要特点","articles":[]},"previous":{"title":"实现 Flux 架构","level":"3.2.2","depth":2,"anchor":"#实现-flux-架构","path":"chapter-8/README.md","ref":"chapter-8/README.md#实现-flux-架构","articles":[]},"dir":"ltr"},"config":{"plugins":["github","edit-link","copy-code-button","github-buttons"],"root":"./book","styles":{"website":"./styles/website.css","ebook":"./styles/ebook.css","pdf":"./styles/ebook.css"},"pluginsConfig":{"github":{"url":"https://github.com/SangKa/react-in-patterns-cn"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-buttons":{"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"帮忙纠错","base":"https://github.com/SangKa/react-in-patterns-cn/tree/master/book"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SangKa","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a5","chapterMark":"pagebreak","pageBreaksBefore":"//*[@class='new-page']","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"React 模式","gitbook":"3.2.3","description":"介绍 React 开发的设计模式和技术的免费开源书籍"},"file":{"path":"chapter-9/README.md","mtime":"2018-05-06T07:55:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-06T07:55:22.973Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

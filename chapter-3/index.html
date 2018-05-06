@@ -1,0 +1,800 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>事件处理 · React 模式</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="SangKa">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../chapter-4/" />
+    
+    
+    <link rel="prev" href="../chapter-2/" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter-1/">
+            
+                <a href="../chapter-1/">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/">
+            
+                    
+                    组件通讯
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输入">
+            
+                    
+                    输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输出">
+            
+                    
+                    输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/">
+            
+                    
+                    组合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#使用-react-children-api">
+            
+                    
+                    使用 React children API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#将-child-作为-prop-传入">
+            
+                    
+                    将 child 作为 prop 传入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#高阶组件">
+            
+                    
+                    高阶组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#将函数作为-children-传入和-render-prop">
+            
+                    
+                    将函数作为 children 传入和 render prop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter-5/">
+            
+                <a href="../chapter-5/">
+            
+                    
+                    受控输入和非受控输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter-6/">
+            
+                <a href="../chapter-6/">
+            
+                    
+                    展示型组件和容器型组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数据流</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../chapter-7/">
+            
+                <a href="../chapter-7/">
+            
+                    
+                    单向数据流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/">
+            
+                    
+                    Flux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/#flux-架构及其主要特点">
+            
+                    
+                    Flux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/#实现-flux-架构">
+            
+                    
+                    实现 Flux 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/">
+            
+                    
+                    Redux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/#redux-架构及其主要特点">
+            
+                    
+                    Redux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/#使用-redux-的简单计数器应用">
+            
+                    
+                    使用 Redux 的简单计数器应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展阅读</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/">
+            
+                    
+                    依赖注入
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-之前的版本">
+            
+                    
+                    使用 React context (16.3 之前的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-及之后的版本">
+            
+                    
+                    使用 React context (16.3 及之后的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用模块系统">
+            
+                    
+                    使用模块系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/">
+            
+                    
+                    组件样式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#经典-css-类">
+            
+                    
+                    经典 CSS 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#内联样式">
+            
+                    
+                    内联样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#css-模块">
+            
+                    
+                    CSS 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#styled-components">
+            
+                    
+                    Styled-components
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter-12/">
+            
+                <a href="../chapter-12/">
+            
+                    
+                    集成第三方库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">总结</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../chapter-13/">
+            
+                <a href="../chapter-13/">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >事件处理</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x4E8B;&#x4EF6;&#x5904;&#x7406;">&#x4E8B;&#x4EF6;&#x5904;&#x7406;</h1>
+<p>&#x5BF9;&#x4E8E;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#xFF0C;React &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x5C5E;&#x6027;&#x3002;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x51E0;&#x4E4E;&#x548C;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x5316; DOM &#x5B8C;&#x5168;&#x4E00;&#x6837;&#x3002;&#x4E5F;&#x6709;&#x4E00;&#x4E9B;&#x4E0D;&#x540C;&#x70B9;&#xFF0C;&#x6BD4;&#x5982;&#x4F7F;&#x7528;&#x9A7C;&#x5CF0;&#x5F0F;&#x6216;&#x4F20;&#x5165;&#x7684;&#x662F;&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x603B;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x8FD8;&#x662F;&#x5341;&#x5206;&#x76F8;&#x4F3C;&#x7684;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> theLogoIsClicked = () =&gt; alert(<span class="hljs-string">&apos;Clicked&apos;</span>);
+
+&lt;Logo onClick={ theLogoIsClicked } /&gt;
+&lt;input
+  type=&apos;text&apos;
+  onChange={event =&gt; theInputIsChanged(event.target.value) } /&gt;
+</code></pre>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x5305;&#x542B;&#x6D3E;&#x53D1;&#x4E8B;&#x4EF6;&#x7684;&#x5143;&#x7D20;&#x7684;&#x7EC4;&#x4EF6;&#x4E2D;&#x5904;&#x7406;&#x4E8B;&#x4EF6;&#x3002;&#x6BD4;&#x5982;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x4E2D;&#x8FD0;&#x884C;&#x51FD;&#x6570;&#x6216;&#x65B9;&#x6CD5;:</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Switcher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{</span> <span class="hljs-attr">this._handleButtonClick</span> }&gt;</span>
+        click me
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+    );
+  }
+  _handleButtonClick() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Button is clicked&apos;</span>);
+  }
+};
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x4F7F;&#x7528;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#xFF0C;&#x56E0;&#x4E3A; <code>_handleButtonClick</code> &#x662F;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x4E5F;&#x786E;&#x5B9E;&#x5C06;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4F20;&#x7ED9;&#x4E86; <code>onClick</code> &#x5C5E;&#x6027;&#x3002;&#x95EE;&#x9898;&#x662F;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x4E2D;&#x5E76;&#x6CA1;&#x6709;&#x4FDD;&#x6301;&#x540C;&#x4E00;&#x4E2A;&#x4E0A;&#x4E0B;&#x6587;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728; <code>_handleButtonClick</code> &#x51FD;&#x6570;&#x4E2D;&#x4F7F;&#x7528; <code>this</code> &#x6765;&#x83B7;&#x53D6; <code>Switcher</code> &#x7EC4;&#x4EF6;&#x7684;&#x5F15;&#x7528;&#x65F6;&#x5C06;&#x4F1A;&#x62A5;&#x9519;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Switcher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = { name: <span class="hljs-string">&apos;React in patterns&apos;</span> };
+  }
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{</span> <span class="hljs-attr">this._handleButtonClick</span> }&gt;</span>
+        click me
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+    );
+  }
+  _handleButtonClick() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Button is clicked inside <span class="hljs-subst">${ this.state.name }</span>`</span>);
+    <span class="hljs-comment">// &#x5BFC;&#x81F4;</span>
+    <span class="hljs-comment">// Uncaught TypeError: Cannot read property &apos;state&apos; of null</span>
+  }
+};
+</code></pre>
+<p>&#x901A;&#x5E38;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>bind</code> &#x6765;&#x89E3;&#x51B3;:</p>
+<pre><code class="lang-js">&lt;button onClick={ this._handleButtonClick.bind(this) }&gt;
+  click me
+&lt;/button&gt;
+</code></pre>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x8FD9;&#x6837;&#x505A;&#x7684;&#x8BDD; <code>bind</code> &#x51FD;&#x6570;&#x4F1A;&#x4E00;&#x6B21;&#x53C8;&#x4E00;&#x6B21;&#x5730;&#x88AB;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; button &#x53EF;&#x80FD;&#x4F1A;&#x6E32;&#x67D3;&#x591A;&#x6B21;&#x3002;&#x4E00;&#x79CD;&#x66F4;&#x597D;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x5728;&#x7EC4;&#x4EF6;&#x7684;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x6765;&#x521B;&#x5EFA;&#x7ED1;&#x5B9A;:</p>
+<p><span class="new-page"></span></p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Switcher</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = { name: <span class="hljs-string">&apos;React in patterns&apos;</span> };
+    <span class="hljs-keyword">this</span>._buttonClick = <span class="hljs-keyword">this</span>._handleButtonClick.bind(<span class="hljs-keyword">this</span>);
+  }
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{</span> <span class="hljs-attr">this._buttonClick</span> }&gt;</span>
+        click me
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+    );
+  }
+  _handleButtonClick() {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Button is clicked inside <span class="hljs-subst">${ this.state.name }</span>`</span>);
+  }
+};
+</code></pre>
+<p>&#x9644;&#x5E26;&#x4E00;&#x63D0;&#xFF0C;&#x5728;&#x5904;&#x7406;&#x51FD;&#x6570;&#x9700;&#x8981;&#x548C;&#x7EC4;&#x4EF6;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4FDD;&#x6301;&#x7EDF;&#x4E00;&#x65F6;&#xFF0C;Facebook <a href="https://facebook.github.io/react/docs/reusable-components.html#no-autobinding" target="_blank">&#x63A8;&#x8350;</a> &#x7684;&#x4E5F;&#x662F;&#x6B64;&#x6280;&#x5DE7;&#x3002;</p>
+<p>&#x6784;&#x9020;&#x51FD;&#x6570;&#x8FD8;&#x662F;&#x90E8;&#x5206;&#x6267;&#x884C;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7684;&#x597D;&#x5730;&#x65B9;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E00;&#x4E2A;&#x8868;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x60F3;&#x4E3A;&#x6BCF;&#x4E2A; input &#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570;&#x3002;</p>
+<p><span class="new-page"></span></p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Form</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>._onNameChanged = <span class="hljs-keyword">this</span>._onFieldChange.bind(<span class="hljs-keyword">this</span>, <span class="hljs-string">&apos;name&apos;</span>);
+    <span class="hljs-keyword">this</span>._onPasswordChanged =
+      <span class="hljs-keyword">this</span>._onFieldChange.bind(<span class="hljs-keyword">this</span>, <span class="hljs-string">&apos;password&apos;</span>);
+  }
+  render() {
+    <span class="hljs-keyword">return</span> (
+      &lt;form&gt;
+        &lt;input onChange={ this._onNameChanged } /&gt;
+        &lt;input onChange={ this._onPasswordChanged } /&gt;
+      &lt;/form&gt;
+    );
+  }
+  _onFieldChange(field, event) {
+    console.log(`${ field } changed to ${ event.target.value }`);
+  }
+};
+</code></pre>
+<h2 id="&#x7ED3;&#x8BED;">&#x7ED3;&#x8BED;</h2>
+<p>&#x5BF9;&#x4E8E; React &#x4E2D;&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#xFF0C;&#x5176;&#x5B9E;&#x6CA1;&#x6709;&#x592A;&#x591A;&#x9700;&#x8981;&#x5B66;&#x4E60;&#x7684;&#x3002;React &#x7684;&#x4F5C;&#x8005;&#x4EEC;&#x5728;&#x4FDD;&#x7559;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x4F7F;&#x7528;&#x4E60;&#x60EF;&#x4E0A;&#x505A;&#x7684;&#x5341;&#x5206;&#x51FA;&#x8272;&#x3002;&#x56E0;&#x4E3A; JSX &#x4F7F;&#x7528;&#x7684;&#x662F;&#x7C7B;&#x4F3C; HTML &#x7684;&#x8BED;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C; DOM &#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x610F;&#x4E49;&#x91CD;&#x5927;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter-2/#输出" class="navigation navigation-prev " aria-label="Previous page: 输出">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../chapter-4/" class="navigation navigation-next " aria-label="Next page: 组合">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"事件处理","level":"2.2","depth":1,"next":{"title":"组合","level":"2.3","depth":1,"path":"chapter-4/README.md","ref":"chapter-4/README.md","articles":[{"title":"使用 React children API","level":"2.3.1","depth":2,"anchor":"#使用-react-children-api","path":"chapter-4/README.md","ref":"chapter-4/README.md#使用-react-children-api","articles":[]},{"title":"将 child 作为 prop 传入","level":"2.3.2","depth":2,"anchor":"#将-child-作为-prop-传入","path":"chapter-4/README.md","ref":"chapter-4/README.md#将-child-作为-prop-传入","articles":[]},{"title":"高阶组件","level":"2.3.3","depth":2,"anchor":"#高阶组件","path":"chapter-4/README.md","ref":"chapter-4/README.md#高阶组件","articles":[]},{"title":"将函数作为 children 传入和 render prop","level":"2.3.4","depth":2,"anchor":"#将函数作为-children-传入和-render-prop","path":"chapter-4/README.md","ref":"chapter-4/README.md#将函数作为-children-传入和-render-prop","articles":[]}]},"previous":{"title":"输出","level":"2.1.2","depth":2,"anchor":"#输出","path":"chapter-2/README.md","ref":"chapter-2/README.md#输出","articles":[]},"dir":"ltr"},"config":{"plugins":["github","edit-link","copy-code-button","github-buttons"],"root":"./book","styles":{"website":"./styles/website.css","ebook":"./styles/ebook.css","pdf":"./styles/ebook.css"},"pluginsConfig":{"github":{"url":"https://github.com/SangKa/react-in-patterns-cn"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-buttons":{"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"帮忙纠错","base":"https://github.com/SangKa/react-in-patterns-cn/tree/master/book"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SangKa","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a5","chapterMark":"pagebreak","pageBreaksBefore":"//*[@class='new-page']","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"React 模式","gitbook":"3.2.3","description":"介绍 React 开发的设计模式和技术的免费开源书籍"},"file":{"path":"chapter-3/README.md","mtime":"2018-05-06T07:55:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-06T07:55:22.973Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

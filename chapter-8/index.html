@@ -1,0 +1,1082 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Flux · React 模式</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="SangKa">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="./" />
+    
+    
+    <link rel="prev" href="../chapter-7/" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter-1/">
+            
+                <a href="../chapter-1/">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/">
+            
+                    
+                    组件通讯
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输入">
+            
+                    
+                    输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输出">
+            
+                    
+                    输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter-3/">
+            
+                <a href="../chapter-3/">
+            
+                    
+                    事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/">
+            
+                    
+                    组合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#使用-react-children-api">
+            
+                    
+                    使用 React children API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#将-child-作为-prop-传入">
+            
+                    
+                    将 child 作为 prop 传入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#高阶组件">
+            
+                    
+                    高阶组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="../chapter-4/">
+            
+                <a href="../chapter-4/#将函数作为-children-传入和-render-prop">
+            
+                    
+                    将函数作为 children 传入和 render prop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter-5/">
+            
+                <a href="../chapter-5/">
+            
+                    
+                    受控输入和非受控输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter-6/">
+            
+                <a href="../chapter-6/">
+            
+                    
+                    展示型组件和容器型组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数据流</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../chapter-7/">
+            
+                <a href="../chapter-7/">
+            
+                    
+                    单向数据流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="3.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Flux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="./">
+            
+                <a href="./#flux-架构及其主要特点">
+            
+                    
+                    Flux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="./">
+            
+                <a href="./#实现-flux-架构">
+            
+                    
+                    实现 Flux 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/">
+            
+                    
+                    Redux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/#redux-架构及其主要特点">
+            
+                    
+                    Redux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/#使用-redux-的简单计数器应用">
+            
+                    
+                    使用 Redux 的简单计数器应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展阅读</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/">
+            
+                    
+                    依赖注入
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-之前的版本">
+            
+                    
+                    使用 React context (16.3 之前的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-及之后的版本">
+            
+                    
+                    使用 React context (16.3 及之后的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用模块系统">
+            
+                    
+                    使用模块系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/">
+            
+                    
+                    组件样式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#经典-css-类">
+            
+                    
+                    经典 CSS 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#内联样式">
+            
+                    
+                    内联样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#css-模块">
+            
+                    
+                    CSS 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#styled-components">
+            
+                    
+                    Styled-components
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter-12/">
+            
+                <a href="../chapter-12/">
+            
+                    
+                    集成第三方库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">总结</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../chapter-13/">
+            
+                <a href="../chapter-13/">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Flux</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="flux">Flux</h1>
+<p>&#x6211;&#x75F4;&#x8FF7;&#x4E8E;&#x5C06;&#x4EE3;&#x7801;&#x53D8;&#x5F97;&#x7B80;&#x5355;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x6211;&#x8BF4;&#x7684;&#x4E0D;&#x662F;&#x4EE3;&#x7801;&#x91CF;<em>&#x66F4;&#x5C11;</em>&#xFF0C;&#x800C;&#x662F;<em>&#x7B80;&#x5355;</em>&#x3002;&#x56E0;&#x4E3A;&#x4EE3;&#x7801;&#x91CF;&#x66F4;&#x5C11;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x610F;&#x5473;&#x7740;&#x7B80;&#x5355;&#x3002;&#x6211;&#x76F8;&#x4FE1;&#x8F6F;&#x4EF6;&#x884C;&#x4E1A;&#x4E2D;&#x5927;&#x90E8;&#x5206;&#x95EE;&#x9898;&#x90FD;&#x6E90;&#x81EA;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x590D;&#x6742;&#x5EA6;&#x3002;&#x590D;&#x6742;&#x5EA6;&#x662F;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x62BD;&#x8C61;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x4F60;&#x4E5F;&#x77E5;&#x9053;&#xFF0C;&#x6211;&#x4EEC; (&#x7A0B;&#x5E8F;&#x5458;) &#x90FD;&#x559C;&#x6B22;&#x8FDB;&#x884C;&#x62BD;&#x8C61;&#x3002;&#x6211;&#x4EEC;&#x559C;&#x6B22;&#x5C06;&#x62BD;&#x8C61;&#x7684;&#x4E1C;&#x897F;&#x653E;&#x5165;&#x9ED1;&#x76D2;&#x4E2D;&#xFF0C;&#x5E76;&#x5E0C;&#x671B;&#x8FD9;&#x4E9B;&#x9ED1;&#x76D2;&#x80FD;&#x591F;&#x5728;&#x4E00;&#x8D77;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p><a href="http://facebook.github.io/flux/" target="_blank">Flux</a> &#x662F;&#x4E00;&#x79CD;&#x6784;&#x5EFA;&#x7528;&#x6237;&#x754C;&#x9762;&#x7684;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x3002;&#x5B83;&#x662F;&#x7531; Facebook &#x5728;&#x5B83;&#x4EEC;&#x7684; <a href="https://youtu.be/nYkdrAPrdcw?t=568" target="_blank">F8</a> &#x5F00;&#x53D1;&#x8005;&#x5927;&#x4F1A;&#x4E0A;&#x63A8;&#x51FA;&#x7684;&#x3002;&#x5728;&#x6B64;&#x4E4B;&#x540E;&#xFF0C;&#x8BB8;&#x591A;&#x516C;&#x53F8;&#x90FD;&#x91C7;&#x7EB3;&#x4E86;&#x8FD9;&#x4E2A;&#x60F3;&#x6CD5;&#xFF0C;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x7528;&#x6765;&#x6784;&#x5EFA;&#x524D;&#x7AEF;&#x5E94;&#x7528;&#x4F3C;&#x4E4E;&#x975E;&#x5E38;&#x4E0D;&#x9519;&#x3002;Flux &#x901A;&#x5E38;&#x548C; <a href="http://facebook.github.io/react/" target="_blank">React</a> &#x642D;&#x914D;&#x4F7F;&#x7528;&#x3002;React &#x662F; Facebook &#x53D1;&#x5E03;&#x7684;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x5E93;&#x3002;&#x6211;&#x4E2A;&#x4EBA;&#x5728; <a href="http://antidote.me/" target="_blank">&#x65E5;&#x5E38;&#x5DE5;&#x4F5C;</a> &#x4E2D;&#x4F7F;&#x7528;&#x7684;&#x662F; React+Flux/Redux &#xFF0C;&#x5E76;&#x4E14;&#x6211;&#x6562;&#x8BF4;&#x8FD9;&#x79CD;&#x67B6;&#x6784;&#x771F;&#x7684;&#x975E;&#x5E38;&#x7B80;&#x5355;&#x548C;&#x7075;&#x6D3B;&#x3002;&#x8BE5;&#x6A21;&#x5F0F;&#x6709;&#x52A9;&#x4E8E;&#x66F4;&#x5FEB;&#x5730;&#x521B;&#x5EFA;&#x5E94;&#x7528;&#xFF0C;&#x540C;&#x65F6;&#x4F7F;&#x4EE3;&#x7801;&#x4FDD;&#x6301;&#x826F;&#x597D;&#x7684;&#x7EC4;&#x7EC7;&#x7ED3;&#x6784;&#x3002;</p>
+<h2 id="flux-&#x67B6;&#x6784;&#x53CA;&#x5176;&#x4E3B;&#x8981;&#x7279;&#x70B9;">Flux &#x67B6;&#x6784;&#x53CA;&#x5176;&#x4E3B;&#x8981;&#x7279;&#x70B9;</h2>
+<p><img src="fluxiny_basic_flux_architecture.jpg" alt="Basic flux architecture"></p>
+<p>&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x7684;&#x4E3B;&#x89D2;&#x662F; <em>dispatcher</em> &#x3002;&#x5B83;&#x62C5;&#x5F53;&#x7CFB;&#x7EDF;&#x4E2D;&#x6240;&#x6709;&#x4E8B;&#x4EF6;&#x7684;&#x67A2;&#x7EBD;&#x3002;&#x5B83;&#x7684;&#x5DE5;&#x4F5C;&#x5C31;&#x662F;&#x63A5;&#x6536;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A; <em>actions</em> (&#x52A8;&#x4F5C;) &#x7684;&#x901A;&#x77E5;&#x5E76;&#x5C06;&#x5176;&#x4F20;&#x7ED9;&#x6240;&#x6709;&#x7684; <em>stores</em> &#x3002;store &#x51B3;&#x5B9A;&#x4E86;&#x662F;&#x5426;&#x5BF9;&#x4F20;&#x5165;&#x7684;&#x52A8;&#x4F5C;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x5982;&#x679C;&#x611F;&#x5174;&#x8DA3;&#x5219;&#x901A;&#x8FC7;&#x6539;&#x53D8;&#x81EA;&#x5DF1;&#x7684;&#x5185;&#x90E8;&#x72B6;&#x6001;/&#x6570;&#x636E;&#x6765;&#x8FDB;&#x884C;&#x54CD;&#x5E94;&#x3002;&#x6539;&#x53D8;&#x4F1A;&#x89E6;&#x53D1; <em>views</em> (&#x89C6;&#x56FE;&#xFF0C;&#x8FD9;&#x91CC;&#x6307; React &#x7EC4;&#x4EF6;) &#x7684;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x3002;&#x5982;&#x679C;&#x975E;&#x8981;&#x5C06; Flux &#x548C;&#x5927;&#x540D;&#x9F0E;&#x9F0E;&#x7684; MVC &#x76F8;&#x6BD4;&#x8F83;&#x7684;&#x8BDD;&#xFF0C;Flux &#x4E2D;&#x7684; store &#x7C7B;&#x4F3C;&#x4E8E; MVC &#x4E2D;&#x7684; model &#x3002;&#x5B83;&#x8D1F;&#x8D23;&#x4FDD;&#x5B58;&#x548C;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x4F20;&#x7ED9; dispatcher &#x7684;&#x52A8;&#x4F5C;&#x53EF;&#x4EE5;&#x6765;&#x81EA;&#x4E8E;&#x89C6;&#x56FE;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6765;&#x81EA;&#x4E8E;&#x7CFB;&#x7EDF;&#x7684;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#xFF0C;&#x6BD4;&#x5982; services &#x3002;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x4E00;&#x4E2A;&#x6267;&#x884C; HTTP &#x8BF7;&#x6C42;&#x7684;&#x6A21;&#x5757;&#xFF0C;&#x5F53;&#x5B83;&#x63A5;&#x6536;&#x5230;&#x7ED3;&#x679C;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;&#x52A8;&#x4F5C;&#x4EE5;&#x901A;&#x77E5;&#x7CFB;&#x7EDF;&#x8BF7;&#x6C42;&#x6210;&#x529F;&#x3002;</p>
+<h2 id="&#x5B9E;&#x73B0;-flux-&#x67B6;&#x6784;">&#x5B9E;&#x73B0; Flux &#x67B6;&#x6784;</h2>
+<p>&#x5982;&#x5176;&#x4ED6;&#x6D41;&#x884C;&#x7684;&#x6982;&#x5FF5;&#x4E00;&#x6837;&#xFF0C;Flux &#x4E5F;&#x6709;&#x4E00;&#x4E9B; <a href="https://medium.com/social-tables-tech/we-compared-13-top-flux-implementations-you-won-t-believe-who-came-out-on-top-1063db32fe73" target="_blank">&#x53D8;&#x79CD;</a> &#x3002;&#x901A;&#x5E38;&#xFF0C;&#x8981;&#x7406;&#x89E3;&#x67D0;&#x79CD;&#x6280;&#x672F;&#x7684;&#x6700;&#x597D;&#x9014;&#x5F84;&#x5C31;&#x662F;&#x53BB;&#x5B9E;&#x73B0;&#x5B83;&#x3002;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x51E0;&#x8282;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E93;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#x6765;&#x6784;&#x5EFA; Flux &#x6A21;&#x5F0F;&#x3002;</p>
+<h3 id="dispatcher">Dispatcher</h3>
+<p>&#x5927;&#x591A;&#x6570;&#x573A;&#x666F;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x5355;&#x4E2A;&#x7684; dispatcher &#x3002;&#x56E0;&#x4E3A;&#x5B83;&#x626E;&#x6F14;&#x80F6;&#x6C34;&#x7684;&#x89D2;&#x8272;&#xFF0C;&#x7528;&#x6765;&#x7C98;&#x5408;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#xFF0C;&#x6240;&#x4EE5;&#x6709;&#x4E00;&#x4E2A;&#x5C31;&#x591F;&#x4E86;&#x3002;dispatcher &#x9700;&#x8981;&#x77E5;&#x9053;&#x4E24;&#x6837;&#x4E1C;&#x897F;: &#x52A8;&#x4F5C;&#x548C; stores &#x3002;&#x52A8;&#x4F5C;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x5730;&#x8F6C;&#x53D1;&#x7ED9; stores&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x5FC5;&#x8981;&#x4FDD;&#x5B58;&#x5B83;&#x4EEC;&#x3002;&#x7136;&#x800C;&#xFF0C;stores &#x5E94;&#x8BE5;&#x5728; dispatcher &#x4E2D;&#x8FDB;&#x884C;&#x8FFD;&#x8E2A;&#xFF0C;&#x8FD9;&#x6837;&#x624D;&#x53EF;&#x4EE5;&#x904D;&#x5386;&#x5B83;&#x4EEC;: </p>
+<p><img src="fluxiny_the_dispatcher.jpg" alt="the dispatcher"></p>
+<p>&#x6211;&#x5F00;&#x59CB;&#x662F;&#x8FD9;&#x6837;&#x5199;&#x7684;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> Dispatcher = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    _stores: [],
+    register: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{  
+      <span class="hljs-keyword">this</span>._stores.push({ store: store });
+    },
+    dispatch: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">action</span>) </span>{
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._stores.length &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">this</span>._stores.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">entry</span>) </span>{
+          entry.store.update(action);
+        });
+      }
+    }
+  }
+};
+</code></pre>
+<p>&#x9996;&#x5148;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#x6211;&#x4EEC;<em>&#x671F;&#x671B;</em>&#x4F20;&#x5165;&#x7684; stores &#x4E0A;&#x5B58;&#x5728; <code>update</code> &#x65B9;&#x6CD5;&#x3002;&#x5982;&#x679C;&#x6B64;&#x65B9;&#x6CD5;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#x8BDD;&#xFF0C;&#x629B;&#x51FA;&#x9519;&#x8BEF;&#x4F1A;&#x66F4;&#x597D;&#x4E9B;:</p>
+<pre><code class="lang-js">register: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">if</span> (!store || !store.update) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;You should provide a store that has an `update` method.&apos;</span>);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">this</span>._stores.push({ store: store });
+  }
+}
+</code></pre>
+<p><br></p>
+<h3 id="&#x5C06;&#x89C6;&#x56FE;&#x548C;-stores-&#x8FDB;&#x884C;&#x7ED1;&#x5B9A;">&#x5C06;&#x89C6;&#x56FE;&#x548C; stores &#x8FDB;&#x884C;&#x7ED1;&#x5B9A;</h3>
+<p>&#x4E0B;&#x4E00;&#x6B65;&#x662F;&#x5C06;&#x89C6;&#x56FE;&#x4E0E; stores &#x94FE;&#x63A5;&#xFF0C;&#x8FD9;&#x6837;&#x5F53; stores &#x7684;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x624D;&#x80FD;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x6E32;&#x67D3;&#x3002;</p>
+<p><img src="fluxiny_store_change_view.jpg" alt="Bounding the views and the stores"></p>
+<h4 id="&#x4F7F;&#x7528;&#x8F85;&#x52A9;&#x51FD;&#x6570;">&#x4F7F;&#x7528;&#x8F85;&#x52A9;&#x51FD;&#x6570;</h4>
+<p>&#x4E00;&#x4E9B; flux &#x7684;&#x5B9E;&#x73B0;&#x4F1A;&#x81EA;&#x5E26;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#x6765;&#x5B8C;&#x6210;&#x6B64;&#x5DE5;&#x4F5C;&#x3002;&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-js">Framework.attachToStore(view, store);
+</code></pre>
+<p>&#x7136;&#x800C;&#xFF0C;&#x6211;&#x5E76;&#x4E0D;&#x600E;&#x4E48;&#x559C;&#x6B22;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x3002;&#x8981;&#x8BA9; <code>attachToStore</code> &#x6B63;&#x5E38;&#x8FD0;&#x884C;&#xFF0C;&#x9700;&#x8981;&#x89C6;&#x56FE;&#x548C; store &#x4E2D;&#x6709;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684; API &#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E25;&#x683C;&#x5B9A;&#x4E49;&#x8FD9;&#x4E2A;&#x65B0;&#x7684;&#x516C;&#x6709;&#x65B9;&#x6CD5;&#x3002;&#x6216;&#x8005;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;Framework &#x5BF9;&#x4F60;&#x8BF4;&#x9053;: &#x201C;&#x4F60;&#x7684;&#x89C6;&#x56FE;&#x548C; store &#x5E94;&#x8BE5;&#x5177;&#x5907;&#x8FD9;&#x6837;&#x7684; API &#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x624D;&#x80FD;&#x80FD;&#x591F;&#x5C06;&#x5B83;&#x4EEC;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x201D;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6CBF;&#x7740;&#x8FD9;&#x4E2A;&#x65B9;&#x5411;&#x524D;&#x8FDB;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4F1A;&#x5B9A;&#x4E49;&#x53EF;&#x6269;&#x5C55;&#x7684;&#x57FA;&#x7C7B;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x4F1A;&#x8BA9; Flux &#x7684;&#x7EC6;&#x8282;&#x53BB;&#x56F0;&#x6270;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x3002;&#x7136;&#x540E;&#xFF0C;Framework &#x53C8;&#x5BF9;&#x4F60;&#x8BF4;&#x5230;: &#x201C;&#x4F60;&#x6240;&#x6709;&#x7684;&#x7C7B;&#x90FD;&#x5E94;&#x8BE5;&#x7EE7;&#x627F;&#x6211;&#x4EEC;&#x7684;&#x7C7B;&#x201D;&#x3002;&#x8FD9;&#x542C;&#x4E0A;&#x53BB;&#x4E5F;&#x5E76;&#x975E;&#x597D;&#x4E3B;&#x610F;&#xFF0C;&#x56E0;&#x4E3A;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x53EF;&#x80FD;&#x4F1A;&#x5207;&#x6362;&#x6210;&#x53E6;&#x4E00;&#x4E2A; Flux &#x63D0;&#x4F9B;&#x8005;&#xFF0C;&#x8FD9;&#x79CD;&#x5207;&#x6362;&#x52BF;&#x5FC5;&#x4F1A;&#x4FEE;&#x6539;&#x6240;&#x6709;&#x5185;&#x5BB9;&#x3002;</p>
+<p><br><br></p>
+<h4 id="&#x4F7F;&#x7528;-mixin">&#x4F7F;&#x7528; mixin</h4>
+<p>&#x90A3;&#x4E48;&#x5982;&#x679C;&#x4F7F;&#x7528; React &#x7684; <a href="https://facebook.github.io/react/docs/reusable-components.html#mixins" target="_blank">mixins</a> &#x5462;&#xFF1F;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> View = React.createClass({
+  mixins: [Framework.attachToStore(store)]
+  ...
+});
+</code></pre>
+<p>&#x4E3A;&#x5DF2;&#x5B58;&#x5728;&#x7684; React &#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;&#x884C;&#x4E3A;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x79CD;&#x201C;&#x66F4;&#x597D;&#x7684;&#x201D;&#x65B9;&#x5F0F;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4ECE;&#x7406;&#x8BBA;&#x4E0A;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x4F1A;&#x521B;&#x5EFA; mixin &#x6765;&#x5B8C;&#x6210;&#x7ED1;&#x5B9A;&#x5DE5;&#x4F5C;&#x3002;&#x4F46;&#x8BF4;&#x5B9E;&#x8BDD;&#xFF0C;&#x6211;&#x5E76;&#x8BA4;&#x4E3A;&#x8FD9;&#x662F;&#x4E2A;&#x597D;&#x4E3B;&#x610F;&#x3002;<a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750" target="_blank">&#x770B;&#x8D77;&#x6765;</a> &#x4E0D;&#x6B62;&#x6211;&#x4E00;&#x4E2A;&#x4EBA;&#x6709;&#x8FD9;&#x79CD;&#x60F3;&#x6CD5;&#x3002;&#x6211;&#x4E0D;&#x559C;&#x6B22; mixins &#x7684;&#x539F;&#x56E0;&#x662F;&#x5B83;&#x4EEC;&#x4FEE;&#x6539;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x662F;&#x4E0D;&#x53EF;&#x9884;&#x89C1;&#x7684;&#x3002;&#x6211;&#x5B8C;&#x5168;&#x4E0D;&#x77E5;&#x9053;&#x5E55;&#x540E;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x653E;&#x5F03;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x3002;</p>
+<h4 id="&#x4F7F;&#x7528;-context">&#x4F7F;&#x7528; context</h4>
+<p>&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#x7684;&#x53E6;&#x4E00;&#x9879;&#x6280;&#x672F;&#x4FBF;&#x662F; React &#x7684; <a href="https://facebook.github.io/react/docs/context.html" target="_blank">context</a> &#x3002;&#x4F7F;&#x7528; context &#x53EF;&#x4EE5;&#x5C06; props &#x4F20;&#x9012;&#x7ED9;&#x5B50;&#x7EC4;&#x4EF6;&#x800C;&#x65E0;&#x9700;&#x5728;&#x7EC4;&#x4EF6;&#x6811;&#x4E2D;&#x8FDB;&#x884C;&#x5C42;&#x5C42;&#x4F20;&#x9012;&#x3002;Facebook &#x5EFA;&#x8BAE;&#x5728;&#x6570;&#x636E;&#x5FC5;&#x987B;&#x5230;&#x8FBE;&#x5D4C;&#x5957;&#x5C42;&#x7EA7;&#x975E;&#x5E38;&#x6DF1;&#x7684;&#x7EC4;&#x4EF6;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F7F;&#x7528; context &#x3002;</p>
+<blockquote>
+<p>&#x5076;&#x5C14;&#xFF0C;&#x4F60;&#x5E0C;&#x671B;&#x901A;&#x8FC7;&#x7EC4;&#x4EF6;&#x6811;&#x4F20;&#x9012;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x5FC5;&#x5728;&#x6BCF;&#x4E2A;&#x7EA7;&#x522B;&#x624B;&#x52A8;&#x4F20;&#x9012;&#x8FD9;&#x4E9B; props &#x3002;React &#x7684; &quot;context&quot; &#x529F;&#x80FD;&#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x505A;&#x5230;&#x8FD9;&#x4E00;&#x70B9;&#x3002;</p>
+</blockquote>
+<p>&#x6211;&#x770B;&#x5230;&#x4E86;&#x4E0E; mixins &#x7684;&#x76F8;&#x4F3C;&#x4E4B;&#x5904;&#x3002;context &#x662F;&#x5728;&#x7EC4;&#x4EF6;&#x6811;&#x7684;&#x9876;&#x5C42;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x5E76;&#x9B54;&#x6CD5;&#x822C;&#x7684;&#x4E3A;&#x7EC4;&#x4EF6;&#x6811;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7684;&#x5B50;&#x7EC4;&#x4EF6;&#x63D0;&#x4F9B; props &#x3002;&#x81F3;&#x4E8E;&#x6570;&#x636E;&#x4ECE;&#x800C;&#x4F55;&#x6765;&#xFF0C;&#x5C1A;&#x4E0D;&#x53EF;&#x77E5;&#x3002;</p>
+<p><br><br><br></p>
+<h4 id="&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x6982;&#x5FF5;">&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x6982;&#x5FF5;</h4>
+<p>&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x6A21;&#x5F0F;&#x662F;&#x7531; Sebastian Markb&#xE5;ge &#x6240;<a href="https://gist.github.com/sebmarkbage/ef0bf1f338a7182b6775" target="_blank">&#x63D0;&#x51FA;</a>&#x7684;&#x3002;&#x5B83;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5305;&#x88C5;&#x7EC4;&#x4EF6;&#x5E76;&#x8FD4;&#x56DE;&#x539F;&#x59CB;&#x7684;&#x8F93;&#x5165;&#x7EC4;&#x4EF6;&#x3002;&#x4F7F;&#x7528;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x6709;&#x673A;&#x4F1A;&#x6765;&#x4F20;&#x9012;&#x5C5E;&#x6027;&#x6216;&#x5E94;&#x7528;&#x9644;&#x52A0;&#x903B;&#x8F91;&#x3002;&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">attachToStore</span>(<span class="hljs-params">Component, store, consumer</span>) </span>{
+  <span class="hljs-keyword">const</span> Wrapper = React.createClass({
+    getInitialState() {
+      <span class="hljs-keyword">return</span> consumer(<span class="hljs-keyword">this</span>.props, store);
+    },
+    componentDidMount() {
+      store.onChangeEvent(<span class="hljs-keyword">this</span>._handleStoreChange);
+    },
+    componentWillUnmount() {
+      store.offChangeEvent(<span class="hljs-keyword">this</span>._handleStoreChange);
+    },
+    _handleStoreChange() {
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.isMounted()) {
+        <span class="hljs-keyword">this</span>.setState(consumer(<span class="hljs-keyword">this</span>.props, store));
+      }
+    },
+    render() {
+      <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span> {<span class="hljs-attr">...this.props</span>} {<span class="hljs-attr">...this.state</span>} /&gt;</span>;
+    }
+  });
+  return Wrapper;
+};
+</span></code></pre>
+<p><code>Component</code> &#x662F;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x9644;&#x52A0;&#x5230; <code>store</code> &#x4E2D;&#x7684;&#x89C6;&#x56FE;&#x3002;<code>consumer</code> &#x51FD;&#x6570;&#x8BF4;&#x660E;&#x5E94;&#x8BE5;&#x63D0;&#x53D6; store &#x7684;&#x54EA;&#x90E8;&#x5206;&#x72B6;&#x6001;&#x5E76;&#x53D1;&#x9001;&#x7ED9;&#x5230;&#x89C6;&#x56FE;&#x3002;&#x4E0A;&#x9762;&#x51FD;&#x6570;&#x7684;&#x7B80;&#x5355;&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#x6240;&#x793A;:</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  ...
+}
+
+ProfilePage = connectToStores(MyView, store, (props, store) =&gt; ({
+  data: store.get(<span class="hljs-string">&apos;key&apos;</span>)
+}));
+</code></pre>
+<p>&#x8FD9;&#x662F;&#x4E2A;&#x6709;&#x8DA3;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8F6C;&#x79FB;&#x4E86;&#x804C;&#x8D23;&#x3002;&#x5B83;&#x662F;&#x89C6;&#x56FE;&#x4ECE; store &#x4E2D;&#x62C9;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F; store &#x5C06;&#x6570;&#x636E;&#x63A8;&#x9001;&#x7ED9;&#x89C6;&#x56FE;&#x3002;&#x5F53;&#x7136;&#x5B83;&#x4E5F;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x4F18;&#x52BF;&#x548C;&#x52A3;&#x52BF;&#x3002;&#x4F18;&#x52BF;&#x5728;&#x4E8E;&#x5B83;&#x4F7F;&#x5F97; store &#x53D8;&#x5F97;&#x7B80;&#x5355;&#x3002;&#x73B0;&#x5728; store &#x53EA;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x5373;&#x53EF;&#xFF0C;&#x5E76;&#x544A;&#x8BC9;&#x5927;&#x5BB6;: &#x201C;&#x55E8;&#xFF0C;&#x6211;&#x7684;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x6539;&#x53D8;&#x4E86;&#x201D;&#x3002;&#x5B83;&#x4E0D;&#x518D;&#x8D1F;&#x8D23;&#x5C06;&#x6570;&#x636E;&#x53D1;&#x9001;&#x7ED9;&#x522B;&#x4EBA;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x7684;&#x7F3A;&#x70B9;&#x53EF;&#x80FD;&#x662F;&#x6211;&#x4EEC;&#x5C06;&#x6709;&#x4E0D;&#x6B62;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6; (&#x5305;&#x88C5;&#x7EC4;&#x4EF6;) &#x53C2;&#x4E0E;&#x5176;&#x4E2D;&#x3002;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x89C6;&#x56FE;&#x3001;store &#x548C; consumer &#x51FD;&#x6570;&#x4E09;&#x8005;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5730;&#x65B9;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x624D;&#x53EF;&#x4EE5;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x3002;</p>
+<h4 id="&#x6211;&#x7684;&#x9009;&#x62E9;">&#x6211;&#x7684;&#x9009;&#x62E9;</h4>
+<p>&#x6211;&#x7684;&#x9009;&#x62E9;&#x662F;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x9009;&#x9879; - &#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#xFF0C;&#x5B83;&#x5DF2;&#x7ECF;&#x975E;&#x5E38;&#x63A5;&#x8FD1;&#x4E8E;&#x6211;&#x60F3;&#x8981;&#x7684;&#x3002;&#x6211;&#x559C;&#x6B22;&#x7531;&#x89C6;&#x56FE;&#x6765;&#x51B3;&#x5B9A;&#x5B83;&#x6240;&#x9700;&#x8981;&#x4EC0;&#x4E48;&#x7684;&#x8FD9;&#x70B9;&#x3002;&#x65E0;&#x8BBA;&#x5982;&#x4F55;&#xFF0C;<em>&#x6570;&#x636E;</em>&#x90FD;&#x5B58;&#x5728;&#x4E8E;&#x7EC4;&#x4EF6;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x5C06;&#x5B83;&#x4FDD;&#x7559;&#x5728;&#x90A3;&#x91CC;&#x662F;&#x6709;&#x9053;&#x7406;&#x7684;&#x3002;&#x8FD9;&#x4E5F;&#x6B63;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x751F;&#x6210;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x7684;&#x51FD;&#x6570;&#x901A;&#x5E38;&#x4E0E;&#x89C6;&#x56FE;&#x4FDD;&#x6301;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x539F;&#x56E0;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7C7B;&#x4F3C;&#x7684;&#x65B9;&#x6CD5;&#x800C;&#x538B;&#x6839;&#x4E0D;&#x4F20;&#x5165; store &#x5462;&#xFF1F;&#x6216;&#x8005;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x51FD;&#x6570;&#x53EA;&#x63A5;&#x6536; consumer &#x3002;&#x6BCF;&#x5F53; store &#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#xFF0C;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x6B64;&#x51FD;&#x6570;&#x3002;</p>
+<p>&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x53EA;&#x6709; <code>register</code> &#x65B9;&#x6CD5;&#x4E0E; store &#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x3002;</p>
+<pre><code class="lang-js">register: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">if</span> (!store || !store.update) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;You should provide a store that has an `update` method.&apos;</span>);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">this</span>._stores.push({ store: store });
+  }
+}
+</code></pre>
+<p>&#x901A;&#x8FC7;&#x4F7F;&#x7528; <code>register</code>&#xFF0C;&#x6211;&#x4EEC;&#x5728; dispatcher &#x5185;&#x90E8;&#x4FDD;&#x5B58;&#x4E86; store &#x7684;&#x5F15;&#x7528;&#x3002;&#x4F46;&#x662F;&#xFF0C;<code>register</code> &#x4E0D;&#x8FD4;&#x56DE;&#x4EFB;&#x4F55;&#x4E1C;&#x897F;&#x3002;&#x6216;&#x8BB8;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A; <strong>subscriber</strong> (&#x8BA2;&#x9605;&#x8005;) &#x6765;&#x63A5;&#x6536; consumer &#x51FD;&#x6570;&#x3002;</p>
+<p><img src="fluxiny_store_view.jpg" alt="Fluxiny - connect store and view"></p>
+<p>&#x6211;&#x51B3;&#x5B9A;&#x5C06;&#x6574;&#x4E2A; store &#x53D1;&#x9001;&#x7ED9; consumer &#x51FD;&#x6570;&#xFF0C;&#x800C;&#x4E0D;&#x662F; store &#x4E2D;&#x7684;&#x4FDD;&#x5B58;&#x7684;&#x6570;&#x636E;&#x3002;&#x5C31;&#x50CF;&#x5728;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x6A21;&#x5F0F;&#x4E2D;&#x4E00;&#x6837;&#xFF0C;&#x89C6;&#x56FE;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; store &#x7684; getter &#x6765;&#x8BF4;&#x660E;&#x5B83;&#x9700;&#x8981;&#x4EC0;&#x4E48;&#x3002;&#x8FD9;&#x4F7F;&#x5F97; store &#x53D8;&#x5F97;&#x76F8;&#x5F53;&#x7B80;&#x5355;&#x5E76;&#x4E14;&#x4E0D;&#x5305;&#x542B;&#x4EFB;&#x4F55;&#x8868;&#x73B0;&#x5C42;&#x76F8;&#x5173;&#x7684;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x66F4;&#x6539;&#x540E;&#x7684; <code>register</code> &#x65B9;&#x6CD5;:</p>
+<pre><code class="lang-js">register: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">if</span> (!store || !store.update) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(
+      <span class="hljs-string">&apos;You should provide a store that has an `update` method.&apos;</span>
+    );
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">var</span> consumers = [];
+    <span class="hljs-keyword">var</span> subscribe = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer</span>) </span>{
+      consumers.push(consumer);
+    };
+
+    <span class="hljs-keyword">this</span>._stores.push({ store: store });
+    <span class="hljs-keyword">return</span> subscribe;
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+<p>&#x6700;&#x540E;&#x8981;&#x5B8C;&#x6210;&#x662F; store &#x5982;&#x4F55;&#x901A;&#x77E5;&#x522B;&#x4EBA;&#x5B83;&#x5185;&#x90E8;&#x7684;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#x3002;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x6536;&#x96C6;&#x4E86; consumer &#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x73B0;&#x5728;&#x8FD8;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4EE3;&#x7801;&#x6765;&#x6267;&#x884C;&#x5B83;&#x4EEC;&#x3002;</p>
+<p>&#x6839;&#x636E; flux &#x67B6;&#x6784;&#x7684;&#x57FA;&#x672C;&#x539F;&#x5219;&#xFF0C;stores &#x6539;&#x53D8;&#x81EA;&#x8EAB;&#x72B6;&#x6001;&#x4EE5;&#x54CD;&#x5E94;&#x52A8;&#x4F5C;&#x3002;&#x5728; <code>update</code> &#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x9001;&#x4E86; <code>action</code>&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x8FD8;&#x5E94;&#x8BE5;&#x53D1;&#x51FA; <code>change</code> &#x51FD;&#x6570;&#x3002;&#x8C03;&#x7528;&#x6B64;&#x51FD;&#x6570;&#x6765;&#x89E6;&#x53D1; consumers :</p>
+<pre><code class="lang-js">register: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">if</span> (!store || !store.update) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(
+      <span class="hljs-string">&apos;You should provide a store that has an `update` method.&apos;</span>
+    );
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">var</span> consumers = [];
+    <span class="hljs-keyword">var</span> change = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+      consumers.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer</span>) </span>{
+        consumer(store);
+      });
+    };
+    <span class="hljs-keyword">var</span> subscribe = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer</span>) </span>{
+      consumers.push(consumer);
+    };
+
+    <span class="hljs-keyword">this</span>._stores.push({ store: store, change: change });
+    <span class="hljs-keyword">return</span> subscribe;
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+},
+dispatch: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">action</span>) </span>{
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._stores.length &gt; <span class="hljs-number">0</span>) {
+    <span class="hljs-keyword">this</span>._stores.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">entry</span>) </span>{
+      entry.store.update(action, entry.change);
+    });
+  }
+}
+</code></pre>
+<p><em>&#x6CE8;&#x610F;&#x5982;&#x4F55;&#x5728; <code>_stores</code> &#x6570;&#x7EC4;&#x4E2D;&#x5C06; <code>change</code> &#x548C; <code>store</code> &#x4E00;&#x8D77;&#x63A8;&#x9001;&#x51FA;&#x53BB;&#x3002;&#x7A0D;&#x540E;&#xFF0C;&#x5728; <code>dispatch</code> &#x65B9;&#x6CD5;&#x4E2D;&#x901A;&#x8FC7;&#x4F20;&#x5165; <code>action</code> &#x548C; <code>change</code> &#x51FD;&#x6570;&#x6765;&#x8C03;&#x7528; <code>update</code> </em></p>
+<p>&#x5E38;&#x89C1;&#x7528;&#x6CD5;&#x662F;&#x4F7F;&#x7528; store &#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x6765;&#x6E32;&#x67D3;&#x89C6;&#x56FE;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x4E2D;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#x5F53;&#x5E93;&#x88AB;&#x4F7F;&#x7528;&#x65F6;&#x81F3;&#x5C11;&#x89E6;&#x53D1;&#x6240;&#x6709; consumer &#x51FD;&#x6570;&#x4E00;&#x6B21;&#x3002;&#x8FD9;&#x53EF;&#x4EE5;&#x5728; <code>subscribe</code> &#x65B9;&#x6CD5;&#x4E2D;&#x8F7B;&#x677E;&#x5B8C;&#x6210;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> subscribe = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer, noInit</span>) </span>{
+  consumers.push(consumer);
+  !noInit ? consumer(store) : <span class="hljs-literal">null</span>;
+};
+</code></pre>
+<p>&#x5F53;&#x7136;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x6807;&#x8BC6;&#xFF0C;&#x5B83;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x662F;&#x5047;&#x503C;&#x3002;&#x4E0B;&#x9762;&#x662F; dispatcher &#x7684;&#x6700;&#x7EC8;&#x7248;&#x672C;:</p>
+<p><span class="new-page"></span></p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> Dispatcher = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    _stores: [],
+    register: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{
+      <span class="hljs-keyword">if</span> (!store || !store.update) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(
+          <span class="hljs-string">&apos;You should provide a store that has an `update` method&apos;</span>
+        );
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">var</span> consumers = [];
+        <span class="hljs-keyword">var</span> change = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+          consumers.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer</span>) </span>{
+            consumer(store);
+          });
+        };
+        <span class="hljs-keyword">var</span> subscribe = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer, noInit</span>) </span>{
+          consumers.push(consumer);
+          !noInit ? consumer(store) : <span class="hljs-literal">null</span>;
+        };
+
+        <span class="hljs-keyword">this</span>._stores.push({ store: store, change: change });
+        <span class="hljs-keyword">return</span> subscribe;
+      }
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    },
+    dispatch: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">action</span>) </span>{
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._stores.length &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">this</span>._stores.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">entry</span>) </span>{
+          entry.store.update(action, entry.change);
+        });
+      }
+    }
+  }
+};
+</code></pre>
+<p><span class="new-page"></span></p>
+<h2 id="&#x52A8;&#x4F5C;--actions-">&#x52A8;&#x4F5C; ( Actions )</h2>
+<p>&#x4F60;&#x6216;&#x8BB8;&#x5DF2;&#x7ECF;&#x6CE8;&#x610F;&#x5230;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x8BA8;&#x8BBA;&#x8FC7;&#x52A8;&#x4F5C;&#x3002;&#x4EC0;&#x4E48;&#x662F;&#x52A8;&#x4F5C;&#xFF1F;&#x7EA6;&#x5B9A;&#x662F;&#x5B83;&#x4EEC;&#x5E94;&#x8BE5;&#x662F;&#x5177;&#x6709;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x7B80;&#x5355;&#x5BF9;&#x8C61;: <code>type</code> &#x548C; <code>payload</code> &#xFF1A;</p>
+<pre><code class="lang-js">{
+  type: <span class="hljs-string">&apos;USER_LOGIN_REQUEST&apos;</span>,
+  payload: {
+    username: <span class="hljs-string">&apos;...&apos;</span>,
+    password: <span class="hljs-string">&apos;...&apos;</span>
+  }
+}
+</code></pre>
+<p><code>type</code> &#x8868;&#x660E;&#x4E86;&#x8FD9;&#x4E2A;&#x52A8;&#x4F5C;&#x5177;&#x4F53;&#x662F;&#x505A;&#x4EC0;&#x4E48;&#x7684;&#xFF0C;<code>payload</code> &#x5305;&#x542B;&#x4E8B;&#x4EF6;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;&#x800C;&#x4E14;&#x5B83;&#x5E76;&#x975E;&#x662F;&#x5FC5;&#x9700;&#x7684;&#x3002;</p>
+<p>&#x6709;&#x8DA3;&#x7684;&#x662F; <code>type</code> &#x4ECE;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x5E7F;&#x4E3A;&#x4EBA;&#x77E5;&#x3002;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#x7684;&#x52A8;&#x4F5C;&#x5E94;&#x8BE5;&#x8FDB;&#x5165;&#x5E94;&#x7528;&#xFF0C;&#x8C01;&#x6765;&#x5206;&#x53D1;&#x5B83;&#x4EEC;&#xFF0C;&#x5DF2;&#x7ECF; stores &#x5BF9;&#x54EA;&#x4E9B;&#x52A8;&#x4F5C;&#x611F;&#x5174;&#x8DA3;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5E94;&#x7528; <a href="http://krasimirtsonev.com/blog/article/a-story-about-currying-bind" target="_blank">partial application</a> &#x5E76;&#x907F;&#x514D;&#x4F20;&#x5165;&#x52A8;&#x4F5C;&#x5BF9;&#x8C61;&#x3002;&#x4F8B;&#x5982;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> createAction = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">type</span>) </span>{
+  <span class="hljs-keyword">if</span> (!type) {
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;Please, provide action\&apos;s type.&apos;</span>);
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">payload</span>) </span>{
+      <span class="hljs-keyword">return</span> dispatcher.dispatch({
+        type: type,
+        payload: payload
+      });
+    }
+  }
+}
+</code></pre>
+<p><code>createAction</code> &#x5177;&#x6709;&#x4EE5;&#x4E0B;&#x4F18;&#x70B9;:</p>
+<ul>
+<li>&#x6211;&#x4EEC;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x8BB0;&#x4F4F;&#x52A8;&#x4F5C;&#x7684;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x662F;&#x4EC0;&#x4E48;&#x3002;&#x73B0;&#x5728;&#x53EA;&#x9700;&#x4F20;&#x5165; payload &#x6765;&#x8C03;&#x7528;&#x6B64;&#x51FD;&#x6570;&#x5373;&#x53EF;&#x3002;</li>
+<li>&#x6211;&#x4EEC;&#x4E0D;&#x518D;&#x9700;&#x8981;&#x8BBF;&#x95EE; dispatcher &#x4E86;&#xFF0C;&#x8FD9;&#x662F;&#x4E2A;&#x5DE8;&#x5927;&#x7684;&#x4F18;&#x52BF;&#x3002;&#x5426;&#x5219;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x5982;&#x4F55;&#x5C06;&#x5B83;&#x4F20;&#x9012;&#x7ED9;&#x6BCF;&#x4E2A;&#x9700;&#x8981;&#x5206;&#x53D1;&#x52A8;&#x4F5C;&#x7684;&#x5730;&#x65B9;&#x3002;</li>
+<li>&#x6700;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x7528;&#x518D;&#x53BB;&#x5904;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x53EA;&#x662F;&#x8C03;&#x7528;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x8981;&#x597D;&#x5F97;&#x591A;&#x3002;&#x5BF9;&#x8C61;&#x662F;<em>&#x9759;&#x6001;&#x7684;</em>&#xFF0C;&#x800C;&#x51FD;&#x6570;&#x63CF;&#x8FF0;&#x7684;&#x662F;<em>&#x8FC7;&#x7A0B;</em>&#x3002;</li>
+</ul>
+<p><img src="fluxiny_action_creator.jpg" alt="Fluxiny actions creators"></p>
+<p>&#x8FD9;&#x79CD;&#x521B;&#x5EFA;&#x52A8;&#x4F5C;&#x7684;&#x65B9;&#x5F0F;&#x975E;&#x5E38;&#x6D41;&#x884C;&#xFF0C;&#x50CF;&#x4E0A;&#x9762;&#x8FD9;&#x6837;&#x7684;&#x51FD;&#x6570;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A; &#x201C;action creators&#x201D; &#x3002;</p>
+<h2 id="&#x6700;&#x7EC8;&#x4EE3;&#x7801;">&#x6700;&#x7EC8;&#x4EE3;&#x7801;</h2>
+<p>&#x5728;&#x4E0A;&#x4E00;&#x8282;&#x4E2D;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x53D1;&#x51FA;&#x52A8;&#x4F5C;&#x7684;&#x540C;&#x65F6;&#x9690;&#x85CF;&#x4E86; dispatcher &#x3002;&#x5728; store &#x7684;&#x6CE8;&#x518C;&#x8FC7;&#x7A0B;&#x4E2D;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x505A;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> createSubscriber = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{
+  <span class="hljs-keyword">return</span> dispatcher.register(store);
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4E0D;&#x66B4;&#x9732; dispaatcher&#xFF0C;&#x800C;&#x53EA;&#x66B4;&#x9732; <code>createAction</code> &#x548C; <code>createSubscriber</code> &#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x6700;&#x7EC8;&#x4EE3;&#x7801;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> Dispatcher = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> {
+    _stores: [],
+    register: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{
+      <span class="hljs-keyword">if</span> (!store || !store.update) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(
+          <span class="hljs-string">&apos;You should provide a store that has an `update` method&apos;</span>
+        );
+      } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">var</span> consumers = [];
+        <span class="hljs-keyword">var</span> change = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+          consumers.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer</span>) </span>{
+            consumer(store);
+          });
+        };
+        <span class="hljs-keyword">var</span> subscribe = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">consumer, noInit</span>) </span>{
+          consumers.push(consumer);
+          !noInit ? consumer(store) : <span class="hljs-literal">null</span>;
+        };
+
+        <span class="hljs-keyword">this</span>._stores.push({ store: store, change: change });
+        <span class="hljs-keyword">return</span> subscribe;
+      }
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    },
+    dispatch: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">action</span>) </span>{
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>._stores.length &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">this</span>._stores.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">entry</span>) </span>{
+          entry.store.update(action, entry.change);
+        });
+      }
+    }
+  }
+};
+
+<span class="hljs-built_in">module</span>.exports = {
+  create: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> dispatcher = Dispatcher();
+
+    <span class="hljs-keyword">return</span> {
+      createAction: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">type</span>) </span>{
+        <span class="hljs-keyword">if</span> (!type) {
+          <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">&apos;Please, provide action\&apos;s type.&apos;</span>);
+        } <span class="hljs-keyword">else</span> {
+          <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">payload</span>) </span>{
+            <span class="hljs-keyword">return</span> dispatcher.dispatch({
+              type: type,
+              payload: payload
+            });
+          }
+        }
+      },
+      createSubscriber: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">store</span>) </span>{
+        <span class="hljs-keyword">return</span> dispatcher.register(store);
+      }
+    }
+  }
+};
+</code></pre>
+<p>&#x5982;&#x679C;&#x6DFB;&#x52A0;&#x5BF9; AMD&#x3001;CommonJS &#x548C;&#x5168;&#x5C40;&#x5F15;&#x7528;&#x7684;&#x652F;&#x6301;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x6700;&#x7EC8;&#x7684; JavaScript &#x6587;&#x4EF6;&#x5171; 66 &#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x4E3A; 1.7KB&#xFF0C;&#x538B;&#x7F29;&#x540E; 795 &#x5B57;&#x8282;&#x3002;</p>
+<h2 id="&#x6574;&#x5408;">&#x6574;&#x5408;</h2>
+<p>&#x6211;&#x4EEC;&#x5199;&#x597D;&#x7684;&#x6A21;&#x5757;&#x63D0;&#x4F9B;&#x4E24;&#x4E2A;&#x8F85;&#x52A9;&#x51FD;&#x6570;&#x6765;&#x6784;&#x5EFA; Flux &#x9879;&#x76EE;&#x3002;&#x6211;&#x4EEC;&#x6765;&#x5199;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x8BA1;&#x6570;&#x5668;&#x5E94;&#x7528;&#xFF0C;&#x6B64;&#x5E94;&#x7528;&#x4E0D;&#x4F7F;&#x7528; React &#xFF0C;&#x53EA;&#x4E3A;&#x4E86;&#x89E3; Flux &#x6A21;&#x5F0F;&#x7684;&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x60C5;&#x51B5;&#x3002;</p>
+<p><span class="new-page"></span></p>
+<h3 id="html">HTML</h3>
+<p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E00;&#x4E9B; UI &#x5143;&#x7D20;&#x6765;&#x8FDB;&#x884C;&#x4E92;&#x52A8;:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;counter&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>increase<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>decrease<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p><code>span</code> &#x7528;&#x6765;&#x663E;&#x793A;&#x8BA1;&#x6570;&#x5668;&#x7684;&#x5F53;&#x524D;&#x503C;&#x3002;&#x70B9;&#x51FB;&#x6309;&#x94AE;&#x4F1A;&#x6539;&#x53D8;&#x8BA1;&#x6570;&#x5668;&#x7684;&#x503C;&#x3002;</p>
+<h3 id="&#x89C6;&#x56FE;">&#x89C6;&#x56FE;</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> View = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">subscribeToStore, increase, decrease</span>) </span>{
+  <span class="hljs-keyword">var</span> value = <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">var</span> el = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">&apos;#counter&apos;</span>);
+  <span class="hljs-keyword">var</span> display = el.querySelector(<span class="hljs-string">&apos;span&apos;</span>);
+  <span class="hljs-keyword">var</span> [ increaseBtn, decreaseBtn ] =
+    <span class="hljs-built_in">Array</span>.from(el.querySelectorAll(<span class="hljs-string">&apos;button&apos;</span>));
+
+  <span class="hljs-keyword">var</span> render = () =&gt; display.innerHTML = value;
+  <span class="hljs-keyword">var</span> updateState = (store) =&gt; value = store.getValue();
+
+  subscribeToStore([updateState, render]);
+
+  increaseBtn.addEventListener(<span class="hljs-string">&apos;click&apos;</span>, increase);
+  decreaseBtn.addEventListener(<span class="hljs-string">&apos;click&apos;</span>, decrease);
+};
+</code></pre>
+<p>View &#x63A5;&#x6536; store &#x7684;&#x8BA2;&#x9605;&#x8005;&#x51FD;&#x6570;&#x548C;&#x589E;&#x52A0;/&#x51CF;&#x5C11;&#x503C;&#x7684;&#x4E24;&#x4E2A;&#x52A8;&#x4F5C;&#x51FD;&#x6570;&#x3002;View &#x4E2D;&#x5F00;&#x59CB;&#x7684;&#x51E0;&#x884C;&#x4EE3;&#x7801;&#x53EA;&#x662F;&#x7528;&#x6765;&#x83B7;&#x53D6; DOM &#x5143;&#x7D20;&#x3002;</p>
+<p>&#x4E4B;&#x540E;&#x6211;&#x4EEC;&#x5B9A;&#x4E49;&#x4E86; <code>render</code> &#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x8D1F;&#x8D23;&#x5C06;&#x503C;&#x6E32;&#x67D3;&#x5230; <code>span</code> &#x6807;&#x7B7E;&#x4E2D;&#x3002;&#x5F53; store &#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x4F1A;&#x8C03;&#x7528; <code>updateState</code> &#x65B9;&#x6CD5;&#x3002;&#x6211;&#x4EEC;&#x5C06;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#x4F20;&#x7ED9; <code>subscribeToStore</code> &#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x89C6;&#x56FE;&#x66F4;&#x65B0;&#x4EE5;&#x53CA;&#x8FDB;&#x884C;&#x521D;&#x9996;&#x6B21;&#x6E32;&#x67D3;&#x3002;&#x8FD8;&#x8BB0;&#x5F97; consumers &#x51FD;&#x6570;&#x9ED8;&#x8BA4;&#x81F3;&#x5C11;&#x8981;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#x5427;&#xFF1F;</p>
+<p>&#x6700;&#x540E;&#x8981;&#x505A;&#x7684;&#x662F;&#x4E3A;&#x6309;&#x94AE;&#x7ED1;&#x5B9A;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;&#x3002;</p>
+<h3 id="store">Store</h3>
+<p>&#x6BCF;&#x4E2A;&#x52A8;&#x4F5C;&#x90FD;&#x6709;&#x7C7B;&#x578B;&#x3002;&#x4E3A;&#x8FD9;&#x4E9B;&#x7C7B;&#x578B;&#x521B;&#x5EFA;&#x5E38;&#x91CF;&#x662F;&#x4E00;&#x79CD;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x4E0D;&#x60F3;&#x5904;&#x7406;&#x539F;&#x59CB;&#x5B57;&#x7B26;&#x4E32;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> INCREASE = <span class="hljs-string">&apos;INCREASE&apos;</span>;
+<span class="hljs-keyword">const</span> DECREASE = <span class="hljs-string">&apos;DECREASE&apos;</span>;
+</code></pre>
+<p>&#x901A;&#x5E38;&#x6BCF;&#x4E2A; store &#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;&#x4E3A;&#x4E86;&#x7B80;&#x5355;&#x8D77;&#x89C1;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x76F4;&#x63A5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> CounterStore = {
+  _data: { value: <span class="hljs-number">0</span> },
+  getValue: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>._data.value;
+  },
+  update: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">action, change</span>) </span>{
+    <span class="hljs-keyword">if</span> (action.type === INCREASE) {
+      <span class="hljs-keyword">this</span>._data.value += <span class="hljs-number">1</span>;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (action.type === DECREASE) {
+      <span class="hljs-keyword">this</span>._data.value -= <span class="hljs-number">1</span>;
+    }
+    change();
+  }
+};
+</code></pre>
+<p><code>_data</code> &#x662F; store &#x7684;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x3002;<code>update</code> &#x662F; dispatcher &#x6240;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6211;&#x4EEC;&#x5728; <code>update</code> &#x4E2D;&#x5904;&#x7406;&#x52A8;&#x4F5C;&#xFF0C;&#x5E76;&#x5728;&#x5B8C;&#x6210;&#x65F6;&#x8C03;&#x7528; <code>change()</code> &#x65B9;&#x6CD5;&#x6765;&#x901A;&#x77E5;&#x53D1;&#x751F;&#x4E86;&#x53D8;&#x5316;&#x3002;<code>getValue</code> &#x662F;&#x516C;&#x5171;&#x65B9;&#x6CD5;&#xFF0C;&#x89C6;&#x56FE;&#x4F1A;&#x4F7F;&#x7528;&#x5B83;&#x6765;&#x83B7;&#x53D6;&#x6240;&#x9700;&#x6570;&#x636E;&#x3002;(&#x5728;&#x8FD9;&#x4E2A;&#x6848;&#x4F8B;&#x4E2D;&#xFF0C;&#x5C31;&#x662F;&#x8BA1;&#x6570;&#x5668;&#x7684;&#x503C;&#x3002;)</p>
+<h3 id="&#x6574;&#x5408;&#x5404;&#x4E2A;&#x90E8;&#x5206;">&#x6574;&#x5408;&#x5404;&#x4E2A;&#x90E8;&#x5206;</h3>
+<p>&#x8FD9;&#x6837;&#xFF0C;store &#x5C31;&#x5B8C;&#x6210;&#x4E86;&#xFF0C;&#x5B83;&#x7B49;&#x5F85; dispatcher &#x53D1;&#x51FA;&#x7684;&#x52A8;&#x4F5C;&#x3002;&#x89C6;&#x56FE;&#x6211;&#x4EEC;&#x4E5F;&#x5B9A;&#x4E49;&#x5B8C;&#x4E86;&#x3002;&#x73B0;&#x5728;&#x6765;&#x521B;&#x5EFA; store &#x7684;&#x8BA2;&#x9605;&#x8005;&#x3001;&#x52A8;&#x4F5C;&#x5E76;&#x8BA9;&#x8FD9;&#x4E00;&#x5207;&#x8FD0;&#x8F6C;&#x8D77;&#x6765;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> { createAction, createSubscriber } = Fluxiny.create();
+<span class="hljs-keyword">const</span> counterStoreSubscriber = createSubscriber(CounterStore);
+<span class="hljs-keyword">const</span> actions = {
+  increase: createAction(INCREASE),
+  decrease: createAction(DECREASE)
+};
+
+View(counterStoreSubscriber, actions.increase, actions.decrease);
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x3002;&#x89C6;&#x56FE;&#x8BA2;&#x9605; store &#x5E76;&#x8FDB;&#x884C;&#x6E32;&#x67D3;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x7684; consumers &#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F; <code>render</code> &#x65B9;&#x6CD5;&#x3002;</p>
+<h3 id="&#x5728;&#x7EBF;&#x793A;&#x4F8B;">&#x5728;&#x7EBF;&#x793A;&#x4F8B;</h3>
+<p>&#x8FD9;&#x91CC;&#x6709; JSBin &#x7684; <a href="http://jsbin.com/koxidu/embed?js,output" target="_blank">&#x5728;&#x7EBF;&#x793A;&#x4F8B;</a>&#x3002;&#x5982;&#x679C;&#x4F60;&#x89C9;&#x5F97;&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#x8FC7;&#x4E8E;&#x7B80;&#x5355;&#x7684;&#x8BDD;&#xFF0C;&#x8BF7;&#x67E5;&#x9605; <a href="https://github.com/krasimir/fluxiny/tree/master/example" target="_blank">Fluxiny &#x4ED3;&#x5E93;&#x4E2D;&#x7684;&#x793A;&#x4F8B;</a>&#x3002;&#x5B83;&#x4F7F;&#x7528; React &#x4F5C;&#x4E3A;&#x89C6;&#x56FE;&#x5C42;&#x3002;</p>
+<p><em>&#x5728;&#x672C;&#x7AE0;&#x4E2D;&#x6240;&#x8BA8;&#x8BBA;&#x7684; Flux &#x5B9E;&#x73B0;&#x53EF;&#x4EE5;&#x5728; <a href="https://github.com/krasimir/fluxiny" target="_blank">&#x8FD9;&#x91CC;</a> &#x627E;&#x5230;&#x3002;&#x53EF;&#x4EE5; <a href="https://github.com/krasimir/fluxiny/tree/master/lib" target="_blank">&#x76F4;&#x63A5;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;</a> &#x4F7F;&#x7528;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <a href="https://www.npmjs.com/package/fluxiny" target="_blank">npm &#x4F9D;&#x8D56;</a> &#x8FDB;&#x884C;&#x5B89;&#x88C5;&#x3002;</em></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter-7/" class="navigation navigation-prev " aria-label="Previous page: 单向数据流">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="./#flux-架构及其主要特点" class="navigation navigation-next " aria-label="Next page: Flux 架构及其主要特点">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Flux","level":"3.2","depth":1,"next":{"title":"Flux 架构及其主要特点","level":"3.2.1","depth":2,"anchor":"#flux-架构及其主要特点","path":"chapter-8/README.md","ref":"chapter-8/README.md#flux-架构及其主要特点","articles":[]},"previous":{"title":"单向数据流","level":"3.1","depth":1,"path":"chapter-7/README.md","ref":"chapter-7/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","edit-link","copy-code-button","github-buttons"],"root":"./book","styles":{"website":"./styles/website.css","ebook":"./styles/ebook.css","pdf":"./styles/ebook.css"},"pluginsConfig":{"github":{"url":"https://github.com/SangKa/react-in-patterns-cn"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-buttons":{"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"帮忙纠错","base":"https://github.com/SangKa/react-in-patterns-cn/tree/master/book"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SangKa","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a5","chapterMark":"pagebreak","pageBreaksBefore":"//*[@class='new-page']","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"React 模式","gitbook":"3.2.3","description":"介绍 React 开发的设计模式和技术的免费开源书籍"},"file":{"path":"chapter-8/README.md","mtime":"2018-05-06T07:55:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-06T07:55:22.973Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

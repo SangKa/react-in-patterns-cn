@@ -1,0 +1,952 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>组合 · React 模式</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="SangKa">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../styles/website.css">
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="./" />
+    
+    
+    <link rel="prev" href="../chapter-3/" />
+    
+
+    <style>
+    @media only screen and (max-width: 640px) {
+        .book-header .hidden-mobile {
+            display: none;
+        }
+    }
+    </style>
+    <script>
+        window["gitbook-plugin-github-buttons"] = {"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]};
+    </script>
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../chapter-1/">
+            
+                <a href="../chapter-1/">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/">
+            
+                    
+                    组件通讯
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输入">
+            
+                    
+                    输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../chapter-2/">
+            
+                <a href="../chapter-2/#输出">
+            
+                    
+                    输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../chapter-3/">
+            
+                <a href="../chapter-3/">
+            
+                    
+                    事件处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    组合
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="./">
+            
+                <a href="./#使用-react-children-api">
+            
+                    
+                    使用 React children API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="./">
+            
+                <a href="./#将-child-作为-prop-传入">
+            
+                    
+                    将 child 作为 prop 传入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.3" data-path="./">
+            
+                <a href="./#高阶组件">
+            
+                    
+                    高阶组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.4" data-path="./">
+            
+                <a href="./#将函数作为-children-传入和-render-prop">
+            
+                    
+                    将函数作为 children 传入和 render prop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../chapter-5/">
+            
+                <a href="../chapter-5/">
+            
+                    
+                    受控输入和非受控输入
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../chapter-6/">
+            
+                <a href="../chapter-6/">
+            
+                    
+                    展示型组件和容器型组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数据流</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../chapter-7/">
+            
+                <a href="../chapter-7/">
+            
+                    
+                    单向数据流
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/">
+            
+                    
+                    Flux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/#flux-架构及其主要特点">
+            
+                    
+                    Flux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../chapter-8/">
+            
+                <a href="../chapter-8/#实现-flux-架构">
+            
+                    
+                    实现 Flux 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/">
+            
+                    
+                    Redux
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.3.1" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/#redux-架构及其主要特点">
+            
+                    
+                    Redux 架构及其主要特点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3.2" data-path="../chapter-9/">
+            
+                <a href="../chapter-9/#使用-redux-的简单计数器应用">
+            
+                    
+                    使用 Redux 的简单计数器应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">扩展阅读</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/">
+            
+                    
+                    依赖注入
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-之前的版本">
+            
+                    
+                    使用 React context (16.3 之前的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用-react-context-163-及之后的版本">
+            
+                    
+                    使用 React context (16.3 及之后的版本)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../chapter-10/">
+            
+                <a href="../chapter-10/#使用模块系统">
+            
+                    
+                    使用模块系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/">
+            
+                    
+                    组件样式
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.2.1" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#经典-css-类">
+            
+                    
+                    经典 CSS 类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.2" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#内联样式">
+            
+                    
+                    内联样式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.3" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#css-模块">
+            
+                    
+                    CSS 模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2.4" data-path="../chapter-11/">
+            
+                <a href="../chapter-11/#styled-components">
+            
+                    
+                    Styled-components
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../chapter-12/">
+            
+                <a href="../chapter-12/">
+            
+                    
+                    集成第三方库
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">总结</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../chapter-13/">
+            
+                <a href="../chapter-13/">
+            
+                    
+                    总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >组合</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7EC4;&#x5408;--composition-">&#x7EC4;&#x5408; ( composition )</h1>
+<p>React &#x6700;&#x5927;&#x7684;&#x597D;&#x5904;&#x662F;&#x5B83;&#x7684;&#x53EF;&#x7EC4;&#x5408;&#x6027;&#x3002;&#x5C31;&#x6211;&#x4E2A;&#x4EBA;&#x800C;&#x8A00;&#xFF0C;&#x6211;&#x4E0D;&#x77E5;&#x9053;&#x8FD8;&#x6709;&#x54EA;&#x4E2A;&#x6846;&#x67B6;&#x80FD;&#x63D0;&#x4F9B;&#x8FD9;&#x6837;&#x5982;&#x6B64;&#x7B80;&#x5355;&#x5730;&#x521B;&#x5EFA;&#x548C;&#x7EC4;&#x5408;&#x7EC4;&#x4EF6;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x672C;&#x8282;&#x6211;&#x4EEC;&#x5C06;&#x63A2;&#x8BA8;&#x4E00;&#x4E9B;&#x597D;&#x7528;&#x7684;&#x7EC4;&#x5408;&#x6280;&#x5DE7;&#xFF0C;&#x8FD9;&#x4E9B;&#x6280;&#x5DE7;&#x90FD;&#x662F;&#x7ECF;&#x8FC7;&#x5B9E;&#x6218;&#x9A8C;&#x8BC1;&#x7684;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x793A;&#x4F8B;&#x3002;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x6709;&#x4E00;&#x4E2A;&#x5934;&#x90E8;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x5728;&#x5934;&#x90E8;&#x4E2D;&#x653E;&#x7F6E;&#x5BFC;&#x822A;&#x3002;&#x6211;&#x4EEC;&#x6709;&#x4E09;&#x4E2A; React &#x7EC4;&#x4EF6; &#x2014;<code>App</code>&#x3001;<code>Header</code> &#x548C; <code>Navigation</code> &#x3002;&#x8FD9;&#x4E09;&#x4E2A;&#x7EC4;&#x4EF6;&#x662F;&#x4E00;&#x4E2A;&#x5D4C;&#x5957;&#x4E00;&#x4E2A;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5F97;&#x5230;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-js">&lt;App&gt; -&gt; &lt;Header&gt; -&gt; &lt;Navigation&gt;
+</code></pre>
+<p>&#x7EC4;&#x5408;&#x8FD9;&#x4E9B;&#x7EC4;&#x4EF6;&#x7684;&#x7B80;&#x5355;&#x65B9;&#x6CD5;&#x662F;&#x5728;&#x9700;&#x8981;&#x5B83;&#x4EEC;&#x7684;&#x65F6;&#x5019;&#x5F15;&#x7528;&#x5373;&#x53EF;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-comment">// app.jsx</span>
+<span class="hljs-keyword">import</span> Header <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./Header.jsx&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> &lt;Header /&gt;;
+}
+
+// Header.jsx
+import Navigation from &apos;./Navigation.jsx&apos;;
+
+export default function Header() {
+  return &lt;header&gt;&lt;Navigation /&gt;&lt;/header&gt;;
+}
+
+// Navigation.jsx
+export default function Navigation() {
+  return (&lt;nav&gt; ... &lt;/nav&gt;);
+}
+</code></pre>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x4F1A;&#x5F15;&#x5165;&#x4E00;&#x4E9B;&#x95EE;&#x9898;:</p>
+<ul>
+<li>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A; <code>App</code> &#x770B;&#x4F5C;&#x662F;&#x4E3B;&#x8981;&#x7684;&#x7EC4;&#x5408;&#x573A;&#x6240;&#x3002;<code>Header</code> &#x53EF;&#x80FD;&#x8FD8;&#x6709;&#x5176;&#x4ED6;&#x5143;&#x7D20;&#xFF0C;&#x6BD4;&#x5982; logo&#x3001;&#x641C;&#x7D22;&#x6846;&#x6216;&#x6807;&#x8BED;&#x3002;&#x5982;&#x679C;&#x5B83;&#x4EEC;&#x662F;&#x4EE5;&#x67D0;&#x79CD;&#x65B9;&#x5F0F;&#x901A;&#x8FC7; <code>App</code> &#x7EC4;&#x4EF6;&#x4F20;&#x5165;&#x7684;&#x5C31;&#x597D;&#x4E86;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5C31;&#x65E0;&#x9700;&#x521B;&#x5EFA;&#x76EE;&#x524D;&#x8FD9;&#x79CD;&#x786C;&#x7F16;&#x7801;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;&#x518D;&#x6BD4;&#x5982;&#x8BF4;&#x6211;&#x4EEC;&#x5982;&#x679C;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x6CA1;&#x6709; <code>Navigation</code> &#x7684; <code>Header</code> &#x7EC4;&#x4EF6;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x8F7B;&#x677E;&#x5B9E;&#x73B0;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x5C06;&#x8FD9;&#x4E24;&#x4E2A;&#x7EC4;&#x4EF6;&#x7D27;&#x7ED1;&#x5728;&#x4E86;&#x4E00;&#x8D77;&#x3002;</li>
+<li>&#x4EE3;&#x7801;&#x5F88;&#x96BE;&#x6D4B;&#x8BD5;&#x3002;&#x5728; <code>Header</code> &#x4E2D;&#x6216;&#x8BB8;&#x6709;&#x4E00;&#x4E9B;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x8981;&#x6D4B;&#x8BD5;&#x5B83;&#x7684;&#x8BDD;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x51FA;&#x4E00;&#x4E2A;&#x7EC4;&#x4EF6;&#x5B9E;&#x4F8B;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x8FD8;&#x5BFC;&#x5165;&#x4E86;&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8FD8;&#x8981;&#x4E3A;&#x8FD9;&#x4E9B;&#x5BFC;&#x5165;&#x7684;&#x7EC4;&#x4EF6;&#x521B;&#x5EFA;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FD9;&#x6837;&#x7684;&#x8BDD;&#x6D4B;&#x8BD5;&#x5C31;&#x53D8;&#x7684;&#x5F88;&#x91CD;&#x3002;&#x5982;&#x679C; <code>Navigation</code> &#x7EC4;&#x4EF6;&#x51FA;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x90A3;&#x4E48; <code>Header</code> &#x7EC4;&#x4EF6;&#x7684;&#x6D4B;&#x8BD5;&#x5DF2;&#x5C06;&#x88AB;&#x7834;&#x574F;&#xFF0C;&#x8FD9;&#x5B8C;&#x5168;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#x6548;&#x679C;&#x3002;<em>(&#x6CE8;&#x610F;: <a href="https://facebook.github.io/react/docs/test-utils.html#shallow-rendering" target="_blank">&#x6D45;&#x5C42;&#x6E32;&#x67D3; ( shallow rendering )</a> &#x901A;&#x8FC7;&#x4E0D;&#x6E32;&#x67D3; <code>Header</code> &#x7EC4;&#x4EF6;&#x5D4C;&#x5957;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x80FD;&#x5728;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#x3002;)</em></li>
+</ul>
+<h2 id="&#x4F7F;&#x7528;-react-children-api">&#x4F7F;&#x7528; React children API</h2>
+<p>React &#x63D0;&#x4F9B;&#x4E86;&#x4FBF;&#x5229;&#x7684; <a href="https://facebook.github.io/react/docs/multiple-components.html#children" target="_blank"><code>children</code></a> &#x5C5E;&#x6027;&#x3002;&#x901A;&#x8FC7;&#x5B83;&#x7236;&#x7EC4;&#x4EF6;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;/&#x8BBF;&#x95EE;&#x5B83;&#x7684;&#x5D4C;&#x5957;&#x5B50;&#x5143;&#x7D20;&#x3002;&#x6B64; API &#x53EF;&#x4EE5;&#x4F7F;&#x5F97; <code>Header</code> &#x7EC4;&#x4EF6;&#x4E0D;&#x7528;&#x77E5;&#x6653;&#x5B83;&#x7684;&#x5D4C;&#x5957;&#x5B50;&#x5143;&#x7D20;&#xFF0C;&#x4ECE;&#x800C;&#x89E3;&#x653E;&#x4E4B;&#x524D;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Header</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Navigation</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Header</span>&gt;</span>
+  );
+}
+export default function Header({ children }) {
+  return <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>{ children }<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>;
+};
+</span></code></pre>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x5728; <code>Header</code> &#x4E2D;&#x4F7F;&#x7528; <code>{ children }</code> &#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48; <code>Navigation</code> &#x7EC4;&#x4EF6;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x6E32;&#x67D3;&#x3002;</p>
+<p>&#x73B0;&#x5728; <code>Header</code> &#x7EC4;&#x4EF6;&#x7684;&#x6D4B;&#x8BD5;&#x53D8;&#x5F97;&#x66F4;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x5B8C;&#x5168;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x7A7A; <code>&lt;div&gt;</code> &#x6765;&#x6E32;&#x67D3; <code>Header</code> &#x7EC4;&#x4EF6;&#x3002;&#x8FD9;&#x4F1A;&#x4F7F;&#x7528;&#x7EC4;&#x4EF6;&#x66F4;&#x72EC;&#x7ACB;&#xFF0C;&#x5E76;&#x8BA9;&#x6211;&#x4EEC;&#x4E13;&#x6CE8;&#x4E8E;&#x5E94;&#x7528;&#x7684;&#x4E00;&#x5C0F;&#x90E8;&#x5206;&#x3002;</p>
+<h2 id="&#x5C06;-child-&#x4F5C;&#x4E3A;-prop-&#x4F20;&#x5165;">&#x5C06; child &#x4F5C;&#x4E3A; prop &#x4F20;&#x5165;</h2>
+<p>&#x6BCF;&#x4E2A; React &#x7EC4;&#x4EF6;&#x90FD;&#x63A5;&#x6536;&#x5C5E;&#x6027;&#x3002;&#x6B63;&#x5982;&#x4E4B;&#x524D;&#x6240;&#x63D0;&#x5230;&#x7684;&#xFF0C;&#x5173;&#x4E8E;&#x4F20;&#x5165;&#x7684;&#x5C5E;&#x6027;&#x662F;&#x4EC0;&#x4E48;&#x5E76;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4E25;&#x683C;&#x7684;&#x89C4;&#x5B9A;&#x3002;&#x6211;&#x4EEC;&#x751A;&#x81F3;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x5176;&#x4ED6;&#x7EC4;&#x4EF6;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> Title = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello there!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+<span class="hljs-keyword">const</span> Header = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">{ title, children }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+      { title }
+      { children }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span></span>
+  );
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    &lt;Header title={ &lt;Title /&gt; }&gt;
+      &lt;Navigation /&gt;
+    &lt;/Header&gt;
+  );
+};
+</code></pre>
+<p>&#x5F53;&#x9047;&#x5230;&#x50CF; <code>Header</code> &#x8FD9;&#x6837;&#x7684;&#x7EC4;&#x4EF6;&#x65F6;&#xFF0C;&#x8FD9;&#x79CD;&#x6280;&#x672F;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x5B83;&#x4EEC;&#x9700;&#x8981;&#x5BF9;&#x5176;&#x5D4C;&#x5957;&#x7684;&#x5B50;&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x51B3;&#x7B56;&#xFF0C;&#x4F46;&#x5E76;&#x4E0D;&#x5173;&#x5FC3;&#x5B83;&#x4EEC;&#x7684;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x3002;</p>
+<h2 id="&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;">&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;</h2>
+<p>&#x5F88;&#x957F;&#x4E00;&#x6BB5;&#x65F6;&#x671F;&#x5185;&#xFF0C;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x90FD;&#x662F;&#x589E;&#x5F3A;&#x548C;&#x7EC4;&#x5408; React &#x5143;&#x7D20;&#x7684;&#x6700;&#x6D41;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x5B83;&#x4EEC;&#x770B;&#x4E0A;&#x53BB;&#x4E0E; <a href="http://robdodson.me/javascript-design-patterns-decorator/" target="_blank">&#x88C5;&#x9970;&#x5668;&#x6A21;&#x5F0F;</a> &#x5341;&#x5206;&#x76F8;&#x4F3C;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;&#x5BF9;&#x7EC4;&#x4EF6;&#x7684;&#x5305;&#x88C5;&#x4E0E;&#x589E;&#x5F3A;&#x3002;</p>
+<p>&#x4ECE;&#x6280;&#x672F;&#x89D2;&#x5EA6;&#x6765;&#x8BF4;&#xFF0C;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x901A;&#x5E38;&#x662F;&#x51FD;&#x6570;&#xFF0C;&#x5B83;&#x63A5;&#x6536;&#x539F;&#x59CB;&#x7EC4;&#x4EF6;&#x5E76;&#x8FD4;&#x56DE;&#x539F;&#x59CB;&#x7EC4;&#x4EF6;&#x7684;&#x589E;&#x5F3A;/&#x586B;&#x5145;&#x7248;&#x672C;&#x3002;&#x6700;&#x7B80;&#x5355;&#x7684;&#x793A;&#x4F8B;&#x5982;&#x4E0B;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> enhanceComponent = (Component) =&gt;
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Enhance</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    render() {
+      <span class="hljs-keyword">return</span> (
+        &lt;Component {...this.props} /&gt;
+      )
+    }
+  };
+
+var OriginalTitle = () =&gt; &lt;h1&gt;Hello world&lt;/h1&gt;;
+var EnhancedTitle = enhanceComponent(OriginalTitle);
+
+class App extends React.Component {
+  render() {
+    return &lt;EnhancedTitle /&gt;;
+  }
+};
+</code></pre>
+<p>&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x8981;&#x505A;&#x7684;&#x7B2C;&#x4E00;&#x4EF6;&#x4E8B;&#x5C31;&#x662F;&#x6E32;&#x67D3;&#x539F;&#x59CB;&#x7EC4;&#x4EF6;&#x3002;&#x5C06;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x7684; <code>props</code> &#x4F20;&#x7ED9;&#x539F;&#x59CB;&#x7EC4;&#x4EF6;&#x662F;&#x4E00;&#x79CD;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x5C06;&#x4FDD;&#x6301;&#x539F;&#x59CB;&#x7EC4;&#x4EF6;&#x7684;&#x8F93;&#x5165;&#x3002;&#x8FD9;&#x4FBF;&#x662F;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x7684;&#x6700;&#x5927;&#x597D;&#x5904;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x63A7;&#x5236;&#x4E86;&#x539F;&#x59CB;&#x7EC4;&#x4EF6;&#x7684;&#x8F93;&#x5165;&#xFF0C;&#x800C;&#x8F93;&#x5165;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x539F;&#x59CB;&#x7EC4;&#x4EF6;&#x901A;&#x5E38;&#x65E0;&#x6CD5;&#x8BBF;&#x95EE;&#x7684;&#x5185;&#x5BB9;&#x3002;&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x6709; <code>OriginalTitle</code> &#x6240;&#x9700;&#x8981;&#x7684;&#x914D;&#x7F6E;:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> config = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;path/to/configuration&apos;</span>);
+
+<span class="hljs-keyword">var</span> enhanceComponent = (Component) =&gt;
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Enhance</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    render() {
+      <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span>
+          {<span class="hljs-attr">...this.props</span>}
+          <span class="hljs-attr">title</span>=<span class="hljs-string">{</span> <span class="hljs-attr">config.appTitle</span> }
+        /&gt;</span>
+      )
+    }
+  };
+
+var OriginalTitle  = ({ title }) =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{ title }<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>;
+var EnhancedTitle = enhanceComponent(OriginalTitle);
+</span></code></pre>
+<p><code>appTitle</code> &#x662F;&#x5C01;&#x88C5;&#x5728;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x5185;&#x90E8;&#x7684;&#x3002;<code>OriginalTitle</code> &#x53EA;&#x77E5;&#x9053;&#x5B83;&#x6240;&#x63A5;&#x6536;&#x7684; <code>title</code> &#x5C5E;&#x6027;&#xFF0C;&#x5B83;&#x5B8C;&#x5168;&#x4E0D;&#x77E5;&#x9053;&#x6570;&#x636E;&#x662F;&#x6765;&#x81EA;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5DE8;&#x5927;&#x7684;&#x4F18;&#x52BF;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;&#x7EC4;&#x4EF6;&#x7684;&#x4EE3;&#x7801;&#x5757;&#x8FDB;&#x884C;&#x9694;&#x79BB;&#x3002;&#x5B83;&#x8FD8;&#x6709;&#x52A9;&#x4E8E;&#x7EC4;&#x4EF6;&#x7684;&#x6D4B;&#x8BD5;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8F7B;&#x6613;&#x5730;&#x521B;&#x5EFA; mocks &#x3002;</p>
+<p>&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#x7684;&#x53E6;&#x5916;&#x4E00;&#x4E2A;&#x7279;&#x70B9;&#x662F;&#x4E3A;&#x9644;&#x52A0;&#x7684;&#x903B;&#x8F91;&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x597D;&#x7684;&#x7F13;&#x51B2;&#x533A;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5982;&#x679C; <code>OriginalTitle</code> &#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#x6765;&#x81EA;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x4E2D;&#x8BF7;&#x6C42;&#x6B64;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;&#x4F5C;&#x4E3A;&#x5C5E;&#x6027;&#x4F20;&#x7ED9; <code>OriginalTitle</code> &#x3002;</p>
+<p><span class="new-page"></span></p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> enhanceComponent = (Component) =&gt;
+  <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Enhance</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">constructor</span>(props) {
+      <span class="hljs-keyword">super</span>(props);
+
+      <span class="hljs-keyword">this</span>.state = { remoteTitle: <span class="hljs-literal">null</span> };
+    }
+    componentDidMount() {
+      fetchRemoteData(<span class="hljs-string">&apos;path/to/endpoint&apos;</span>).then(data =&gt; {
+        <span class="hljs-keyword">this</span>.setState({ remoteTitle: data.title });
+      });
+    }
+    render() {
+      <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Component</span>
+          {<span class="hljs-attr">...this.props</span>}
+          <span class="hljs-attr">title</span>=<span class="hljs-string">{</span> <span class="hljs-attr">config.appTitle</span> }
+          <span class="hljs-attr">remoteTitle</span>=<span class="hljs-string">{</span> <span class="hljs-attr">this.state.remoteTitle</span> }
+        /&gt;</span>
+      )
+    }
+  };
+
+var OriginalTitle  = ({ title, remoteTitle }) =&gt;
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{ title }{ remoteTitle }<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>;
+var EnhancedTitle = enhanceComponent(OriginalTitle);
+</span></code></pre>
+<p>&#x8FD9;&#x6B21;&#xFF0C;<code>OriginalTitle</code> &#x53EA;&#x77E5;&#x9053;&#x5B83;&#x63A5;&#x6536;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5B83;&#x4EEC;&#x5E76;&#x6392;&#x6E32;&#x67D3;&#x51FA;&#x6765;&#x3002;&#x5B83;&#x53EA;&#x5173;&#x5FC3;&#x6570;&#x636E;&#x7684;&#x8868;&#x73B0;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x5173;&#x5FC3;&#x6570;&#x636E;&#x7684;&#x6765;&#x6E90;&#x548C;&#x65B9;&#x5F0F;&#x3002;</p>
+<ul>
+<li>&#x5173;&#x4E8E;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;&#x7684;&#x521B;&#x5EFA;&#x95EE;&#x9898;&#xFF0C;<a href="https://github.com/gaearon" target="_blank">Dan Abramov</a> &#x63D0;&#x51FA;&#x4E86;&#x4E00;&#x4E2A; <a href="https://github.com/krasimir/react-in-patterns/issues/12" target="_blank">&#x975E;&#x5E38;&#x68D2;&#x7684;&#x89C2;&#x70B9;</a>&#xFF0C;&#x50CF;&#x8C03;&#x7528; <code>enhanceComponent</code> &#x8FD9;&#x6837;&#x7684;&#x51FD;&#x6570;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x5728;&#x7EC4;&#x4EF6;&#x5B9A;&#x4E49;&#x7684;&#x5C42;&#x7EA7;&#x8C03;&#x7528;&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x5728;&#x53E6;&#x4E00;&#x4E2A; React &#x7EC4;&#x4EF6;&#x4E2D;&#x505A;&#x8FD9;&#x4EF6;&#x4E8B;&#x662F;&#x6709;&#x95EE;&#x9898;&#x7684;&#xFF0C;&#x5B83;&#x4F1A;&#x5BFC;&#x81F4;&#x5E94;&#x7528;&#x901F;&#x5EA6;&#x53D8;&#x6162;&#x5E76;&#x5BFC;&#x81F4;&#x6027;&#x80FD;&#x95EE;&#x9898;&#x3002; *</li>
+</ul>
+<p><br><br></p>
+<h2 id="&#x5C06;&#x51FD;&#x6570;&#x4F5C;&#x4E3A;-children-&#x4F20;&#x5165;&#x548C;-render-prop">&#x5C06;&#x51FD;&#x6570;&#x4F5C;&#x4E3A; children &#x4F20;&#x5165;&#x548C; render prop</h2>
+<p>&#x6700;&#x8FD1;&#x51E0;&#x4E2A;&#x6708;&#x6765;&#xFF0C;React &#x793E;&#x533A;&#x5F00;&#x59CB;&#x8F6C;&#x5411;&#x4E00;&#x4E2A;&#x6709;&#x8DA3;&#x7684;&#x65B9;&#x5411;&#x3002;&#x5230;&#x76EE;&#x524D;&#x4E3A;&#x6B62;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#x7684; <code>children</code> &#x5C5E;&#x6027;&#x90FD;&#x662F; React &#x7EC4;&#x4EF6;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x6709;&#x4E00;&#x79CD;&#x65B0;&#x7684;&#x6A21;&#x5F0F;&#x8D8A;&#x6765;&#x8D8A;&#x53D7;&#x6B22;&#x8FCE;&#xFF0C;<code>children</code> &#x5C5E;&#x6027;&#x662F;&#x4E00;&#x4E2A; JSX &#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x6211;&#x4EEC;&#x5148;&#x4ECE;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x5BF9;&#x8C61;&#x5F00;&#x59CB;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">UserName</span>(<span class="hljs-params">{ children }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{ children.lastName }<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>,
+      { children.firstName }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> user = {
+    firstName: <span class="hljs-string">&apos;Krasimir&apos;</span>,
+    lastName: <span class="hljs-string">&apos;Tsonev&apos;</span>
+  };
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">UserName</span>&gt;</span>{ user }<span class="hljs-tag">&lt;/<span class="hljs-name">UserName</span>&gt;</span></span>
+  );
+}
+</code></pre>
+<p>&#x8FD9;&#x770B;&#x8D77;&#x6765;&#x6709;&#x70B9;&#x602A;&#x602A;&#x7684;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;&#x5B83;&#x786E;&#x5B9E;&#x975E;&#x5E38;&#x5F3A;&#x5927;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5F53;&#x67D0;&#x4E9B;&#x7236;&#x7EC4;&#x4EF6;&#x6240;&#x77E5;&#x9053;&#x7684;&#x5185;&#x5BB9;&#x4E0D;&#x9700;&#x8981;&#x4F20;&#x7ED9;&#x5B50;&#x7EC4;&#x4EF6;&#x65F6;&#x3002;&#x4E0B;&#x9762;&#x7684;&#x793A;&#x4F8B;&#x662F;&#x5F85;&#x529E;&#x4E8B;&#x9879;&#x7684;&#x5217;&#x8868;&#x3002;<code>App</code> &#x7EC4;&#x4EF6;&#x62E5;&#x6709;&#x5168;&#x90E8;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4E14;&#x5B83;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x5F85;&#x529E;&#x4E8B;&#x9879;&#x662F;&#x5426;&#x5B8C;&#x6210;&#x3002;<code>TodoList</code> &#x7EC4;&#x4EF6;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x5730;&#x5C01;&#x88C5;&#x4E86;&#x6240;&#x9700;&#x7684; HTML &#x6807;&#x8BB0;&#x3002;</p>
+<p><br><br><br><br></p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TodoList</span>(<span class="hljs-params">{ todos, children }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&apos;main-section&apos;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&apos;todo-list&apos;</span>&gt;</span>{
+        todos.map((todo, i) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{</span> <span class="hljs-attr">i</span> }&gt;</span>{ children(todo) }<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))
+      }<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> todos = [
+    { label: <span class="hljs-string">&apos;Write tests&apos;</span>, status: <span class="hljs-string">&apos;done&apos;</span> },
+    { label: <span class="hljs-string">&apos;Sent report&apos;</span>, status: <span class="hljs-string">&apos;progress&apos;</span> },
+    { label: <span class="hljs-string">&apos;Answer emails&apos;</span>, status: <span class="hljs-string">&apos;done&apos;</span> }
+  ];
+  <span class="hljs-keyword">const</span> isCompleted = todo =&gt; todo.status === <span class="hljs-string">&apos;done&apos;</span>;
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TodoList</span> <span class="hljs-attr">todos</span>=<span class="hljs-string">{</span> <span class="hljs-attr">todos</span> }&gt;</span>
+      {
+        todo =&gt; isCompleted(todo) ?
+          <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{ todo.label }<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> :
+          todo.label
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">TodoList</span>&gt;</span></span>
+  );
+}
+</code></pre>
+<p>&#x6CE8;&#x610F;&#x89C2;&#x5BDF; <code>App</code> &#x7EC4;&#x4EF6;&#x662F;&#x5982;&#x4F55;&#x4E0D;&#x66B4;&#x9732;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x3002;<code>TodoList</code> &#x5B8C;&#x5168;&#x4E0D;&#x77E5;&#x9053; <code>label</code> &#x548C; <code>status</code> &#x5C5E;&#x6027;&#x3002;</p>
+<p>&#x540D;&#x4E3A; <em>render prop</em> &#x7684;&#x6A21;&#x5F0F;&#x4E0E;&#x4E0A;&#x9762;&#x6240;&#x8BB2;&#x7684;&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x9664;&#x4E86;&#x6E32;&#x67D3;&#x5F85;&#x529E;&#x4E8B;&#x9879;&#x4F7F;&#x7528;&#x7684;&#x662F; <code>render</code> &#x5C5E;&#x6027;&#xFF0C;&#x800C;&#x4E0D;&#x662F; <code>children</code> &#x3002;</p>
+<p><br><br><br></p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TodoList</span>(<span class="hljs-params">{ todos, render }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&apos;main-section&apos;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&apos;todo-list&apos;</span>&gt;</span>{
+        todos.map((todo, i) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{</span> <span class="hljs-attr">i</span> }&gt;</span>{ render(todo) }<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        ))
+      }<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">return</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">TodoList</span>
+    <span class="hljs-attr">todos</span>=<span class="hljs-string">{</span> <span class="hljs-attr">todos</span> }
+    <span class="hljs-attr">render</span>=<span class="hljs-string">{</span>
+      <span class="hljs-attr">todo</span> =&gt;</span> isCompleted(todo) ?
+        <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{ todo.label }<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> : todo.label
+    } /&gt;
+);
+</span></code></pre>
+<p>&#x8FD9;&#x4E24;&#x79CD;&#x6A21;&#x5F0F; <em>&#x5C06;&#x51FD;&#x6570;&#x4F5C;&#x4E3A; children &#x4F20;&#x5165;</em> &#x548C; <em>render prop</em> &#x662F;&#x6211;&#x6700;&#x65B0;&#x975E;&#x5E38;&#x559C;&#x6B22;&#x7684;&#x3002;&#x5F53;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x590D;&#x7528;&#x4EE3;&#x7801;&#x65F6;&#xFF0C;&#x5B83;&#x4EEC;&#x63D0;&#x4F9B;&#x4E86;&#x7075;&#x6D3B;&#x6027;&#x548C;&#x5E2E;&#x52A9;&#x3002;&#x5B83;&#x4EEC;&#x8FD8;&#x662F;&#x62BD;&#x8C61;&#x547D;&#x4EE4;&#x5F0F;&#x4EE3;&#x7801;&#x7684;&#x5F3A;&#x529B;&#x65B9;&#x5F0F;&#x3002;</p>
+<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DataProvider</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+
+    <span class="hljs-keyword">this</span>.state = { data: <span class="hljs-literal">null</span> };
+    setTimeout(() =&gt; <span class="hljs-keyword">this</span>.setState({ data: <span class="hljs-string">&apos;Hey there!&apos;</span> }), <span class="hljs-number">5000</span>);
+  }
+  render() {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.data === <span class="hljs-literal">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>{ this.props.render(this.state.data) }<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+    );
+  }
+}
+</code></pre>
+<p><code>DataProvider</code> &#x521A;&#x5F00;&#x59CB;&#x4E0D;&#x6E32;&#x67D3;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;&#x3002;5 &#x79D2;&#x540E;&#x6211;&#x4EEC;&#x66F4;&#x65B0;&#x4E86;&#x7EC4;&#x4EF6;&#x7684;&#x72B6;&#x6001;&#x5E76;&#x6E32;&#x67D3;&#x51FA;&#x4E00;&#x4E2A; <code>&lt;section&gt;</code>&#xFF0C;<code>&lt;section&gt;</code> &#x7684;&#x5185;&#x5BB9;&#x662F;&#x7531; <code>render</code> &#x5C5E;&#x6027;&#x8FD4;&#x56DE;&#x7684;&#x3002;&#x53EF;&#x4EE5;&#x60F3;&#x8C61;&#x4E00;&#x4E0B;&#x540C;&#x6837;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x6570;&#x636E;&#x662F;&#x4ECE;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x83B7;&#x53D6;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x60F3;&#x6570;&#x636E;&#x83B7;&#x53D6;&#x540E;&#x624D;&#x8FDB;&#x884C;&#x663E;&#x793A;&#x3002;</p>
+<pre><code class="lang-js">&lt;DataProvider render={ data =&gt; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>The data is here!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span> } /&gt;
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x63CF;&#x8FF0;&#x4E86;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x505A;&#x7684;&#x4E8B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5982;&#x4F55;&#x53BB;&#x505A;&#x3002;&#x7EC6;&#x8282;&#x90FD;&#x5C01;&#x88C5;&#x5728;&#x4E86; <code>DataProvider</code> &#x4E2D;&#x3002;&#x6700;&#x8FD1;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x5DE5;&#x4F5C;&#x4E2D;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x6A21;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5C06;&#x67D0;&#x4E9B;&#x754C;&#x9762;&#x9650;&#x5236;&#x53EA;&#x5BF9;&#x5177;&#x6709; <code>read:products</code> &#x6743;&#x9650;&#x7684;&#x7528;&#x6237;&#x5F00;&#x653E;&#x3002;&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x7684;&#x662F; <em>render prop</em> &#x6A21;&#x5F0F;&#x3002;</p>
+<pre><code class="lang-js">&lt;Authorize
+  permissionsInclude={[ <span class="hljs-string">&apos;read:products&apos;</span> ]}
+  render={ () =&gt; <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ProductsList</span> /&gt;</span> } /&gt;
+</span></code></pre>
+<p>&#x8FD9;&#x79CD;&#x58F0;&#x660E;&#x5F0F;&#x7684;&#x65B9;&#x5F0F;&#x76F8;&#x5F53;&#x4E0D;&#x9519;&#xFF0C;&#x4E0D;&#x8A00;&#x81EA;&#x660E;&#x3002;<code>Authorize</code> &#x4F1A;&#x8FDB;&#x884C;&#x8BA4;&#x8BC1;&#xFF0C;&#x4EE5;&#x68C0;&#x67E5;&#x5F53;&#x524D;&#x7528;&#x6237;&#x662F;&#x5426;&#x5177;&#x6709;&#x6743;&#x9650;&#x3002;&#x5982;&#x679C;&#x7528;&#x6237;&#x5177;&#x6709;&#x8BFB;&#x53D6;&#x4EA7;&#x54C1;&#x5217;&#x8868;&#x7684;&#x6743;&#x9650;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x4FBF;&#x6E32;&#x67D3; <code>ProductList</code> &#x3002;</p>
+<h2 id="&#x7ED3;&#x8BED;">&#x7ED3;&#x8BED;</h2>
+<p>&#x4F60;&#x662F;&#x5426;&#x5BF9;&#x4E3A;&#x4F55;&#x8FD8;&#x5728;&#x4F7F;&#x7528; HTML &#x611F;&#x5230;&#x5947;&#x602A;&#xFF1F;HTML &#x662F;&#x5728;&#x4E92;&#x8054;&#x7F51;&#x521B;&#x5EFA;&#x4E4B;&#x521D;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x76F4;&#x5230;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x4ECD;&#x7136;&#x5728;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#x5B83;&#x7684;&#x9AD8;&#x5EA6;&#x53EF;&#x7EC4;&#x5408;&#x6027;&#x3002;React &#x548C;&#x5B83;&#x7684; JSX &#x770B;&#x8D77;&#x6765;&#x50CF;&#x8FDB;&#x5316;&#x7684; HTML &#xFF0C;&#x56E0;&#x6B64;&#x5B83;&#x5177;&#x5907;&#x540C;&#x6837;&#x7684;&#x529F;&#x80FD;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8BF7;&#x786E;&#x4FDD;&#x7CBE;&#x901A;&#x7EC4;&#x5408;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F; React &#x6700;&#x5927;&#x7684;&#x597D;&#x5904;&#x4E4B;&#x4E00;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../chapter-3/" class="navigation navigation-prev " aria-label="Previous page: 事件处理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="./#使用-react-children-api" class="navigation navigation-next " aria-label="Next page: 使用 React children API">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"组合","level":"2.3","depth":1,"next":{"title":"使用 React children API","level":"2.3.1","depth":2,"anchor":"#使用-react-children-api","path":"chapter-4/README.md","ref":"chapter-4/README.md#使用-react-children-api","articles":[]},"previous":{"title":"事件处理","level":"2.2","depth":1,"path":"chapter-3/README.md","ref":"chapter-3/README.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github","edit-link","copy-code-button","github-buttons"],"root":"./book","styles":{"website":"./styles/website.css","ebook":"./styles/ebook.css","pdf":"./styles/ebook.css"},"pluginsConfig":{"github":{"url":"https://github.com/SangKa/react-in-patterns-cn"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"github-buttons":{"buttons":[{"user":"SangKa","repo":"react-in-patterns-cn","type":"fork","size":"small","count":true},{"user":"SangKa","repo":"react-in-patterns-cn","type":"star","size":"small","count":true}]},"copy-code-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"帮忙纠错","base":"https://github.com/SangKa/react-in-patterns-cn/tree/master/book"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"SangKa","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a5","chapterMark":"pagebreak","pageBreaksBefore":"//*[@class='new-page']","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"React 模式","gitbook":"3.2.3","description":"介绍 React 开发的设计模式和技术的免费开源书籍"},"file":{"path":"chapter-4/README.md","mtime":"2018-05-06T07:55:13.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-06T07:55:22.973Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-copy-code-button/toggle.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github-buttons/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

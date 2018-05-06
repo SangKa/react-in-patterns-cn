@@ -1,9 +1,34 @@
 {
   "root": "./book",
-  "title": "React in patterns",
-  "description": "A book about common design patterns used while developing with React.",
-  "author": "Krasimir Tsonev",
+  "title": "React 模式",
+  "description": "介绍 React 开发的设计模式和技术的免费开源书籍",
+  "author": "SangKa",
   "gitbook": "3.2.3",
+  "plugins": ["github", "edit-link", "copy-code-button", "github-buttons"],
+  "pluginsConfig": {
+    "github": {
+      "url": "https://github.com/SangKa/react-in-patterns-cn"
+    },
+    "edit-link": {
+      "base": "https://github.com/SangKa/react-in-patterns-cn/tree/master/book",
+      "label": "帮忙纠错"
+    },
+    "github-buttons": {
+      "buttons": [{
+        "user" : "SangKa",
+        "repo" : "react-in-patterns-cn",
+        "type" : "fork",
+        "size" : "small",
+        "count": true
+      }, {
+        "user" : "SangKa",
+        "repo" : "react-in-patterns-cn",
+        "type" : "star",
+        "size" : "small",
+        "count": true
+      }]
+    }
+  },
   "pdf": {
     "pageNumbers": true,
     "fontSize": 12,

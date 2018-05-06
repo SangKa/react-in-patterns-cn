@@ -38,3 +38,9 @@ jspm_packages
 
 ./code/node_modules
 ./code/*.log
+
+# GitBook
+_book
+*.pdf
+*.epub
+*.mobi

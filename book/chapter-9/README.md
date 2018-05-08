@@ -28,7 +28,7 @@ const action = {
 
 `visible` 属性是我们所提到过的元数据。它与 Redux 本身无关，它表示应用中某处需要使用的数据。
 
-每次我们想要派发动作时都需要使用这样的对象。但是，一遍又一遍地写确实是让太人烦躁了。这也正是概念 *action creators* 诞生的原因。action creator 是返回动作对象的函数，它可选项性地接收与动作相关联的属性。例如，如果将上面的 action 写成 action creator 会是这样:
+每次我们想要派发动作时都需要使用这样的对象。但是，一遍又一遍地写确实是让太人烦躁了。这也正是概念 *action creators* 诞生的原因。action creator 是返回动作对象的函数，它可选项性地接收与动作相关联的属性。例如，如果将上面的 action 写成 action creator 会是这样:
 
 ```js
 const changeVisibility = visible => ({
@@ -159,7 +159,7 @@ const changeVisibility = visible => ({
 
 ### Store 及其 reducers
 
-我们在解释 store 和 reudcers 时，有些技术点是没有讨论到的。通常，我们会有多个 reducer ，因为要管理多种状态。store 只有一个，所以理论上只有一个状态对象。但是大多数生产环境的应用的状态都是状态切片的组合。每个切片代表应用的一部分。这个小示例拥有计数和可见性两个切片。所以我们的初始状态应该是这样的:
+我们在解释 store 和 reudcers 时，有些技术点是没有讨论到的。通常，我们会有多个 reducer ，因为要管理多种状态。store 只有一个，所以理论上只有一个状态对象。但是大多数生产环境的应用的状态都是状态切片的组合。每个切片代表应用的一部分。这个小示例拥有计数和可见性两个切片。所以我们的初始状态应该是这样的:
 
 ```js
 const initialState = {

@@ -2,7 +2,7 @@
 
 我们写的好多模块和组件都有依赖。能否管理这些依赖对于项目的成功至关重要。有一种叫做 [*依赖注入*](http://krasimirtsonev.com/blog/article/Dependency-injection-in-JavaScript) 的技术 (大多数人认为它是一种*模式*) 用来解决这种问题。
 
-在 React 中，对依赖注入的需要是显而易见的。我们来考虑下面的应用的组件树:
+在 React 中，对依赖注入的需要是显而易见的。我们来考虑下面的应用的组件树:
 
 ```js
 // Title.jsx
@@ -202,7 +202,7 @@ export default function wire(Component, dependencies, mapper) {
 
 ## 使用 React context (16.3 及之后的版本)
 
-这些年来，Fackbook 并不推荐使用 context API 。在官方文档中也有提到，此 API 不稳定，随时可能更改。确实也言中了。16.3 版本提供了一个新的 context API ，我认为新版 API 更自然，使用起来也更简单。
+这些年来，Fackbook 并不推荐使用 context API 。在官方文档中也有提到，此 API 不稳定，随时可能更改。确实也言中了。16.3 版本提供了一个新的 context API ，我认为新版 API 更自然，使用起来也更简单。
 
 我们还是使用同一个示例，让字符串抵达 `<Title>` 组件。
 

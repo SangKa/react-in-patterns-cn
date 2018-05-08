@@ -34,7 +34,7 @@ export default function Navigation() {
 但是，这种方式会引入一些问题:
 
 * 我们可以把 `App` 看作是主要的组合场所。`Header` 可能还有其他元素，比如 logo、搜索框或标语。如果它们是以某种方式通过 `App` 组件传入的就好了，这样我们就无需创建目前这种硬编码的依赖关系。再比如说我们如果需要一个没有 `Navigation` 的 `Header` 组件该怎么办？我们无法轻松实现，因为我们将这两个组件紧绑在了一起。
-* 代码很难测试。在 `Header` 中或许有一些业务逻辑，要测试它的话我们需要创建出一个组件实例。但是，因为它还导入了其他组件，所以我们还要为这些导入的组件创建实例，这样的话测试就变的很重。如果 `Navigation` 组件出了问题，那么 `Header` 组件的测试已将被破坏，这完全不是我们想要的效果。*(注意: [浅层渲染 ( shallow rendering )](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) 通过不渲染 `Header` 组件嵌套的子元素能在一定程度上解决此问题。)*
+* 代码很难测试。在 `Header` 中或许有一些业务逻辑，要测试它的话我们需要创建出一个组件实例。但是，因为它还导入了其他组件，所以我们还要为这些导入的组件创建实例，这样的话测试就变的很重。如果 `Navigation` 组件出了问题，那么 `Header` 组件的测试已将被破坏，这完全不是我们想要的效果。*(注意: [浅层渲染 ( shallow rendering )](https://facebook.github.io/react/docs/test-utils.html#shallow-rendering) 通过不渲染 `Header` 组件嵌套的子元素能在一定程度上解决此问题。)*
 
 ## 使用 React children API
 

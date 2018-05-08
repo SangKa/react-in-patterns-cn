@@ -18,7 +18,7 @@
 
 ### Dispatcher
 
-大多数场景下，我们只需要一个单个的 dispatcher 。因为它扮演胶水的角色，用来粘合其他部分，所以有一个就够了。dispatcher 需要知道两样东西: 动作和 stores 。动作只是简单地转发给 stores，所以没必要保存它们。然而，stores 应该在 dispatcher 中进行追踪，这样才可以遍历它们: 
+大多数场景下，我们只需要一个单个的 dispatcher 。因为它扮演胶水的角色，用来粘合其他部分，所以有一个就够了。dispatcher 需要知道两样东西: 动作和 stores 。动作只是简单地转发给 stores，所以没必要保存它们。然而，stores 应该在 dispatcher 中进行追踪，这样才可以遍历它们: 
 
 ![the dispatcher](./fluxiny_the_dispatcher.jpg)
 
@@ -70,7 +70,7 @@ register: function (store) {
 Framework.attachToStore(view, store);
 ```
 
-然而，我并不怎么喜欢这种方式。要让 `attachToStore` 正常运行，需要视图和 store 中有一个特殊的 API ，因此我们需要严格定义这个新的公有方法。或者换句话说，Framework 对你说道: “你的视图和 store 应该具备这样的 API ，这样我才能能够将它们连接起来”。如果我们沿着这个方向前进的话，那么我们可能会定义可扩展的基类，这样我们就不会让 Flux 的细节去困扰开发人员。然后，Framework 又对你说到: “你所有的类都应该继承我们的类”。这听上去也并非好主意，因为开发人员可能会切换成另一个 Flux 提供者，这种切换势必会修改所有内容。
+然而，我并不怎么喜欢这种方式。要让 `attachToStore` 正常运行，需要视图和 store 中有一个特殊的 API ，因此我们需要严格定义这个新的公有方法。或者换句话说，Framework 对你说道: “你的视图和 store 应该具备这样的 API ，这样我才能能够将它们连接起来”。如果我们沿着这个方向前进的话，那么我们可能会定义可扩展的基类，这样我们就不会让 Flux 的细节去困扰开发人员。然后，Framework 又对你说到: “你所有的类都应该继承我们的类”。这听上去也并非好主意，因为开发人员可能会切换成另一个 Flux 提供者，这种切换势必会修改所有内容。
 
 <br /><br />
 

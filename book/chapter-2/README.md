@@ -63,7 +63,7 @@ function App() {
 
 在这个示例中，`App` 组件中的 `<span>community</span>` 就是 `Title` 组件中的 `children` 属性。注意，如果我们将 `{ children }` 从 `Title` 组件中移除，那么 `<span>` 标签将不会渲染。
 
-16.3 版本之前，组件还有一种间接输入，叫做 `context` 。整个 React 组件树可能有一个 `context` 对象，组件树种的每个组件都可以访问它。想了解更多，请阅读 [依赖注入](../chapter-10/README.md) 章节。
+16.3 版本之前，组件还有一种间接输入，叫做 `context` 。整个 React 组件树可能有一个 `context` 对象，组件树中的每个组件都可以访问它。想了解更多，请阅读 [依赖注入](../chapter-10/README.md) 章节。
 
 ## 输出
 

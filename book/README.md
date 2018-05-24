@@ -5,7 +5,7 @@
 * [Web (https://sangka.github.io/react-in-patterns-cn/)](https://sangka.github.io/react-in-patterns-cn/)
 * [PDF (https://github.com/SangKa/react-in-patterns-cn/raw/gh-pages/ebook/React模式.pdf)](https://github.com/SangKa/react-in-patterns-cn/raw/gh-pages/ebook/React模式.pdf)
 * [Mobi (https://github.com/SangKa/react-in-patterns-cn/raw/gh-pages/ebook/React模式.mobi)](https://github.com/SangKa/react-in-patterns-cn/raw/gh-pages/ebook/React模式.mobi)
-* [ePub (https://github.com/SangKa/react-in-patterns-cn/raw/gh-pages/ebook/React模式.epub)
+* [ePub (https://github.com/SangKa/react-in-patterns-cn/raw/gh-pages/ebook/React模式.epub)](https://github.com/SangKa/react-in-patterns-cn/raw/gh-pages/ebook/React模式.epub)
 * [GitHub (https://github.com/SangKa/react-in-patterns-cn)](https://github.com/SangKa/react-in-patterns-cn)
 
 ![cover](./cover.jpg)

@@ -18,7 +18,7 @@
 
 ### Dispatcher
 
-大多数场景下，我们只需要一个单个的 dispatcher 。因为它扮演胶水的角色，用来粘合其他部分，所以有一个就够了。dispatcher 需要知道两样东西: 动作和 stores 。动作只是简单地转发给 stores，所以没必要保存它们。然而，stores 应该在 dispatcher 中进行追踪，这样才可以遍历它们: 
+大多数场景下，我们只需要一个单个的 dispatcher 。因为它扮演胶水的角色，用来粘合其他部分，所以有一个就够了。dispatcher 需要知道两样东西: 动作和 stores 。动作只是简单地转发给 stores，所以没必要保存它们。然而，stores 应该在 dispatcher 中进行追踪，这样才可以遍历它们:
 
 ![the dispatcher](./fluxiny_the_dispatcher.jpg)
 
@@ -326,7 +326,7 @@ var createSubscriber = function (store) {
 }
 ```
 
-我们可以不暴露 dispaatcher，而只暴露 `createAction` 和 `createSubscriber` 这两个函数。下面是最终代码:
+我们可以不暴露 dispatcher，而只暴露 `createAction` 和 `createSubscriber` 这两个函数。下面是最终代码:
 
 ```js
 var Dispatcher = function () {

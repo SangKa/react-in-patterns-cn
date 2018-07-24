@@ -112,7 +112,7 @@ connect(
 )
 ```
 
-`mapStateToProps` 参数是一个函数，它接收 store 的当前状态，并且必须返回一组键值对 (对象)，这些对将作为 props 发送给我们的 React 组件。例如:
+`mapStateToProps` 参数是一个函数，它接收 store 的当前状态，并且必须返回一组键值对 (对象)，这些键值对将作为 props 发送给我们的 React 组件。例如:
 
 ```js
 const mapStateToProps = state => ({

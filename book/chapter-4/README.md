@@ -235,7 +235,7 @@ function App() {
 
 注意观察 `App` 组件是如何不暴露数据结构的。`TodoList` 完全不知道 `label` 和 `status` 属性。
 
-名为 *render prop* 的模式与上面所讲的基本相同，除了渲染待办事项使用的是 `render` 属性，而不是 `children` 。
+除了使用 `render` 属性渲染待办事项而不是 `children` ，这种叫 *render prop* 的模式和前面的模式几乎一样。
 
 <br /><br /><br />
 
@@ -262,7 +262,7 @@ return (
 );
 ```
 
-这两种模式 *将函数作为 children 传入* 和 *render prop* 是我最新非常喜欢的。当我们想要复用代码时，它们提供了灵活性和帮助。它们还是抽象命令式代码的强力方式。
+*将函数作为 children 传入* 和 *render prop* 是我最近非常喜欢的两个模式。当我们想要复用代码时，它们提供了灵活性和帮助。它们也是抽象代码的一种强有力的方式。
 
 ```js
 class DataProvider extends React.Component {
